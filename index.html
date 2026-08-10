@@ -219,7 +219,7 @@
       text-decoration: none;
     }
     .nav-logo-img {
-      height: 48px;
+      height: 56px;
       width: auto;
       object-fit: contain;
     }
@@ -303,7 +303,7 @@
       margin-bottom: 12px;
     }
     .mobile-logo-img {
-      height: 40px;
+      height: 48px;
       width: auto;
       object-fit: contain;
     }
@@ -326,7 +326,7 @@
       background: linear-gradient(160deg, #0A2550 0%, #1A5DAD 55%, #5BA8E8 100%);
       display: flex;
       align-items: center;
-      padding: 120px 0 80px;
+      padding: 140px 0 80px;
       overflow: hidden;
     }
 
@@ -973,70 +973,155 @@
     }
     .timeline {
       position: relative;
-      max-width: 760px;
+      max-width: 1200px;
       margin: 0 auto;
     }
     .timeline::before {
-      content: '';
-      position: absolute;
-      left: 40px;
-      top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(180deg, var(--blue), var(--red));
+      display: none;
     }
     .timeline-item {
       display: flex;
-      gap: 32px;
-      margin-bottom: 40px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      margin-bottom: 0;
       position: relative;
     }
     .timeline-item:last-child { margin-bottom: 0; }
-    .tl-dot {
+    .tl-icon {
       width: 80px;
       height: 80px;
-      border-radius: 50%;
       flex-shrink: 0;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      border: 3px solid var(--white);
-      box-shadow: 0 0 0 3px var(--blue), var(--shadow-sm);
+      border-radius: 16px;
       background: var(--white);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.4rem;
-      color: var(--blue);
-      position: relative;
-      z-index: 1;
+      border: 2px solid var(--blue-light);
+      overflow: hidden;
     }
-    .tl-dot .step-num {
-      font-size: .65rem;
-      color: var(--gray-400);
-      font-weight: 500;
-      letter-spacing: .06em;
+    .tl-icon-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .tl-dot {
+      display: none;
     }
     .tl-content {
       flex: 1;
-      padding-top: 16px;
+      padding-top: 0;
+      max-width: 200px;
     }
     .tl-content h3 {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--navy);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
-    .tl-content p { color: var(--gray-600); font-size: .93rem; }
+    .tl-content p { 
+      color: var(--gray-600); 
+      font-size: .85rem; 
+      line-height: 1.4;
+      display: none;
+    }
     .tl-duration {
       display: inline-block;
       background: var(--blue-light);
       color: var(--blue);
-      padding: 3px 10px;
+      padding: 4px 12px;
       border-radius: 50px;
       font-size: .75rem;
       font-weight: 600;
       margin-top: 8px;
+    }
+    @media (min-width: 768px) {
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        align-items: start;
+      }
+      .timeline-item {
+        position: relative;
+      }
+      .timeline-item:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        right: -12px;
+        top: 40px;
+        font-size: 1.5rem;
+        color: var(--blue);
+        font-weight: 700;
+      }
+    }
+    @media (max-width: 767px) {
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        max-width: 760px;
+      }
+      .timeline::before {
+        display: block;
+        position: absolute;
+        left: 40px;
+        top: 0; bottom: 0;
+        width: 2px;
+        background: linear-gradient(180deg, var(--blue), var(--red));
+      }
+      .timeline-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: 32px;
+      }
+      .timeline-item:not(:last-child)::after {
+        display: none;
+      }
+      .tl-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid var(--white);
+        box-shadow: 0 0 0 3px var(--blue), var(--shadow-sm);
+      }
+      .tl-content {
+        max-width: none;
+        flex: 1;
+        padding-top: 16px;
+      }
+      .tl-content p {
+        display: block;
+      }
+      .tl-dot {
+        display: flex;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid var(--white);
+        box-shadow: 0 0 0 3px var(--blue), var(--shadow-sm);
+        background: var(--white);
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.4rem;
+        color: var(--blue);
+        position: absolute;
+        left: 0;
+        z-index: 1;
+      }
+      .tl-dot .step-num {
+        font-size: .65rem;
+        color: var(--gray-400);
+        font-weight: 500;
+        letter-spacing: .06em;
+      }
     }
 
     /* =============================================
@@ -1984,7 +2069,7 @@
     <div class="mulai-grid fade-up">
       <div class="mulai-card">
         <div class="mulai-illustration">
-          <img src="assets/images/illustrations/start-program.png" alt="Baru Mengenal Tokutei Ginou" class="mulai-illustration-img">
+          <img src="assets/images/illustrations/start-program.png" alt="Baru Mengenal Tokutei Ginou" class="mulai-illustration-img" loading="lazy" width="200" height="100">
         </div>
         <h3>Baru Mengenal Tokutei Ginou</h3>
         <p>Pelajari program Tokutei Ginou, persyaratan, sektor peternakan, dan gambaran proses keberangkatan.</p>
@@ -1993,7 +2078,7 @@
 
       <div class="mulai-card">
         <div class="mulai-illustration">
-          <img src="assets/images/illustrations/start-language.png" alt="Sedang Mempersiapkan Diri" class="mulai-illustration-img">
+          <img src="assets/images/illustrations/start-language.png" alt="Sedang Mempersiapkan Diri" class="mulai-illustration-img" loading="lazy" width="200" height="100">
         </div>
         <h3>Sedang Mempersiapkan Diri</h3>
         <p>Pelajari bahasa Jepang, ujian keterampilan peternakan, budaya kerja, dan tahapan menuju Jepang.</p>
@@ -2002,7 +2087,7 @@
 
       <div class="mulai-card">
         <div class="mulai-illustration">
-          <img src="assets/images/illustrations/start-ready.png" alt="Sudah Siap Mendaftar" class="mulai-illustration-img">
+          <img src="assets/images/illustrations/start-ready.png" alt="Sudah Siap Mendaftar" class="mulai-illustration-img" loading="lazy" width="200" height="100">
         </div>
         <h3>Sudah Siap Mendaftar</h3>
         <p>Cek kesiapan dokumen, bahasa, pengetahuan, dan persiapan sebelum mengikuti proses seleksi.</p>
@@ -2033,57 +2118,52 @@
     <div class="timeline fade-up">
       <div class="timeline-item">
         <div class="tl-icon">
-          <img src="assets/images/illustrations/roadmap-language.png" alt="Belajar Bahasa Jepang" class="tl-icon-img">
+          <img src="assets/images/illustrations/roadmap-program.png" alt="Kenal Program" class="tl-icon-img" loading="lazy" width="80" height="80">
         </div>
-        <div class="tl-dot"><span class="step-num">Step 1</span></div>
         <div class="tl-content">
-          <h3>Belajar Bahasa Jepang</h3>
-          <p>Mulai dari nol pun bisa. Target minimal JLPT N4 atau setara. Bisa belajar mandiri lewat aplikasi Duolingo, Anki, YouTube, atau ikut kursus. Yang penting konsisten setiap hari, minimal 30 menit.</p>
-          <span class="tl-duration">⏱ 6–12 bulan</span>
+          <h3>Kenal Program</h3>
+          <p>Pelajari program Tokutei Ginou, persyaratan, dan sektor peternakan.</p>
+          <span class="tl-duration">Step 01</span>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <img src="assets/images/illustrations/roadmap-exam.png" alt="Ujian Tokutei Ginou" class="tl-icon-img">
+          <img src="assets/images/illustrations/roadmap-language.png" alt="Belajar Bahasa" class="tl-icon-img" loading="lazy" width="80" height="80">
         </div>
-        <div class="tl-dot"><span class="step-num">Step 2</span></div>
         <div class="tl-content">
-          <h3>Ujian Tokutei Ginou (SSW)</h3>
-          <p>Ada dua ujian: tes bahasa Jepang (JFT-Basic / JLPT N4) dan tes keterampilan sektor peternakan (Livestock Farming Skill Evaluation Test). Keduanya bisa diikuti di Indonesia.</p>
-          <span class="tl-duration">⏱ 1–3 bulan persiapan</span>
+          <h3>Belajar Bahasa</h3>
+          <p>Target minimal JLPT N4 atau setara. Konsisten belajar setiap hari.</p>
+          <span class="tl-duration">Step 02</span>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <img src="assets/images/illustrations/roadmap-interview.png" alt="Proses Matching & Interview" class="tl-icon-img">
+          <img src="assets/images/illustrations/roadmap-exam.png" alt="Ujian Keterampilan" class="tl-icon-img" loading="lazy" width="80" height="80">
         </div>
-        <div class="tl-dot"><span class="step-num">Step 3</span></div>
         <div class="tl-content">
-          <h3>Proses Matching & Interview</h3>
-          <p>Setelah lulus ujian, kamu bisa mendaftar ke perusahaan peternakan Jepang melalui lembaga pengirim resmi (registered sending organization). Ada sesi wawancara online dengan perusahaan calon pemberi kerja.</p>
-          <span class="tl-duration">⏱ 1–2 bulan</span>
+          <h3>Ujian Keterampilan</h3>
+          <p>Ikuti tes bahasa dan tes keterampilan sektor peternakan.</p>
+          <span class="tl-duration">Step 03</span>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <img src="assets/images/illustrations/roadmap-program.png" alt="Pengurusan Dokumen & Visa" class="tl-icon-img">
+          <img src="assets/images/illustrations/roadmap-interview.png" alt="Matching & Interview" class="tl-icon-img" loading="lazy" width="80" height="80">
         </div>
-        <div class="tl-dot"><span class="step-num">Step 4</span></div>
         <div class="tl-content">
-          <h3>Pengurusan Dokumen & Visa</h3>
-          <p>Setelah diterima, pengurusan visa dilakukan oleh pihak perusahaan Jepang dan lembaga pengirim. Kamu perlu menyiapkan dokumen seperti paspor, ijazah, SKCK, dan surat keterangan kesehatan.</p>
-          <span class="tl-duration">⏱ 1–3 bulan</span>
+          <h3>Matching</h3>
+          <p>Daftar ke perusahaan dan ikuti wawancara dengan pemberi kerja.</p>
+          <span class="tl-duration">Step 04</span>
         </div>
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <img src="assets/images/illustrations/roadmap-departure.png" alt="Berangkat ke Jepang" class="tl-icon-img">
+          <img src="assets/images/illustrations/roadmap-departure.png" alt="Keberangkatan" class="tl-icon-img" loading="lazy" width="80" height="80">
         </div>
-        <div class="tl-dot"><span class="step-num">Step 5</span></div>
         <div class="tl-content">
-          <h3>Berangkat ke Jepang!</h3>
-          <p>Setelah semua dokumen beres dan visa terbit, saatnya berangkat. Kamu akan disambut, diberikan orientasi, dan mulai bekerja. Perjalanan barumu dimulai dari sini!</p>
-          <span class="tl-duration" style="background:var(--red-light); color:var(--red);">🎌 Selamat Datang di Jepang!</span>
+          <h3>Keberangkatan</h3>
+          <p>Pengurusan visa dan berangkat ke Jepang untuk mulai bekerja.</p>
+          <span class="tl-duration" style="background:var(--red-light); color:var(--red);">Step 05</span>
         </div>
       </div>
     </div>
@@ -2151,7 +2231,7 @@
 
       <div class="area-card">
         <div class="area-illustration">
-          <img src="assets/images/illustrations/tool-readiness.png" alt="Cek Kesiapan" class="area-illustration-img">
+          <img src="assets/images/illustrations/tool-readiness.png" alt="Cek Kesiapan" class="area-illustration-img" loading="lazy" width="100" height="100">
         </div>
         <h3>Tools Persiapan</h3>
         <p>Tools interaktif untuk mengecek kesiapan dan simulasi.</p>
@@ -2165,7 +2245,7 @@
 
       <div class="area-card">
         <div class="area-illustration">
-          <img src="assets/images/illustrations/japan-life.png" alt="Hidup & Bekerja" class="area-illustration-img">
+          <img src="assets/images/illustrations/japan-life.png" alt="Hidup & Bekerja" class="area-illustration-img" loading="lazy" width="100" height="100">
         </div>
         <h3>Hidup & Bekerja</h3>
         <p>Budaya, kehidupan sehari-hari, dan tantangan di Jepang.</p>
@@ -2607,7 +2687,7 @@
     <div class="farm-grid">
       <div class="farm-card fade-up fade-up-delay-1">
         <div class="farm-illustration">
-          <img src="assets/images/illustrations/farm-cattle.png" alt="Peternakan Sapi" class="farm-illustration-img">
+          <img src="assets/images/illustrations/farm-cattle.png" alt="Peternakan Sapi" class="farm-illustration-img" loading="lazy" width="200" height="120">
         </div>
         <div class="farm-card-body">
           <h3>Peternakan Sapi</h3>
@@ -2621,7 +2701,7 @@
       </div>
       <div class="farm-card fade-up fade-up-delay-2">
         <div class="farm-illustration">
-          <img src="assets/images/illustrations/farm-poultry.png" alt="Peternakan Ayam" class="farm-illustration-img">
+          <img src="assets/images/illustrations/farm-poultry.png" alt="Peternakan Ayam" class="farm-illustration-img" loading="lazy" width="200" height="120">
         </div>
         <div class="farm-card-body">
           <h3>Peternakan Ayam</h3>
@@ -2635,7 +2715,7 @@
       </div>
       <div class="farm-card fade-up fade-up-delay-3">
         <div class="farm-illustration">
-          <img src="assets/images/illustrations/farm-pig.png" alt="Peternakan Babi" class="farm-illustration-img">
+          <img src="assets/images/illustrations/farm-pig.png" alt="Peternakan Babi" class="farm-illustration-img" loading="lazy" width="200" height="120">
         </div>
         <div class="farm-card-body">
           <h3>Peternakan Babi</h3>
@@ -3942,32 +4022,40 @@ loadMap();
     </div>
     <div class="tools-grid fade-up">
       <div class="tools-card">
-        <div class="tools-icon">🗺️</div>
-        <span class="tools-tag">Mulai</span>
-        <h3>Roadmap Persiapan</h3>
-        <p>Urutan persiapan lengkap dari mengenal SSW sampai final check sebelum berangkat.</p>
-        <a href="roadmap.html" class="tools-cta">Buka Roadmap →</a>
-      </div>
-      <div class="tools-card">
-        <div class="tools-icon">✅</div>
+        <div class="tools-illustration">
+          <img src="assets/images/illustrations/tool-readiness.png" alt="Cek Kesiapan" class="tools-illustration-img" loading="lazy" width="80" height="80">
+        </div>
         <span class="tools-tag">Cek</span>
         <h3>Cek Kesiapan</h3>
-        <p>Checklist interaktif untuk mengetahui bagian mana yang masih perlu kamu lengkapi.</p>
+        <p>Ketahui aspek persiapan yang masih perlu kamu lengkapi.</p>
         <a href="cek-kesiapan.html" class="tools-cta">Cek Sekarang →</a>
       </div>
       <div class="tools-card">
-        <div class="tools-icon">🧩</div>
+        <div class="tools-illustration">
+          <img src="assets/images/illustrations/tool-salary.png" alt="Simulasi Gaji & Biaya" class="tools-illustration-img" loading="lazy" width="80" height="80">
+        </div>
+        <span class="tools-tag">Simulasi</span>
+        <h3>Simulasi Gaji & Biaya</h3>
+        <p>Perkirakan pendapatan, biaya hidup, dan potensi tabungan di Jepang.</p>
+        <a href="simulasi-biaya.html" class="tools-cta">Mulai Simulasi →</a>
+      </div>
+      <div class="tools-card">
+        <div class="tools-illustration">
+          <img src="assets/images/illustrations/tool-quiz.png" alt="Latihan Quiz" class="tools-illustration-img" loading="lazy" width="80" height="80">
+        </div>
         <span class="tools-tag">Latihan</span>
-        <h3>Quiz Kesiapan</h3>
-        <p>Uji pemahaman dasar bahasa, budaya, pekerjaan, dan sistem SSW melalui quiz.</p>
+        <h3>Latihan Quiz</h3>
+        <p>Uji pemahamanmu tentang Tokutei Ginou dan sektor peternakan.</p>
         <a href="quiz.html" class="tools-cta">Mulai Quiz →</a>
       </div>
       <div class="tools-card">
-        <div class="tools-icon">💰</div>
-        <span class="tools-tag">Simulasi</span>
-        <h3>Simulasi Biaya</h3>
-        <p>Hitung estimasi biaya persiapan dan simulasi tabungan selama bekerja di Jepang.</p>
-        <a href="simulasi-biaya.html" class="tools-cta">Simulasi →</a>
+        <div class="tools-illustration">
+          <img src="assets/images/illustrations/tool-ai.png" alt="Tanya Nousan AI" class="tools-illustration-img" loading="lazy" width="80" height="80">
+        </div>
+        <span class="tools-tag">AI Assistant</span>
+        <h3>Tanya Nousan AI</h3>
+        <p>Tanyakan informasi yang belum kamu pahami melalui asisten TokuNou Japan.</p>
+        <a href="tanya-ai.html" class="tools-cta">Tanya AI →</a>
       </div>
     </div>
   </div>
@@ -4009,6 +4097,19 @@ loadMap();
   .tools-icon {
     font-size: 2.2rem;
     margin-bottom: 12px;
+  }
+  .tools-illustration {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .tools-illustration-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .tools-tag {
     display: inline-block;
@@ -4074,6 +4175,70 @@ loadMap();
     </div>
   </div>
 </section>
+
+<!-- =============================================
+     SECTION: HIDUP & BEKERJA DI JEPANG
+============================================= -->
+<section id="hidup-bekerja" style="padding:96px 0;background:var(--white);">
+  <div class="container">
+    <div class="hidup-layout fade-up">
+      <div class="hidup-image">
+        <img src="assets/images/illustrations/japan-life.png" alt="Kehidupan dan pekerjaan di Jepang" class="hidup-illustration-img" loading="lazy" width="500" height="400">
+      </div>
+      <div class="hidup-content">
+        <span class="label eyebrow" style="color:var(--red);">Hidup & Bekerja</span>
+        <h2 class="display-lg">Kehidupan Sehari-hari di Jepang</h2>
+        <p style="margin-bottom:24px;">Budaya, kehidupan sehari-hari, dan tantangan yang akan kamu hadapi saat bekerja di Jepang. Persiapkan diri dengan informasi yang tepat.</p>
+        <ul style="list-style:none;padding:0;margin:0 0 32px 0;">
+          <li style="margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--blue);font-size:1.2rem;">🏠</span>
+            <span>Kondisi asrama dan lingkungan tempat tinggal</span>
+          </li>
+          <li style="margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--blue);font-size:1.2rem;">🍜</span>
+            <span>Makanan, biaya hidup, dan kebiasaan sehari-hari</span>
+          </li>
+          <li style="margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--blue);font-size:1.2rem;">🎎</span>
+            <span>Budaya kerja dan etiket di tempat kerja</span>
+          </li>
+          <li style="margin-bottom:12px;display:flex;align-items:center;gap:12px;">
+            <span style="color:var(--blue);font-size:1.2rem;">⚠️</span>
+            <span>Risiko dan tantangan yang perlu diantisipasi</span>
+          </li>
+        </ul>
+        <a href="kehidupan-di-jepang.html" class="btn btn-primary btn-lg">Pelajari Lebih Lanjut →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hidup-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .hidup-layout {
+      grid-template-columns: 50% 50%;
+    }
+  }
+  .hidup-image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+  .hidup-illustration-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hidup-content {
+    padding: 20px 0;
+  }
+</style>
 
 <section id="tim-pengembang">
   <div class="tim-inner">
