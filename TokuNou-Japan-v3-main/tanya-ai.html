@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanya AI — TokuNou Japan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:      #0A2550;
+      --blue:      #1A5DAD;
+      --blue-mid:  #3B82C4;
+      --blue-light:#DBEEFF;
+      --white:     #FFFFFF;
+      --off-white: #F0F6FF;
+      --gray-200:  #C9DFFF;
+      --gray-400:  #7BAAD4;
+      --gray-600:  #3D6A9E;
+      --gray-800:  #1A3A6B;
+      --font-display: 'Sora', sans-serif;
+      --font-jp:      'Noto Serif JP', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(11,31,58,.07);
+      --shadow-md: 0 6px 24px rgba(11,31,58,.12);
+      --transition: .25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--gray-800); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; color: var(--white); }
+    .nav-logo .logo-mark { width: 36px; height: 36px; background: var(--blue-mid); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 1.1rem; color: var(--white); font-weight: 700; }
+    .nav-logo .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2; }
+    .nav-logo .logo-sub { font-size: .7rem; color: rgba(255,255,255,.55); font-weight: 400; }
+    .nav-back { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; font-family: var(--font-display); transition: color var(--transition); }
+    .nav-back:hover { color: var(--white); }
+    .nav-back:hover svg { transform: translateX(-3px); }
+    .nav-back svg { transition: transform var(--transition); }
+
+    /* HERO */
+    #hero {
+      position: relative;
+      background: linear-gradient(155deg, #0A2550 0%, #1A5DAD 55%, #3B9EE8 100%);
+      padding: 120px 0 60px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(91,168,232,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 20px; color: var(--white); }
+    #hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 14px; }
+    #hero h1 em { font-style: normal; color: #93C5FD; }
+    #hero p { font-size: 1.05rem; color: rgba(255,255,255,.78); max-width: 500px; margin: 0 auto 0; }
+
+    /* MAIN LAYOUT */
+    #chat-section { padding: 48px 0 80px; background: var(--off-white); }
+    .chat-layout { display: grid; grid-template-columns: 300px 1fr; gap: 24px; align-items: start; }
+
+    /* SIDEBAR */
+    .sidebar { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 88px; }
+
+    .sidebar-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); }
+    .sidebar-card h3 { font-family: var(--font-display); font-size: .85rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+
+    /* AI Profile */
+    .ai-profile { text-align: center; padding: 24px 20px; }
+    .ai-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 12px; box-shadow: 0 4px 16px rgba(10,37,80,.3); position: relative; }
+    .ai-avatar .status-dot { position: absolute; bottom: 3px; right: 3px; width: 14px; height: 14px; border-radius: 50%; background: #22C55E; border: 2px solid var(--white); }
+    .ai-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .ai-desc { font-size: .8rem; color: var(--gray-600); margin-top: 4px; line-height: 1.5; }
+    .ai-badge { display: inline-block; background: rgba(34,197,94,.1); color: #15803D; border: 1px solid rgba(34,197,94,.2); border-radius: 50px; padding: 3px 12px; font-size: .7rem; font-weight: 700; margin-top: 10px; }
+
+    /* Quick questions */
+    .quick-btn { width: 100%; text-align: left; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 10px; padding: 10px 12px; font-size: .8rem; color: var(--gray-800); cursor: pointer; transition: all var(--transition); font-family: var(--font-body); line-height: 1.45; margin-bottom: 6px; display: flex; align-items: flex-start; gap: 8px; }
+    .quick-btn:last-child { margin-bottom: 0; }
+    .quick-btn:hover { background: var(--blue-light); border-color: var(--blue-mid); color: var(--navy); }
+    .quick-btn .qi { flex-shrink: 0; font-size: .95rem; margin-top: 1px; }
+
+    /* Topics */
+    .topic-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .topic-pill { padding: 4px 12px; border-radius: 50px; font-size: .72rem; font-weight: 600; border: 1px solid; cursor: pointer; transition: all var(--transition); }
+    .tp-ssw    { background: rgba(46,134,222,.08); color: #1A5DAD; border-color: rgba(46,134,222,.2); }
+    .tp-ujian  { background: rgba(139,92,246,.08); color: #6D28D9; border-color: rgba(139,92,246,.2); }
+    .tp-gaji   { background: rgba(34,197,94,.08); color: #15803D; border-color: rgba(34,197,94,.2); }
+    .tp-alur   { background: rgba(245,158,11,.08); color: #92400E; border-color: rgba(245,158,11,.2); }
+    .topic-pill:hover { opacity: .75; transform: scale(.97); }
+
+    /* CHAT BOX */
+    .chat-box { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); display: flex; flex-direction: column; height: 620px; overflow: hidden; }
+
+    .chat-header { padding: 16px 20px; border-bottom: 1px solid var(--gray-200); display: flex; align-items: center; gap: 12px; background: var(--white); }
+    .chat-header .ch-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--blue)); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .chat-header .ch-info .ch-name { font-family: var(--font-display); font-size: .9rem; font-weight: 700; color: var(--navy); }
+    .chat-header .ch-info .ch-status { font-size: .72rem; color: #22C55E; font-weight: 600; display: flex; align-items: center; gap: 4px; }
+    .chat-header .ch-info .ch-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #22C55E; display: inline-block; }
+    .chat-header .ch-actions { margin-left: auto; display: flex; gap: 6px; }
+    .ch-clear { padding: 5px 12px; border-radius: 50px; background: var(--off-white); border: 1px solid var(--gray-200); font-size: .72rem; font-weight: 600; color: var(--gray-600); cursor: pointer; font-family: var(--font-display); transition: all var(--transition); }
+    .ch-clear:hover { background: #FEE2E2; color: #991B1B; border-color: #FECACA; }
+
+    /* Messages */
+    .chat-messages { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 16px; scroll-behavior: smooth; }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-track { background: transparent; }
+    .chat-messages::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+
+    .msg { display: flex; gap: 10px; align-items: flex-end; max-width: 85%; }
+    .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+    .msg.bot  { align-self: flex-start; }
+
+    .msg-avatar { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: .85rem; }
+    .msg.bot .msg-avatar { background: linear-gradient(135deg, var(--navy), var(--blue)); }
+    .msg.user .msg-avatar { background: var(--gray-200); font-size: .75rem; }
+
+    .msg-bubble { padding: 12px 16px; border-radius: 18px; font-size: .88rem; line-height: 1.6; }
+    .msg.bot .msg-bubble { background: var(--off-white); border: 1px solid var(--gray-200); border-bottom-left-radius: 4px; color: var(--gray-800); }
+    .msg.user .msg-bubble { background: linear-gradient(135deg, var(--navy), var(--blue)); color: var(--white); border-bottom-right-radius: 4px; }
+
+    .msg-bubble strong { font-weight: 700; }
+    .msg-bubble .mb-tag { display: inline-block; background: var(--blue-light); color: var(--blue); border-radius: 4px; padding: 1px 6px; font-size: .75rem; font-weight: 600; margin: 2px 2px 2px 0; }
+    .msg-bubble ul { margin: 8px 0 4px 16px; }
+    .msg-bubble ul li { margin-bottom: 4px; }
+    .msg-bubble .tip-box { background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.2); border-radius: 8px; padding: 8px 12px; margin-top: 10px; font-size: .82rem; color: #15803D; }
+    .msg-time { font-size: .65rem; color: var(--gray-400); margin-top: 4px; text-align: right; }
+    .msg.bot .msg-time { text-align: left; }
+
+    /* Typing indicator */
+    .typing-indicator { display: flex; gap: 4px; align-items: center; padding: 12px 16px; }
+    .typing-indicator span { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-400); animation: typing 1.2s infinite; }
+    .typing-indicator span:nth-child(2) { animation-delay: .2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: .4s; }
+    @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: .4; } 30% { transform: translateY(-6px); opacity: 1; } }
+
+    /* Suggested replies */
+    .suggested-replies { padding: 8px 20px 4px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .sug-btn { padding: 6px 14px; border-radius: 50px; background: var(--off-white); border: 1px solid var(--gray-200); font-size: .78rem; color: var(--navy); font-weight: 600; cursor: pointer; font-family: var(--font-body); transition: all var(--transition); }
+    .sug-btn:hover { background: var(--blue-light); border-color: var(--blue-mid); }
+
+    /* Input */
+    .chat-input-area { padding: 12px 16px; border-top: 1px solid var(--gray-200); background: var(--white); }
+    .input-row { display: flex; gap: 8px; align-items: flex-end; }
+    .chat-input { flex: 1; border: 1.5px solid var(--gray-200); border-radius: 24px; padding: 10px 16px; font-size: .9rem; font-family: var(--font-body); color: var(--gray-800); resize: none; outline: none; transition: border-color var(--transition); line-height: 1.5; max-height: 100px; overflow-y: auto; }
+    .chat-input:focus { border-color: var(--blue-mid); }
+    .chat-input::placeholder { color: var(--gray-400); }
+    .send-btn { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--blue)); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: transform var(--transition), box-shadow var(--transition); box-shadow: 0 3px 12px rgba(10,37,80,.3); }
+    .send-btn:hover { transform: scale(1.08); box-shadow: 0 5px 16px rgba(10,37,80,.4); }
+    .send-btn svg { color: var(--white); }
+    .input-hint { font-size: .7rem; color: var(--gray-400); margin-top: 6px; text-align: center; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .chat-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .chat-box { height: 520px; }
+      .msg { max-width: 92%; }
+    }
+  </style>
+<meta name="description" content="TokuNou Japan — panduan persiapan Tokutei Ginou sektor peternakan Jepang.">
+<link rel="canonical" href="https://tokunoujapan.github.io/TokuNou-Japan/tanya-ai.html">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo">
+        <div class="logo-mark">農</div>
+        <div>
+          <div class="logo-text">TokuNou Japan</div>
+          <div class="logo-sub">Tokutei Ginou Peternakan</div>
+        </div>
+      </a>
+      <a href="./index.html" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Kembali ke Beranda
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"><div class="c1"></div><div class="grid"></div></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="hero-eyebrow">🤖 Asisten AI TokuNou</div>
+    <h1>Punya Pertanyaan Soal<br><em>Kerja di Jepang?</em></h1>
+    <p>Tanya langsung ke asisten AI kami. Siap jawab seputar SSW, ujian, gaji, alur pendaftaran, dan banyak lagi.</p>
+  </div>
+</section>
+
+<!-- CHAT SECTION -->
+<section id="chat-section">
+  <div class="container">
+    <div class="chat-layout">
+
+      <!-- SIDEBAR -->
+      <div class="sidebar">
+
+        <!-- AI Profile -->
+        <div class="sidebar-card ai-profile reveal">
+          <div class="ai-avatar">
+            🤖
+            <div class="status-dot"></div>
+          </div>
+          <div class="ai-name">Nousan</div>
+          <div class="ai-desc">Asisten AI TokuNou Japan. Siap bantu kamu pahami semua tentang SSW Peternakan.</div>
+          <div class="ai-badge">Online sekarang</div>
+        </div>
+
+        <!-- Quick Questions -->
+        <div class="sidebar-card reveal">
+          <h3>⚡ Pertanyaan Cepat</h3>
+          <button class="quick-btn" onclick="askQuick('Apa itu SSW dan apa bedanya dengan TKI biasa?')"><span class="qi">🏛️</span>Apa itu SSW dan bedanya dengan TKI?</button>
+          <button class="quick-btn" onclick="askQuick('Berapa gaji bekerja di Jepang lewat SSW peternakan?')"><span class="qi">💴</span>Berapa gaji di Jepang sektor peternakan?</button>
+          <button class="quick-btn" onclick="askQuick('Ujian apa saja yang wajib untuk daftar SSW?')"><span class="qi">📝</span>Ujian apa saja yang harus diikuti?</button>
+          <button class="quick-btn" onclick="askQuick('Bagaimana alur mendaftar SSW dari Indonesia?')"><span class="qi">🗺️</span>Bagaimana alur daftar SSW dari Indonesia?</button>
+          <button class="quick-btn" onclick="askQuick('Berapa biaya hidup di Jepang per bulan?')"><span class="qi">🏠</span>Berapa biaya hidup per bulan di Jepang?</button>
+          <button class="quick-btn" onclick="askQuick('Saya tidak bisa bahasa Jepang sama sekali, apakah masih bisa daftar SSW?')"><span class="qi">🗣️</span>Tidak bisa bahasa Jepang, masih bisa daftar?</button>
+        </div>
+
+        <!-- Topics -->
+        <div class="sidebar-card reveal">
+          <h3>📂 Topik</h3>
+          <div class="topic-pills">
+            <span class="topic-pill tp-ssw" onclick="askQuick('Ceritakan tentang sistem SSW secara lengkap')">SSW & Visa</span>
+            <span class="topic-pill tp-ujian" onclick="askQuick('Jelaskan tentang ujian JFT-Basic dan JLPT N4')">Ujian Bahasa</span>
+            <span class="topic-pill tp-ujian" onclick="askQuick('Bagaimana ujian keterampilan peternakan untuk SSW?')">Ujian Peternakan</span>
+            <span class="topic-pill tp-gaji" onclick="askQuick('Berapa gaji dan bagaimana sistem gaji SSW peternakan?')">Gaji & Tabungan</span>
+            <span class="topic-pill tp-gaji" onclick="askQuick('Berapa biaya hidup di Jepang dan apa saja pengeluaran utamanya?')">Biaya Hidup</span>
+            <span class="topic-pill tp-alur" onclick="askQuick('Jelaskan alur pendaftaran SSW dari awal sampai berangkat ke Jepang')">Alur Daftar</span>
+            <span class="topic-pill tp-alur" onclick="askQuick('Apa itu lembaga pengirim resmi dan bagaimana memilih yang terpercaya?')">Lembaga Pengirim</span>
+            <span class="topic-pill tp-ssw" onclick="askQuick('Apa saja dokumen yang dibutuhkan untuk daftar SSW?')">Dokumen</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CHAT BOX -->
+      <div class="chat-box reveal">
+        <div class="chat-header">
+          <div class="ch-avatar">🤖</div>
+          <div class="ch-info">
+            <div class="ch-name">Nousan — Asisten AI TokuNou</div>
+            <div class="ch-status">Online</div>
+          </div>
+          <div class="ch-actions">
+            <button class="ch-clear" onclick="clearChat()">🗑️ Hapus chat</button>
+          </div>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+          <!-- Welcome message -->
+          <div class="msg bot">
+            <div class="msg-avatar">🤖</div>
+            <div>
+              <div class="msg-bubble">
+                Halo! Saya <strong>Nousan</strong>, asisten AI dari TokuNou Japan. 👋<br><br>
+                Saya siap bantu kamu cari tahu semua tentang kerja di Jepang lewat program SSW Peternakan. Mau tanya soal syarat, ujian, gaji, alur pendaftaran, atau hal lainnya?<br><br>
+                Ketik pertanyaanmu atau pilih dari daftar di sebelah kiri ya!
+              </div>
+              <div class="msg-time" id="welcomeTime"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="suggested-replies" id="suggestedReplies">
+          <button class="sug-btn" onclick="askQuick('Apa syarat utama daftar SSW?')">Syarat utama SSW?</button>
+          <button class="sug-btn" onclick="askQuick('Berapa gaji di Jepang sektor peternakan?')">Berapa gajinya?</button>
+          <button class="sug-btn" onclick="askQuick('Ujian apa yang harus diikuti?')">Ujian apa saja?</button>
+        </div>
+
+        <div class="chat-input-area">
+          <div class="input-row">
+            <textarea class="chat-input" id="chatInput" placeholder="Ketik pertanyaanmu di sini..." rows="1" onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+            <button class="send-btn" onclick="sendMessage()">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M15.5 9L2.5 2.5L6 9L2.5 15.5L15.5 9Z" fill="white" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="input-hint">Tekan Enter untuk kirim · Shift+Enter untuk baris baru</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer style="background:#0A2550;color:rgba(255,255,255,.5);text-align:center;padding:28px 24px;font-size:.8rem;">
+  <p>© 2025 <a href="./index.html" style="color:rgba(255,255,255,.7);">TokuNou Japan</a> · Jawaban AI bersifat informatif dan bukan merupakan saran hukum resmi.</p>
+</footer>
+
+<script>
+// =============================================
+// KNOWLEDGE BASE — semua jawaban Nousan
+// =============================================
+const KB = [
+  // SSW & VISA
+  {
+    keys: ['apa itu ssw','tokutei ginou','apa itu program','pengertian ssw','ssw itu apa'],
+    topic: 'SSW & Visa',
+    answer: `<strong>SSW (Tokutei Ginou / 特定技能)</strong> adalah program visa kerja resmi pemerintah Jepang yang diluncurkan tahun 2019. 🇯🇵<br><br>
+    Intinya: kamu bekerja di Jepang sebagai <strong>pekerja penuh</strong>, bukan magang, dengan hak yang sama seperti pekerja lokal Jepang.<br><br>
+    Kamu berhak mendapat:<br>
+    <ul>
+      <li>Gaji sesuai UMR Jepang</li>
+      <li>Asuransi kesehatan & pensiun</li>
+      <li>Cuti tahunan & lembur dibayar</li>
+      <li>Perlindungan penuh hukum ketenagakerjaan Jepang</li>
+    </ul>
+    Ada dua tipe: <span class="mb-tag">SSW-1</span> maksimal 5 tahun dan <span class="mb-tag">SSW-2</span> tanpa batas waktu dengan boleh bawa keluarga.`,
+    suggest: ['Apa bedanya SSW dengan TKI?','Siapa yang bisa daftar SSW?','Berapa lama kontrak SSW?']
+  },
+  {
+    keys: ['beda ssw tki','bedanya ssw','ssw vs tki','lebih baik ssw','dibanding tki'],
+    topic: 'SSW vs TKI',
+    answer: `Pertanyaan bagus! Ini perbedaan utamanya: 👇<br><br>
+    <strong>SSW (Tokutei Ginou):</strong><br>
+    <ul>
+      <li>Visa kerja resmi, dilindungi UU Jepang</li>
+      <li>Gaji setara pekerja lokal Jepang (¥200rb+/bulan)</li>
+      <li>Asuransi kesehatan & pensiun wajib</li>
+      <li>Ada jalur ke SSW-2 dan tinggal permanen</li>
+      <li>Butuh lulus ujian bahasa + keterampilan</li>
+    </ul>
+    <strong>TKI/PMI biasa:</strong><br>
+    <ul>
+      <li>Status dan perlindungan bervariasi tergantung negara & agen</li>
+      <li>Gaji tidak selalu setara pekerja lokal</li>
+      <li>Umumnya hanya kontrak, tidak ada jalur tinggal permanen</li>
+      <li>Proses kadang lebih cepat dan mudah</li>
+    </ul>
+    <div class="tip-box">💡 Untuk jangka panjang, SSW jauh lebih menguntungkan dari segi gaji, perlindungan, dan masa depan karir.</div>`,
+    suggest: ['Berapa gaji SSW peternakan?','Apa syarat daftar SSW?','Bagaimana alur daftar SSW?']
+  },
+  {
+    keys: ['syarat ssw','syarat daftar','siapa yang bisa','persyaratan','bisa daftar','boleh daftar'],
+    topic: 'Syarat SSW',
+    answer: `Untuk daftar SSW Peternakan, kamu perlu memenuhi syarat berikut: 📋<br><br>
+    <ul>
+      <li><strong>Usia minimal 18 tahun</strong> (idealnya 18–40 tahun)</li>
+      <li><strong>Lulus ujian bahasa Jepang</strong>: JFT-Basic atau JLPT N4</li>
+      <li><strong>Lulus ujian keterampilan peternakan</strong> via Prometric</li>
+      <li><strong>Kondisi kesehatan baik</strong> dan lulus medical check-up</li>
+      <li><strong>WNI</strong> dengan dokumen lengkap (paspor, SKCK, ijazah min. SMA/SMK)</li>
+      <li>Tidak sedang aktif dalam program magang TITP</li>
+    </ul>
+    <div class="tip-box">💡 Tidak perlu pengalaman kerja di peternakan sebelumnya! Yang penting lulus kedua ujian tersebut.</div>`,
+    suggest: ['Ujian apa saja yang harus diikuti?','Berapa lama persiapan ujian?','Bagaimana alur daftar SSW?']
+  },
+  {
+    keys: ['berapa lama kontrak','durasi ssw','lama kerja','berapa tahun','ssw 1','ssw 2','tipe 1','tipe 2'],
+    topic: 'Durasi Kontrak',
+    answer: `SSW punya dua tingkatan dengan durasi berbeda: ⏱️<br><br>
+    <span class="mb-tag">SSW Tipe 1</span><br>
+    <ul>
+      <li>Maksimal <strong>5 tahun</strong> total</li>
+      <li>Kontrak awal biasanya 1 tahun, bisa diperpanjang</li>
+      <li>Tidak boleh bawa keluarga ke Jepang</li>
+      <li>Boleh pindah perusahaan (dengan syarat)</li>
+    </ul>
+    <span class="mb-tag">SSW Tipe 2</span><br>
+    <ul>
+      <li>Durasi <strong>tidak terbatas</strong> (bisa perpanjang terus)</li>
+      <li>Boleh membawa keluarga ke Jepang</li>
+      <li>Berpotensi menuju tinggal permanen (PR)</li>
+      <li>Syarat: pengalaman SSW-1 + lulus ujian keterampilan lanjutan</li>
+    </ul>
+    <div class="tip-box">💡 Jadi kalau kamu suka dan betah di Jepang, karir di sana bisa sangat panjang!</div>`,
+    suggest: ['Berapa gaji SSW peternakan?','Apa syarat naik ke SSW-2?','Bisakah bawa keluarga ke Jepang?']
+  },
+
+  // UJIAN
+  {
+    keys: ['ujian apa','ujian yang harus','ujian wajib','tes apa','ujian ssw','perlu ujian'],
+    topic: 'Ujian SSW',
+    answer: `Untuk SSW Peternakan, ada <strong>2 ujian wajib</strong> yang harus kamu lulus: 📝<br><br>
+    <strong>1. Ujian Bahasa Jepang</strong> (pilih salah satu):<br>
+    <ul>
+      <li><span class="mb-tag">JFT-Basic</span> — Lebih mudah, jadwal hampir tiap bulan, biaya sekitar Rp 550.000</li>
+      <li><span class="mb-tag">JLPT N4</span> — Lebih bergengsi, 2x setahun (Juli & Desember), biaya sekitar Rp 250.000</li>
+    </ul>
+    <strong>2. Ujian Keterampilan Peternakan</strong>:<br>
+    <ul>
+      <li>Nama resmi: Agriculture Skill Assessment Test (Livestock)</li>
+      <li>Diselenggarakan via <span class="mb-tag">Prometric</span></li>
+      <li>Soal berbahasa Jepang bergambar, bisa diulang tanpa batas</li>
+    </ul>
+    <div class="tip-box">💡 Rekomendasi: ambil JFT-Basic dulu karena lebih mudah dan jadwalnya fleksibel.</div>`,
+    suggest: ['Berapa lama belajar bahasa Jepang?','JFT-Basic atau JLPT N4, mana yang lebih mudah?','Di mana bisa ujian peternakan?']
+  },
+  {
+    keys: ['jft','jlpt','jft basic','jlpt n4','mana lebih mudah','pilih jft','pilih jlpt','beda jft jlpt'],
+    topic: 'JFT-Basic vs JLPT N4',
+    answer: `Perbandingan <strong>JFT-Basic vs JLPT N4</strong>: 🆚<br><br>
+    <span class="mb-tag">JFT-Basic</span> — Direkomendasikan untuk SSW<br>
+    <ul>
+      <li>Dirancang khusus sebagai syarat SSW</li>
+      <li>Fokus percakapan sehari-hari dan situasi kerja</li>
+      <li>Ujian komputer (CBT), soal bergambar</li>
+      <li>Jadwal hampir tiap bulan, bisa ulang kapan saja</li>
+      <li>Biaya sekitar Rp 550.000</li>
+    </ul>
+    <span class="mb-tag">JLPT N4</span> — Nilai tambah jangka panjang<br>
+    <ul>
+      <li>Standar internasional, diakui di mana saja</li>
+      <li>Lebih sulit: ada grammar, reading, listening terpisah</li>
+      <li>Hanya 2x setahun (Juli & Desember)</li>
+      <li>Biaya sekitar Rp 250.000</li>
+    </ul>
+    <div class="tip-box">💡 Saran: ambil JFT-Basic dulu agar bisa berangkat lebih cepat. Setelah di Jepang dan bahasa makin lancar, baru kejar JLPT N4.</div>`,
+    suggest: ['Berapa lama belajar untuk JFT-Basic?','Aplikasi apa yang bagus untuk belajar Jepang?','Di mana lokasi ujian JFT-Basic?']
+  },
+  {
+    keys: ['berapa lama belajar','lama belajar','persiapan bahasa','belajar jepang','dari nol','tidak bisa bahasa','belum bisa jepang','nol jepang'],
+    topic: 'Persiapan Belajar',
+    answer: `Mulai dari nol? Tenang, banyak yang berhasil dengan cara ini! 🎯<br><br>
+    <strong>Estimasi waktu belajar:</strong><br>
+    <ul>
+      <li><span class="mb-tag">6 bulan</span> — Belajar intensif 1–1.5 jam/hari</li>
+      <li><span class="mb-tag">12 bulan</span> — Belajar santai 30 menit/hari</li>
+    </ul>
+    <strong>Tahapan belajar:</strong><br>
+    <ul>
+      <li><strong>Bulan 1–2:</strong> Hafal Hiragana & Katakana (92 huruf)</li>
+      <li><strong>Bulan 3–5:</strong> Kosakata & kalimat dasar</li>
+      <li><strong>Bulan 6–8:</strong> Grammar & latihan listening</li>
+      <li><strong>Bulan 9–12:</strong> Latihan soal intensif & daftar ujian</li>
+    </ul>
+    <div class="tip-box">💡 Kunci utamanya adalah konsistensi. 30 menit tiap hari jauh lebih efektif daripada belajar 5 jam sehari sekali seminggu.</div>`,
+    suggest: ['Aplikasi apa yang bagus untuk belajar Jepang?','Ujian JFT-Basic atau JLPT N4?','Berapa biaya ujian bahasa?']
+  },
+  {
+    keys: ['aplikasi belajar','app jepang','duolingo','anki','rekomendasi aplikasi','belajar pakai apa'],
+    topic: 'Aplikasi Belajar',
+    answer: `Ini rekomendasi aplikasi belajar Jepang yang terbukti efektif: 📱<br><br>
+    <ul>
+      <li><strong>🦉 Duolingo</strong> — Gratis, gamifikasi, cocok banget untuk pemula total</li>
+      <li><strong>🃏 Anki</strong> — Gratis (Android/PC), flashcard kosakata dengan sistem spaced repetition</li>
+      <li><strong>📖 Jisho</strong> — Gratis, kamus Jepang terbaik, bisa baca kanji dengan gambar tangan</li>
+      <li><strong>🎧 JapanesePod101</strong> — Podcast & video, bagus untuk latihan listening</li>
+      <li><strong>🎌 Nihongo no Mori</strong> — Channel YouTube gratis, khusus persiapan JLPT</li>
+      <li><strong>✍️ Kana Mind</strong> — Gratis, khusus hafal Hiragana & Katakana dengan cepat</li>
+    </ul>
+    <div class="tip-box">💡 Kombinasi terbaik untuk pemula: Duolingo (pagi) + Anki (sore) + Nihongo no Mori di YouTube (malam).</div>`,
+    suggest: ['Berapa lama waktu belajar untuk JFT-Basic?','Di mana bisa ujian JFT-Basic?','Bagaimana alur daftar SSW?']
+  },
+  {
+    keys: ['ujian peternakan','keterampilan peternakan','prometric','agriculture skill','tes peternakan','skill test'],
+    topic: 'Ujian Keterampilan Peternakan',
+    answer: `Ini info lengkap ujian keterampilan peternakan untuk SSW: 🐄<br><br>
+    <strong>Nama resmi:</strong> Agriculture Skill Assessment Test (Livestock Farming)<br><br>
+    <strong>Yang diuji:</strong><br>
+    <ul>
+      <li>Pengetahuan dasar pemeliharaan ternak (sapi, babi, ayam)</li>
+      <li>Keselamatan kerja dan kebersihan kandang</li>
+      <li>Penanganan pakan dan kesehatan hewan</li>
+      <li>Pengoperasian alat dan mesin peternakan dasar</li>
+    </ul>
+    <strong>Format ujian:</strong><br>
+    <ul>
+      <li>Diselenggarakan via <span class="mb-tag">Prometric</span> (ujian komputer)</li>
+      <li>Soal berbahasa Jepang dengan banyak gambar pendukung</li>
+      <li>Bisa diulang tanpa batas jika tidak lulus</li>
+    </ul>
+    <div class="tip-box">💡 Tidak perlu pengalaman kerja di peternakan dulu. Yang penting belajar materi ujiannya dan latihan soal!</div>`,
+    suggest: ['Di mana lokasi ujian Prometric?','Ujian bahasa apa yang harus diambil?','Bagaimana alur daftar SSW?']
+  },
+
+  // GAJI & BIAYA HIDUP
+  {
+    keys: ['berapa gaji','gaji ssw','gaji peternakan','penghasilan','upah','gaji di jepang','pendapatan'],
+    topic: 'Gaji SSW Peternakan',
+    answer: `Ini estimasi gaji SSW sektor peternakan di Jepang: 💴<br><br>
+    <strong>Gaji pokok per bulan:</strong><br>
+    <ul>
+      <li>Rata-rata: <strong>¥160.000 – ¥200.000</strong> (sekitar Rp 17–21 juta)</li>
+      <li>Lembur bisa menambah <strong>¥20.000 – ¥40.000</strong> per bulan</li>
+      <li>Total dengan lembur: <strong>¥180.000 – ¥240.000</strong></li>
+    </ul>
+    <strong>Tunjangan yang biasa didapat:</strong><br>
+    <ul>
+      <li>Asrama/tempat tinggal (sering gratis atau Rp 500rb/bulan)</li>
+      <li>Makan siang (kadang gratis di lokasi kerja)</li>
+      <li>Biaya transportasi ke tempat kerja</li>
+    </ul>
+    <div class="tip-box">💡 Dengan gaya hidup hemat, banyak pekerja SSW bisa menabung Rp 8–15 juta per bulan setelah potong semua pengeluaran.</div>`,
+    suggest: ['Berapa biaya hidup di Jepang per bulan?','Berapa yang bisa ditabung?','Prefektur mana yang gajinya paling tinggi?']
+  },
+  {
+    keys: ['biaya hidup','pengeluaran jepang','hidup di jepang','makan','sewa','listrik','bulanan jepang'],
+    topic: 'Biaya Hidup di Jepang',
+    answer: `Estimasi biaya hidup per bulan di Jepang untuk pekerja SSW: 🏠<br><br>
+    <ul>
+      <li><strong>Tempat tinggal:</strong> ¥0 – ¥15.000 (banyak perusahaan sediakan asrama gratis atau murah)</li>
+      <li><strong>Makan:</strong> ¥20.000 – ¥35.000 (masak sendiri jauh lebih hemat)</li>
+      <li><strong>Transport:</strong> ¥5.000 – ¥15.000 (tergantung lokasi, banyak yang ditanggung perusahaan)</li>
+      <li><strong>Listrik, air, gas:</strong> ¥8.000 – ¥15.000</li>
+      <li><strong>Asuransi & pajak:</strong> ¥15.000 – ¥25.000 (dipotong otomatis dari gaji)</li>
+      <li><strong>Internet & hp:</strong> ¥3.000 – ¥6.000</li>
+    </ul>
+    <strong>Total estimasi: ¥50.000 – ¥90.000/bulan</strong><br><br>
+    <div class="tip-box">💡 Dengan gaji ¥180.000 dan pengeluaran ¥70.000, kamu bisa menabung sekitar ¥110.000 (sekitar Rp 11 juta) per bulan!</div>`,
+    suggest: ['Berapa gaji SSW peternakan?','Prefektur mana yang biaya hidupnya paling murah?','Berapa yang bisa dikirim ke keluarga?']
+  },
+  {
+    keys: ['bisa tabung','berapa tabungan','kirim uang','remitansi','nabung berapa','sisa gaji'],
+    topic: 'Potensi Tabungan',
+    answer: `Ini gambaran realistis potensi tabunganmu di Jepang: 💰<br><br>
+    <strong>Simulasi per bulan (estimasi):</strong><br>
+    <ul>
+      <li>Gaji + lembur: <strong>¥190.000</strong></li>
+      <li>Pengeluaran hidup: <strong>¥70.000</strong></li>
+      <li>Sisa untuk tabung/kirim: <strong>¥120.000</strong> (sekitar Rp 12 juta)</li>
+    </ul>
+    <strong>Dalam 3 tahun (SSW-1):</strong><br>
+    <ul>
+      <li>Estimasi tabungan total: <strong>Rp 360–450 juta</strong></li>
+      <li>Sudah termasuk biaya hidup dan kirim uang ke keluarga</li>
+    </ul>
+    <div class="tip-box">💡 Angka ini bisa lebih tinggi kalau kamu rajin lembur dan pilih prefektur dengan biaya hidup rendah seperti Hokkaido, Kumamoto, atau Miyazaki.</div>`,
+    suggest: ['Prefektur mana yang paling direkomendasikan?','Berapa biaya keberangkatan awal?','Bagaimana alur daftar SSW?']
+  },
+
+  // ALUR & LEMBAGA
+  {
+    keys: ['alur daftar','cara daftar','prosedur','langkah','mulai dari mana','bagaimana mendaftar','proses daftar'],
+    topic: 'Alur Pendaftaran',
+    answer: `Ini alur lengkap daftar SSW dari Indonesia sampai berangkat ke Jepang: 🗺️<br><br>
+    <ul>
+      <li><strong>Step 1:</strong> Persiapan dokumen (paspor, SKCK, ijazah, KTP)</li>
+      <li><strong>Step 2:</strong> Belajar bahasa Jepang dan lulus JFT-Basic atau JLPT N4</li>
+      <li><strong>Step 3:</strong> Lulus ujian keterampilan peternakan (Prometric)</li>
+      <li><strong>Step 4:</strong> Daftar ke <strong>lembaga pengirim resmi (RSO)</strong> yang terdaftar di BP2MI</li>
+      <li><strong>Step 5:</strong> Matching dengan perusahaan Jepang</li>
+      <li><strong>Step 6:</strong> Medical check-up dan pengurusan visa</li>
+      <li><strong>Step 7:</strong> Pelatihan pra-keberangkatan</li>
+      <li><strong>Step 8:</strong> Berangkat ke Jepang! 🇯🇵</li>
+    </ul>
+    <div class="tip-box">💡 Total waktu dari mulai persiapan sampai berangkat rata-rata 8–18 bulan, tergantung kecepatan belajar dan jadwal ujian.</div>`,
+    suggest: ['Apa itu lembaga pengirim resmi?','Berapa biaya keberangkatan?','Dokumen apa saja yang dibutuhkan?']
+  },
+  {
+    keys: ['lembaga pengirim','rso','bp2mi','agen','pengirim resmi','memilih lembaga','cari lembaga','lembaga terpercaya'],
+    topic: 'Lembaga Pengirim',
+    answer: `Lembaga pengirim resmi (RSO) adalah jembatan antara kamu dan perusahaan Jepang. Penting banget memilih yang tepat! 🏢<br><br>
+    <strong>Ciri lembaga pengirim yang terpercaya:</strong><br>
+    <ul>
+      <li>Terdaftar resmi di <strong>BP2MI</strong> (Badan Pelindungan Pekerja Migran Indonesia)</li>
+      <li>Punya rekam jejak pengiriman ke Jepang yang jelas</li>
+      <li>Transparan soal biaya dan tidak minta biaya berlebihan</li>
+      <li>Memberikan pelatihan bahasa dan orientasi sebelum berangkat</li>
+      <li>Ada pendampingan selama kamu di Jepang</li>
+    </ul>
+    <strong>Waspadai lembaga yang:</strong><br>
+    <ul>
+      <li>Minta biaya sangat tinggi di awal tanpa kejelasan</li>
+      <li>Tidak terdaftar di BP2MI</li>
+      <li>Menjanjikan keberangkatan super cepat tanpa ujian</li>
+    </ul>
+    <div class="tip-box">💡 Cek daftar RSO resmi di situs bp2mi.go.id sebelum mendaftar ke lembaga manapun.</div>`,
+    suggest: ['Berapa biaya keberangkatan?','Dokumen apa yang dibutuhkan?','Bagaimana alur daftar SSW?']
+  },
+  {
+    keys: ['biaya daftar','biaya keberangkatan','modal awal','perlu uang berapa','biaya awal','biaya ssw','berapa modal'],
+    topic: 'Biaya Keberangkatan',
+    answer: `Estimasi total biaya yang perlu disiapkan untuk berangkat SSW: 💸<br><br>
+    <ul>
+      <li><strong>Ujian JFT-Basic/JLPT N4:</strong> Rp 250.000 – 550.000</li>
+      <li><strong>Ujian keterampilan Prometric:</strong> sekitar Rp 500.000 – 800.000</li>
+      <li><strong>Medical check-up:</strong> Rp 1.000.000 – 2.000.000</li>
+      <li><strong>Pembuatan paspor:</strong> Rp 350.000 – 650.000</li>
+      <li><strong>Biaya lembaga pengirim & pelatihan:</strong> Rp 10.000.000 – 25.000.000</li>
+      <li><strong>Tiket pesawat:</strong> Rp 3.000.000 – 7.000.000 (kadang ditanggung perusahaan)</li>
+    </ul>
+    <strong>Total estimasi: Rp 15.000.000 – 35.000.000</strong><br><br>
+    <div class="tip-box">💡 Beberapa perusahaan Jepang menanggung sebagian atau seluruh biaya tiket dan bahkan biaya lembaga. Tanyakan ini saat proses matching!</div>`,
+    suggest: ['Berapa gaji yang akan didapat?','Berapa lama balik modal?','Apa itu lembaga pengirim resmi?']
+  },
+  {
+    keys: ['dokumen','surat','berkas','paspor','skck','ijazah','ktp','dokumen apa'],
+    topic: 'Dokumen yang Dibutuhkan',
+    answer: `Ini daftar dokumen yang perlu kamu siapkan untuk daftar SSW: 📄<br><br>
+    <strong>Dokumen wajib:</strong><br>
+    <ul>
+      <li><strong>Paspor</strong> yang masih berlaku (min. 2 tahun)</li>
+      <li><strong>KTP</strong> yang masih berlaku</li>
+      <li><strong>Ijazah</strong> minimal SMA/SMK (+ transkrip nilai)</li>
+      <li><strong>SKCK</strong> (Surat Keterangan Catatan Kepolisian)</li>
+      <li><strong>Akte kelahiran</strong></li>
+      <li><strong>Kartu Keluarga</strong></li>
+    </ul>
+    <strong>Dokumen pendukung:</strong><br>
+    <ul>
+      <li>Sertifikat JFT-Basic atau JLPT N4 (setelah lulus ujian)</li>
+      <li>Sertifikat ujian keterampilan peternakan</li>
+      <li>Hasil medical check-up dari klinik yang ditunjuk</li>
+      <li>Foto terbaru (berbagai ukuran)</li>
+    </ul>
+    <div class="tip-box">💡 Mulai buat paspor dari sekarang kalau belum punya, karena prosesnya bisa 3–7 hari kerja.</div>`,
+    suggest: ['Berapa biaya buat paspor?','Bagaimana alur daftar SSW?','Apa itu lembaga pengirim resmi?']
+  },
+
+  // PERTANYAAN UMUM LAINNYA
+  {
+    keys: ['prefektur','daerah','wilayah','hokkaido','mana yang bagus','rekomendasi daerah','kota di jepang'],
+    topic: 'Rekomendasi Prefektur',
+    answer: `Pilihan prefektur sangat mempengaruhi gaji dan kenyamanan hidupmu di Jepang! 🗾<br><br>
+    <strong>Prefektur populer untuk peternakan SSW:</strong><br>
+    <ul>
+      <li><strong>🐄 Hokkaido</strong> — Gaji tertinggi (¥200rb+), peternakan skala besar, komunitas WNI ada. Tapi sangat dingin di musim dingin.</li>
+      <li><strong>🥩 Miyazaki</strong> — Surga peternakan Jepang, sapi premium. Iklim lebih hangat, gaji kompetitif.</li>
+      <li><strong>🐔 Kagoshima</strong> — Peternakan ayam & sapi aktif, biaya hidup rendah, iklim hangat.</li>
+      <li><strong>🐷 Kumamoto</strong> — Peternakan babi & sapi, biaya hidup sangat rendah.</li>
+      <li><strong>🏝️ Okinawa</strong> — Iklim tropis mirip Indonesia! Cocok untuk yang khawatir soal cuaca dingin.</li>
+    </ul>
+    <div class="tip-box">💡 Kamu bisa cek peta prefektur interaktif di halaman utama website ini untuk info lebih detail!</div>`,
+    suggest: ['Berapa gaji di Hokkaido?','Prefektur mana yang paling hangat?','Bagaimana alur daftar SSW?']
+  },
+  {
+    keys: ['bawa keluarga','istri','suami','anak','keluarga ke jepang','keluarga ikut'],
+    topic: 'Keluarga di Jepang',
+    answer: `Soal membawa keluarga ke Jepang, tergantung tipe SSW-mu: 👨‍👩‍👧<br><br>
+    <span class="mb-tag">SSW Tipe 1</span> — Belum boleh bawa keluarga<br>
+    <ul>
+      <li>Kamu kerja sendiri dulu maksimal 5 tahun</li>
+      <li>Bisa video call dan kirim uang ke keluarga tentu saja</li>
+      <li>Ini yang paling umum untuk awal berangkat</li>
+    </ul>
+    <span class="mb-tag">SSW Tipe 2</span> — Sudah boleh bawa keluarga!<br>
+    <ul>
+      <li>Setelah lulus ujian SSW-2 dan dapat tipe 2</li>
+      <li>Pasangan dan anak bisa ikut ke Jepang</li>
+      <li>Durasi tinggal tidak terbatas</li>
+      <li>Berpotensi menuju tinggal permanen (PR)</li>
+    </ul>
+    <div class="tip-box">💡 Ujian keterampilan SSW-2 untuk sektor peternakan sudah aktif, jadi jalur ini sudah terbuka!</div>`,
+    suggest: ['Apa itu SSW Tipe 2?','Berapa lama bisa naik ke SSW-2?','Bagaimana alur daftar SSW?']
+  },
+];
+
+// =============================================
+// CHAT LOGIC
+// =============================================
+let messageCount = 0;
+
+function getTime() {
+  return new Date().toLocaleTimeString('id-ID', {hour:'2-digit', minute:'2-digit'});
+}
+
+function getAnswer(q) {
+  const ql = q.toLowerCase();
+  let best = null;
+  let bestScore = 0;
+
+  for (const item of KB) {
+    let score = 0;
+    for (const key of item.keys) {
+      if (ql.includes(key)) score += key.split(' ').length;
+    }
+    if (score > bestScore) { bestScore = score; best = item; }
+  }
+  return best;
+}
+
+function addMessage(text, type) {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `msg ${type}`;
+  const time = getTime();
+
+  if (type === 'user') {
+    div.innerHTML = `
+      <div class="msg-avatar">👤</div>
+      <div>
+        <div class="msg-bubble">${text}</div>
+        <div class="msg-time">${time}</div>
+      </div>`;
+  } else {
+    div.innerHTML = `
+      <div class="msg-avatar">🤖</div>
+      <div>
+        <div class="msg-bubble">${text}</div>
+        <div class="msg-time">${time}</div>
+      </div>`;
+  }
+
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+  messageCount++;
+}
+
+function showTyping() {
+  const container = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'msg bot';
+  div.id = 'typingIndicator';
+  div.innerHTML = `
+    <div class="msg-avatar">🤖</div>
+    <div class="msg-bubble">
+      <div class="typing-indicator"><span></span><span></span><span></span></div>
+    </div>`;
+  container.appendChild(div);
+  container.scrollTop = container.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
+
+function showSuggested(suggestions) {
+  const el = document.getElementById('suggestedReplies');
+  el.innerHTML = suggestions.map(s =>
+    `<button class="sug-btn" onclick="askQuick('${s}')">${s}</button>`
+  ).join('');
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+  document.getElementById('suggestedReplies').innerHTML = '';
+
+  addMessage(text, 'user');
+  showTyping();
+
+  const delay = 600 + Math.random() * 600;
+  setTimeout(() => {
+    removeTyping();
+    const result = getAnswer(text);
+
+    if (result) {
+      addMessage(result.answer, 'bot');
+      if (result.suggest) showSuggested(result.suggest);
+    } else {
+      addMessage(`Wah, pertanyaan yang bagus! Untuk topik itu saya sarankan langsung cek halaman yang relevan di website ini, atau tanya ke lembaga pengirim resmi yang terdaftar di BP2MI ya. 😊<br><br>
+      Sementara itu, ada yang bisa saya bantu soal <strong>SSW, ujian bahasa, gaji, biaya hidup, atau alur pendaftaran</strong>?`,
+      'bot');
+      showSuggested(['Apa itu SSW?','Berapa gaji di Jepang?','Bagaimana cara daftar SSW?']);
+    }
+  }, delay);
+}
+
+function askQuick(q) {
+  document.getElementById('chatInput').value = q;
+  sendMessage();
+}
+
+function clearChat() {
+  if (!confirm('Hapus semua percakapan?')) return;
+  const container = document.getElementById('chatMessages');
+  container.innerHTML = '';
+  messageCount = 0;
+  addMessage('Chat direset. Ada yang bisa saya bantu? 😊', 'bot');
+  showSuggested(['Apa itu SSW?','Berapa gaji di Jepang?','Bagaimana cara daftar SSW?']);
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+// Set welcome time
+document.getElementById('welcomeTime').textContent = getTime();
+
+// Reveal observer
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

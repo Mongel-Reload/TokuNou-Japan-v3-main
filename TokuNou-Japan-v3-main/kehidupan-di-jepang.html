@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kehidupan di Jepang — TokuNou Japan</title>
+  <meta name="description" content="Gambaran nyata kehidupan pekerja SSW peternakan di Jepang: cuaca, makanan, asrama, biaya hidup, interaksi sosial, tips survive, dan perbandingan dengan Indonesia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:      #0A2550;
+      --blue:      #1A5DAD;
+      --blue-mid:  #3B82C4;
+      --blue-light:#DBEEFF;
+      --white:     #FFFFFF;
+      --off-white: #F0F6FF;
+      --gray-200:  #C9DFFF;
+      --gray-400:  #7BAAD4;
+      --gray-600:  #3D6A9E;
+      --gray-800:  #1A3A6B;
+      --font-display: 'Sora', sans-serif;
+      --font-jp:      'Noto Serif JP', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(11,31,58,.07);
+      --shadow-md: 0 6px 24px rgba(11,31,58,.12);
+      --transition: .25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--gray-800); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+
+    /* BUTTONS */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 50px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; border: 2px solid transparent; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), background var(--transition); white-space: nowrap; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-lg { padding: 18px 36px; font-size: 1.05rem; }
+    .btn-white { background: var(--white); color: var(--navy); font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+    .btn-white:hover { background: var(--blue-light); }
+    .btn-ghost { background: rgba(255,255,255,.1); color: var(--white); border: 2px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.6); }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; color: var(--white); }
+    .nav-logo .logo-mark { width: 36px; height: 36px; background: var(--blue-mid); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 1.1rem; color: var(--white); font-weight: 700; }
+    .nav-logo .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2; }
+    .nav-logo .logo-sub { font-size: .7rem; color: rgba(255,255,255,.55); font-weight: 400; }
+    .nav-back { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; font-family: var(--font-display); transition: color var(--transition); }
+    .nav-back:hover { color: var(--white); }
+    .nav-back:hover svg { transform: translateX(-3px); }
+    .nav-back svg { transition: transform var(--transition); }
+
+    /* PROGRESS BAR */
+    .progress-bar { position: fixed; top: 68px; left: 0; height: 3px; background: linear-gradient(90deg, #F59E0B, #EF4444, #3B82C4); z-index: 999; width: 0%; transition: width .1s ease; }
+
+    /* HERO */
+    #hero { position: relative; min-height: 70vh; background: linear-gradient(155deg, #0A2550 0%, #1A5DAD 50%, #059669 100%); display: flex; align-items: center; padding: 130px 0 80px; overflow: hidden; }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(5,150,105,.35) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(219,238,255,.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(5rem,12vw,11rem); color: rgba(255,255,255,.05); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; letter-spacing: .1em; }
+    .hero-content { position: relative; z-index: 2; color: var(--white); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 28px; }
+    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5.5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    #hero h1 em { font-style: normal; color: #6EE7B7; }
+    .hero-desc { font-size: 1.08rem; line-height: 1.75; color: rgba(255,255,255,.82); max-width: 540px; margin-bottom: 36px; }
+    .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+    .hero-stat .val { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; line-height: 1; color: #6EE7B7; }
+    .hero-stat .key { font-size: .76rem; color: rgba(255,255,255,.6); font-weight: 500; margin-top: 4px; }
+
+    /* SECTION HEADER */
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .eyebrow { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-header h2 { font-family: var(--font-display); font-size: clamp(1.7rem,3.5vw,2.8rem); font-weight: 700; line-height: 1.2; letter-spacing: -.015em; color: var(--navy); }
+    .section-header p { color: var(--gray-600); margin-top: 14px; font-size: 1.02rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+    /* =============================================
+       SECTION 1: NARASI PEMBUKA
+    ============================================= */
+    #intro { background: var(--white); padding: 80px 0 60px; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .intro-text h2 { font-family: var(--font-display); font-size: clamp(1.5rem,3vw,2.2rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
+    .intro-text h2 em { font-style: normal; color: var(--blue); }
+    .intro-text p { font-size: .97rem; color: var(--gray-600); line-height: 1.8; margin-bottom: 16px; }
+    .intro-text p:last-child { margin-bottom: 0; }
+    .intro-text strong { color: var(--navy); font-weight: 700; }
+
+    .intro-quote { background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: var(--radius-lg); padding: 36px; color: var(--white); position: relative; overflow: hidden; }
+    .intro-quote::before { content: '"'; position: absolute; top: -10px; left: 20px; font-family: Georgia, serif; font-size: 8rem; color: rgba(255,255,255,.08); line-height: 1; }
+    .intro-quote blockquote { font-size: 1.05rem; line-height: 1.75; color: rgba(255,255,255,.9); font-style: italic; margin-bottom: 20px; position: relative; z-index: 1; }
+    .intro-quote .qauthor { display: flex; align-items: center; gap: 12px; }
+    .intro-quote .qavatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.15); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .intro-quote .qname { font-family: var(--font-display); font-size: .88rem; font-weight: 700; color: var(--white); }
+    .intro-quote .qrole { font-size: .75rem; color: rgba(255,255,255,.6); margin-top: 2px; }
+    .intro-quote .qlocation { display: inline-flex; align-items: center; gap: 4px; background: rgba(110,231,183,.15); border: 1px solid rgba(110,231,183,.3); border-radius: 50px; padding: 3px 10px; font-size: .7rem; font-weight: 600; color: #6EE7B7; margin-top: 8px; }
+
+    /* =============================================
+       SECTION 2: TOPIK CARDS
+    ============================================= */
+    #topik { background: var(--off-white); }
+
+    /* CUACA */
+    .cuaca-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    .musim-card { border-radius: var(--radius-md); padding: 24px 20px; text-align: center; border: 1.5px solid; transition: transform var(--transition), box-shadow var(--transition); }
+    .musim-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .musim-card .ms-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .musim-card h3 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+    .musim-card .ms-temp { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+    .musim-card p { font-size: .8rem; line-height: 1.6; }
+    .ms-haru { background: linear-gradient(135deg, #FFF7ED, #FEF3C7); border-color: #FCD34D; }
+    .ms-haru h3 { color: #92400E; }
+    .ms-haru .ms-temp { color: #D97706; }
+    .ms-haru p { color: #92400E; }
+    .ms-natsu { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); border-color: #6EE7B7; }
+    .ms-natsu h3 { color: #065F46; }
+    .ms-natsu .ms-temp { color: #059669; }
+    .ms-natsu p { color: #065F46; }
+    .ms-aki { background: linear-gradient(135deg, #FFF7ED, #FFEDD5); border-color: #FB923C; }
+    .ms-aki h3 { color: #7C2D12; }
+    .ms-aki .ms-temp { color: #EA580C; }
+    .ms-aki p { color: #7C2D12; }
+    .ms-fuyu { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); border-color: #93C5FD; }
+    .ms-fuyu h3 { color: #1E3A8A; }
+    .ms-fuyu .ms-temp { color: #1D4ED8; }
+    .ms-fuyu p { color: #1E3A8A; }
+
+    .cuaca-tips { background: linear-gradient(135deg, #1E3A8A, #1D4ED8); border-radius: var(--radius-md); padding: 22px 26px; display: flex; gap: 14px; align-items: flex-start; }
+    .cuaca-tips .ct-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .cuaca-tips h4 { font-family: var(--font-display); font-size: .92rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .cuaca-tips p { font-size: .84rem; color: rgba(255,255,255,.75); line-height: 1.6; }
+
+    /* MAKANAN */
+    .makanan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .makan-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 26px 22px; transition: transform var(--transition), box-shadow var(--transition); }
+    .makan-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .makan-card .mk-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .makan-card .mk-icon { font-size: 1.8rem; }
+    .makan-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); }
+    .makan-card p { font-size: .87rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 12px; }
+    .makan-list { display: flex; flex-direction: column; gap: 6px; }
+    .makan-item { display: flex; align-items: center; gap: 8px; font-size: .83rem; color: var(--gray-800); }
+    .makan-item .mi { font-size: .9rem; }
+    .halal-note { background: rgba(5,150,105,.08); border: 1px solid rgba(5,150,105,.2); border-radius: 10px; padding: 16px 18px; margin-top: 20px; display: flex; gap: 12px; }
+    .halal-note .hi { font-size: 1.3rem; flex-shrink: 0; }
+    .halal-note h4 { font-family: var(--font-display); font-size: .88rem; font-weight: 700; color: #065F46; margin-bottom: 3px; }
+    .halal-note p { font-size: .81rem; color: #047857; line-height: 1.6; }
+
+    /* ASRAMA */
+    .asrama-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .asrama-main { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; }
+    .asrama-main h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .asrama-feature { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--gray-200); }
+    .asrama-feature:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .asrama-feature .af-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .asrama-feature h4 { font-family: var(--font-display); font-size: .9rem; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .asrama-feature p { font-size: .82rem; color: var(--gray-600); line-height: 1.55; }
+    .asrama-biaya { background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: var(--radius-lg); padding: 28px; color: var(--white); }
+    .asrama-biaya h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 18px; }
+    .biaya-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .biaya-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .biaya-item .bi-label { font-size: .85rem; color: rgba(255,255,255,.75); }
+    .biaya-item .bi-val { font-family: var(--font-display); font-size: .92rem; font-weight: 700; color: #6EE7B7; }
+    .biaya-total { background: rgba(110,231,183,.15); border: 1px solid rgba(110,231,183,.25); border-radius: 10px; padding: 14px 16px; margin-top: 16px; text-align: center; }
+    .biaya-total .bt-label { font-size: .72rem; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+    .biaya-total .bt-val { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: #6EE7B7; margin-top: 2px; }
+    .biaya-total .bt-sub { font-size: .75rem; color: rgba(255,255,255,.55); margin-top: 2px; }
+
+    /* SOSIAL */
+    .sosial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .sosial-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 24px 20px; text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
+    .sosial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .sosial-card .sc-icon { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin: 0 auto 14px; }
+    .sosial-card h3 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .sosial-card p { font-size: .83rem; color: var(--gray-600); line-height: 1.6; }
+    .sosial-card .sc-tag { display: inline-block; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 50px; padding: 3px 10px; font-size: .7rem; font-weight: 600; color: var(--gray-600); margin-top: 10px; }
+
+    /* SECTION SEPARATOR */
+    .topic-block { margin-bottom: 72px; }
+    .topic-block:last-child { margin-bottom: 0; }
+    .topic-label { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: var(--white); border-radius: 50px; padding: 6px 18px; font-family: var(--font-display); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 24px; }
+
+    /* =============================================
+       SECTION 3: PERBANDINGAN INDONESIA vs JEPANG
+    ============================================= */
+    #perbandingan { background: var(--white); }
+    #perbandingan .section-header .eyebrow { color: var(--blue); }
+
+    .compare-table { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--gray-200); }
+    .compare-header { display: grid; grid-template-columns: 200px 1fr 1fr; background: var(--navy); }
+    .compare-header .ch-cell { padding: 16px 20px; font-family: var(--font-display); font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    .compare-header .ch-cell.idn { color: #FCD34D; }
+    .compare-header .ch-cell.jpn { color: #6EE7B7; }
+    .compare-row { display: grid; grid-template-columns: 200px 1fr 1fr; border-bottom: 1px solid var(--gray-200); }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row:nth-child(even) { background: var(--off-white); }
+    .compare-row:nth-child(odd) { background: var(--white); }
+    .cr-cat { padding: 16px 20px; display: flex; align-items: center; gap: 8px; }
+    .cr-cat .cat-icon { font-size: 1.1rem; }
+    .cr-cat .cat-label { font-family: var(--font-display); font-size: .85rem; font-weight: 700; color: var(--navy); }
+    .cr-idn { padding: 16px 20px; font-size: .85rem; color: #92400E; border-left: 1px solid var(--gray-200); }
+    .cr-jpn { padding: 16px 20px; font-size: .85rem; color: #065F46; font-weight: 500; border-left: 1px solid var(--gray-200); }
+    .cr-jpn strong { color: var(--navy); }
+
+    /* =============================================
+       SECTION 4: TIPS SURVIVE
+    ============================================= */
+    #tips { background: var(--navy); color: var(--white); }
+    #tips .section-header h2 { color: var(--white); }
+    #tips .section-header p { color: rgba(255,255,255,.65); }
+    #tips .section-header .eyebrow { color: #6EE7B7; }
+
+    .tips-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .tip-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-md); padding: 26px 22px; transition: background var(--transition); }
+    .tip-card:hover { background: rgba(255,255,255,.09); }
+    .tip-card .tc-num { font-family: var(--font-display); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #6EE7B7; margin-bottom: 10px; }
+    .tip-card .tc-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .tip-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .tip-card p { font-size: .85rem; color: rgba(255,255,255,.7); line-height: 1.65; }
+    .tip-card .tc-tag { display: inline-block; background: rgba(110,231,183,.12); border: 1px solid rgba(110,231,183,.25); border-radius: 50px; padding: 3px 10px; font-size: .7rem; font-weight: 600; color: #6EE7B7; margin-top: 10px; }
+
+    .mental-banner { margin-top: 32px; background: rgba(110,231,183,.1); border: 1.5px solid rgba(110,231,183,.25); border-radius: var(--radius-lg); padding: 28px 32px; display: flex; gap: 18px; align-items: flex-start; }
+    .mental-banner .mb-icon { font-size: 2rem; flex-shrink: 0; }
+    .mental-banner h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: #6EE7B7; margin-bottom: 6px; }
+    .mental-banner p { font-size: .88rem; color: rgba(255,255,255,.75); line-height: 1.65; }
+
+    /* CTA */
+    #cta-section { background: linear-gradient(155deg, #0A2550 0%, #065F46 100%); padding: 88px 0; }
+    .cta-inner { text-align: center; color: var(--white); }
+    .cta-inner .ey { display: inline-block; color: #6EE7B7; font-size: .76rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 14px; }
+    .cta-inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,3rem); font-weight: 800; color: var(--white); margin-bottom: 14px; line-height: 1.2; }
+    .cta-inner p { font-size: 1.02rem; color: rgba(255,255,255,.7); margin-bottom: 38px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: var(--navy); color: rgba(255,255,255,.5); text-align: center; padding: 30px 24px; font-size: .8rem; }
+    footer a { color: rgba(255,255,255,.7); }
+    footer a:hover { color: var(--white); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; }
+    .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; }
+    .d4 { transition-delay: .4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .cuaca-grid { grid-template-columns: repeat(2, 1fr); }
+      .makanan-grid { grid-template-columns: 1fr; }
+      .asrama-layout { grid-template-columns: 1fr; }
+      .sosial-grid { grid-template-columns: 1fr; gap: 12px; }
+      .tips-grid { grid-template-columns: 1fr; }
+      .compare-header, .compare-row { grid-template-columns: 120px 1fr 1fr; }
+      .cr-cat .cat-label { font-size: .78rem; }
+      .mental-banner { flex-direction: column; }
+    }
+  </style>
+<link rel="canonical" href="https://tokunoujapan.github.io/TokuNou-Japan/kehidupan-di-jepang.html">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo">
+        <div class="logo-mark">農</div>
+        <div>
+          <div class="logo-text">TokuNou Japan</div>
+          <div class="logo-sub">Tokutei Ginou Peternakan</div>
+        </div>
+      </a>
+      <a href="./index.html" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Kembali ke Beranda
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"><div class="c1"></div><div class="c2"></div><div class="grid"></div></div>
+  <div class="kanji-deco">生活</div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🏡 Gambaran Nyata · Kehidupan di Jepang</div>
+      <h1>Seperti Apa Rasanya<br>Tinggal di <em>Jepang</em>?</h1>
+      <p class="hero-desc">Bukan hanya soal gaji. Di sini kamu bisa lihat gambaran nyata kehidupan sehari-hari pekerja SSW peternakan di Jepang, dari cuaca sampai makanan, dari asrama sampai cara bergaul dengan orang Jepang.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="val">4</span><span class="key">Musim berbeda</span></div>
+        <div class="hero-stat"><span class="val">Gratis</span><span class="key">Asrama di banyak perusahaan</span></div>
+        <div class="hero-stat"><span class="val">Halal</span><span class="key">Makanan tersedia di kota besar</span></div>
+        <div class="hero-stat"><span class="val">Ramah</span><span class="key">Warga Jepang umumnya sopan</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1: NARASI PEMBUKA -->
+<section id="intro">
+  <div class="container">
+    <div class="intro-grid reveal">
+      <div class="intro-text">
+        <h2>Jujur ya, Hidup di Jepang itu<br><em>Tidak Selalu Mudah</em></h2>
+        <p>Banyak orang membayangkan Jepang seperti di drama Korea atau anime: bersih, modern, penuh bunga sakura. Dan memang benar, Jepang sangat berbeda dari Indonesia.</p>
+        <p>Tapi ada hal-hal yang perlu kamu tahu sebelum berangkat: cuaca yang bisa sangat ekstrem, bahasa yang jadi tantangan nyata di hari-hari pertama, makanan yang mungkin terasa asing, dan rasa rindu kampung halaman yang pasti datang.</p>
+        <p><strong>Yang pasti</strong>, ribuan pekerja Indonesia sudah membuktikan bahwa semua itu bisa dilewati. Dan setelah beberapa bulan, banyak yang justru bilang tidak mau pulang lebih cepat dari jadwal.</p>
+      </div>
+      <div class="intro-quote">
+        <blockquote>"Bulan pertama paling berat. Cuaca dingin, makanan asing, belum lancar ngobrol sama rekan kerja. Tapi sekarang sudah 2 tahun di sini dan saya sudah betah banget. Gajinya bagus, lingkungannya bersih, dan saya belajar banyak hal baru setiap hari."</blockquote>
+        <div class="qauthor">
+          <div class="qavatar">👨‍🌾</div>
+          <div>
+            <div class="qname">Dedi Prasetyo</div>
+            <div class="qrole">Pekerja SSW Peternakan Sapi</div>
+            <div class="qlocation">📍 Hokkaido, Jepang</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 1.5: DATA SEBARAN PETERNAKAN JEPANG -->
+<section id="sebaran-peternakan" style="background:var(--gray-50,#f8fafc);padding:56px 0;">
+  <div class="container">
+    <div class="reveal" style="max-width:820px;margin:0 auto;text-align:center;margin-bottom:28px;">
+      <span class="eyebrow label">📍 Konteks</span>
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;font-weight:800;color:var(--navy);margin:8px 0;">Kamu Bisa Ditempatkan di Mana Saja</h3>
+      <p style="color:var(--gray-600);font-size:.92rem;">Berdasarkan data resmi Chikusan Toukei (畜産統計) dari Kementerian Pertanian Jepang (MAFF), per Februari 2025:</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:900px;margin:0 auto;">
+      <div style="background:#fff;border-radius:14px;padding:20px;border:1px solid #e8edf2;">
+        <div style="font-size:1.6rem;">🥛</div>
+        <div style="font-weight:800;color:var(--navy);margin:6px 0 2px;">Hokkaido — Sapi Perah</div>
+        <p style="font-size:.82rem;color:var(--gray-600);margin:0;">Menampung <strong>63,2%</strong> dari total populasi sapi perah nasional (± 817.000 ekor). Sentra utama industri susu Jepang.</p>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:20px;border:1px solid #e8edf2;">
+        <div style="font-size:1.6rem;">🐄</div>
+        <div style="font-weight:800;color:var(--navy);margin:6px 0 2px;">Kyushu — Sapi Potong</div>
+        <p style="font-size:.82rem;color:var(--gray-600);margin:0;">Menampung <strong>43,5%</strong> dari total peternak sapi potong nasional & <strong>36,9%</strong> dari populasi sapi potong.</p>
+      </div>
+      <div style="background:#fff;border-radius:14px;padding:20px;border:1px solid #e8edf2;">
+        <div style="font-size:1.6rem;">📉</div>
+        <div style="font-weight:800;color:var(--navy);margin:6px 0 2px;">Skala Usaha Membesar</div>
+        <p style="font-size:.82rem;color:var(--gray-600);margin:0;">Jumlah peternak terus menurun (rata-rata -5 s/d -7%/tahun), tapi skala per peternak makin besar — artinya kebutuhan tenaga kerja per unit usaha meningkat.</p>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.72rem;color:var(--gray-400);margin-top:20px;">Sumber: 農林水産省 (MAFF) — Chikusan Toukei Reiwa 7 (2025) · <a href="https://www.maff.go.jp/j/tokei/kekka_gaiyou/tiku_toukei/r7/index.html" target="_blank" style="color:var(--gray-400);">maff.go.jp ↗</a></p>
+  </div>
+</section>
+
+<!-- SECTION 2: TOPIK CARDS -->
+<section id="topik">
+  <div class="container">
+
+    <!-- CUACA -->
+    <div class="topic-block">
+      <div class="topic-label reveal">🌤️ Cuaca & Iklim</div>
+      <div class="section-header reveal" style="text-align:left;margin-bottom:28px;">
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);">4 Musim yang Wajib Kamu Siapkan</h2>
+        <p style="margin-top:8px;text-align:left;">Indonesia tidak punya musim dingin atau musim salju. Ini yang paling mengagetkan pekerja Indonesia di bulan pertama.</p>
+      </div>
+      <div class="cuaca-grid reveal">
+        <div class="musim-card ms-haru">
+          <div class="ms-icon">🌸</div>
+          <h3>Haru (Musim Semi)</h3>
+          <div class="ms-temp">10–20°C</div>
+          <p>Maret–Mei. Cuaca paling nyaman. Sakura bermekaran. Cocok untuk adaptasi awal jika baru tiba.</p>
+        </div>
+        <div class="musim-card ms-natsu">
+          <div class="ms-icon">☀️</div>
+          <h3>Natsu (Musim Panas)</h3>
+          <div class="ms-temp">25–38°C</div>
+          <p>Juni–Agustus. Panas lembab mirip Indonesia tapi lebih ekstrem. Ada musim hujan (tsuyu) di awal Juni.</p>
+        </div>
+        <div class="musim-card ms-aki">
+          <div class="ms-icon">🍂</div>
+          <h3>Aki (Musim Gugur)</h3>
+          <div class="ms-temp">10–22°C</div>
+          <p>September–November. Pemandangan daun merah-kuning sangat indah. Suhu mulai turun drastis.</p>
+        </div>
+        <div class="musim-card ms-fuyu">
+          <div class="ms-icon">❄️</div>
+          <h3>Fuyu (Musim Dingin)</h3>
+          <div class="ms-temp">-10–8°C</div>
+          <p>Desember–Februari. Ini tantangan terbesar. Di Hokkaido bisa -20°C dengan salju tebal setiap hari.</p>
+        </div>
+      </div>
+      <div class="cuaca-tips reveal">
+        <div class="ct-icon">🧥</div>
+        <div>
+          <h4>Tips Menghadapi Musim Dingin untuk Orang Indonesia</h4>
+          <p>Investasi di pakaian musim dingin yang layak: thermal innerwear, jaket tebal, sarung tangan, sepatu boots anti-salju, dan kupluk. Banyak perusahaan menyediakan tunjangan pakaian kerja. Di dalam ruangan dan asrama biasanya sangat hangat karena ada pemanas (暖房/danbou), jadi tidak perlu khawatir terlalu jauh.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAKANAN -->
+    <div class="topic-block">
+      <div class="topic-label reveal">🍱 Makanan</div>
+      <div class="section-header reveal" style="text-align:left;margin-bottom:28px;">
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);">Makan Apa di Jepang?</h2>
+        <p style="margin-top:8px;text-align:left;">Kabar baiknya: makanan Jepang umumnya enak. Kabar yang perlu disiapkan: tidak semua halal, dan nasi putih polos biasa tersedia di mana-mana.</p>
+      </div>
+      <div class="makanan-grid reveal">
+        <div class="makan-card">
+          <div class="mk-header">
+            <span class="mk-icon">🍳</div>
+            <h3>Masak Sendiri di Asrama</h3>
+          </div>
+          <p>Cara paling hemat dan bebas. Hampir semua asrama punya dapur bersama. Bahan makanan tersedia di supermarket, dan beras Jepang mudah ditemukan. Bumbu Indonesia seperti kecap, sambal, dan santan tersedia di toko Asia.</p>
+          <div class="makan-list">
+            <div class="makan-item"><span class="mi">🛒</span> Supermarket buka sampai malam</div>
+            <div class="makan-item"><span class="mi">🍚</span> Beras Jepang pulen, enak</div>
+            <div class="makan-item"><span class="mi">🥢</span> Toko Asia jual bumbu Indonesia</div>
+            <div class="makan-item"><span class="mi">💰</span> Hemat sekitar ¥20.000/bulan jika masak sendiri</div>
+          </div>
+        </div>
+        <div class="makan-card">
+          <div class="mk-header">
+            <span class="mk-icon">🏪</span>
+            <h3>Makan di Luar atau Konbini</h3>
+          </div>
+          <p>Convenience store (konbini) seperti 7-Eleven, Lawson, dan FamilyMart adalah "warung serba ada" di Jepang. Buka 24 jam, jual makanan siap makan yang enak dan murah.</p>
+          <div class="makan-list">
+            <div class="makan-item"><span class="mi">🥟</span> Onigiri (nasi kepal) mulai ¥120</div>
+            <div class="makan-item"><span class="mi">🍜</span> Ramen instan konbini ¥200–400</div>
+            <div class="makan-item"><span class="mi">🍛</span> Restoran gyudon mulai ¥500</div>
+            <div class="makan-item"><span class="mi">⚠️</span> Perlu cek label babi/alkohol</div>
+          </div>
+        </div>
+        <div class="makan-card">
+          <div class="mk-header">
+            <span class="mk-icon">🥩</span>
+            <h3>Makanan Jepang yang Wajib Dicoba</h3>
+          </div>
+          <p>Setelah adaptasi, banyak pekerja Indonesia jatuh cinta dengan kuliner Jepang. Beberapa favorit yang aman dan lezat:</p>
+          <div class="makan-list">
+            <div class="makan-item"><span class="mi">🍣</span> Sushi ikan (tuna, salmon, udang)</div>
+            <div class="makan-item"><span class="mi">🍜</span> Ramen, udon, soba</div>
+            <div class="makan-item"><span class="mi">🍘</span> Senbei (keripik beras Jepang)</div>
+            <div class="makan-item"><span class="mi">🍡</span> Dango dan wagashi (kue tradisional)</div>
+          </div>
+        </div>
+        <div class="makan-card">
+          <div class="mk-header">
+            <span class="mk-icon">📦</span>
+            <h3>Kiriman dari Indonesia</h3>
+          </div>
+          <p>Banyak pekerja minta keluarga kirimkan bumbu favoritnya dari Indonesia. Ini sangat membantu terutama di bulan-bulan awal saat kangen masakan rumah.</p>
+          <div class="makan-list">
+            <div class="makan-item"><span class="mi">✅</span> Indomie (favorit nomor satu!)</div>
+            <div class="makan-item"><span class="mi">✅</span> Kecap manis, sambal botolan</div>
+            <div class="makan-item"><span class="mi">✅</span> Bumbu instan (rendang, soto, dll)</div>
+            <div class="makan-item"><span class="mi">✅</span> Kerupuk dan camilan Indonesia</div>
+          </div>
+        </div>
+      </div>
+      <div class="halal-note reveal">
+        <div class="hi">🕌</div>
+        <div>
+          <h4>Soal Makanan Halal di Jepang</h4>
+          <p>Makanan halal tersedia di kota-kota besar seperti Tokyo, Osaka, Nagoya, dan kota dengan komunitas Muslim. Di daerah peternakan yang lebih pedesaan, mungkin perlu usaha lebih untuk menemukan daging halal. Tapi dengan memasak sendiri menggunakan bahan dari supermarket dan menghindari daging babi, kebutuhan halal tetap bisa terpenuhi. Komunitas Muslim Indonesia di Jepang (KMII) juga aktif berbagi info masjid dan restoran halal di berbagai prefektur.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASRAMA -->
+    <div class="topic-block">
+      <div class="topic-label reveal">🏠 Tempat Tinggal</div>
+      <div class="section-header reveal" style="text-align:left;margin-bottom:28px;">
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);">Tinggal di Asrama Peternakan</h2>
+        <p style="margin-top:8px;text-align:left;">Sebagian besar perusahaan peternakan menyediakan asrama untuk pekerjanya. Ini keuntungan besar karena kamu tidak perlu keluar uang banyak untuk tempat tinggal.</p>
+      </div>
+      <div class="asrama-layout reveal">
+        <div class="asrama-main">
+          <h3>🏡 Apa yang Ada di Asrama?</h3>
+          <div class="asrama-feature">
+            <div class="af-icon">🛏️</div>
+            <div>
+              <h4>Kamar Pribadi atau Berbagi</h4>
+              <p>Bervariasi tergantung perusahaan. Banyak yang sudah sediakan kamar pribadi dengan tempat tidur, lemari, dan meja. Beberapa berbagi kamar dengan 1–2 rekan kerja.</p>
+            </div>
+          </div>
+          <div class="asrama-feature">
+            <div class="af-icon">🚿</div>
+            <div>
+              <h4>Kamar Mandi & Ofuro (Bath)</h4>
+              <p>Umumnya berbagi. Ofuro (bak mandi Jepang) adalah pengalaman baru yang perlu adaptasi. Sangat menyegarkan terutama di musim dingin!</p>
+            </div>
+          </div>
+          <div class="asrama-feature">
+            <div class="af-icon">🍳</div>
+            <div>
+              <h4>Dapur Bersama</h4>
+              <p>Hampir selalu ada dapur dengan kompor, microwave, dan kulkas bersama. Ini tempat favorit sosialisasi antar pekerja, termasuk sesama WNI.</p>
+            </div>
+          </div>
+          <div class="asrama-feature">
+            <div class="af-icon">🌐</div>
+            <div>
+              <h4>WiFi & Fasilitas</h4>
+              <p>Banyak asrama sudah ada WiFi. Mesin cuci biasanya tersedia (berbayar koin atau gratis). AC/pemanas kamar adalah standar di asrama modern.</p>
+            </div>
+          </div>
+          <div class="asrama-feature">
+            <div class="af-icon">📍</div>
+            <div>
+              <h4>Lokasi Dekat Tempat Kerja</h4>
+              <p>Asrama biasanya sangat dekat atau bahkan di dalam area peternakan. Jadi tidak perlu bayar transportasi ke tempat kerja setiap hari.</p>
+            </div>
+          </div>
+        </div>
+        <div class="asrama-biaya">
+          <h3>💴 Estimasi Biaya Tempat Tinggal</h3>
+          <div class="biaya-item">
+            <span class="bi-label">Sewa asrama (jika berbayar)</span>
+            <span class="bi-val">¥5.000–15.000</span>
+          </div>
+          <div class="biaya-item">
+            <span class="bi-label">Listrik & air (jika terpisah)</span>
+            <span class="bi-val">¥5.000–10.000</span>
+          </div>
+          <div class="biaya-item">
+            <span class="bi-label">Internet (WiFi asrama)</span>
+            <span class="bi-val">Sering gratis</span>
+          </div>
+          <div class="biaya-item">
+            <span class="bi-label">Laundry (mesin koin)</span>
+            <span class="bi-val">¥200–300/cuci</span>
+          </div>
+          <div class="biaya-item">
+            <span class="bi-label">Banyak perusahaan</span>
+            <span class="bi-val">Asrama GRATIS</span>
+          </div>
+          <div class="biaya-total">
+            <div class="bt-label">Total estimasi per bulan</div>
+            <div class="bt-val">¥0 – ¥25.000</div>
+            <div class="bt-sub">Jauh lebih murah dari sewa apartemen mandiri</div>
+          </div>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:14px;line-height:1.55;">Sewa apartemen mandiri di Jepang bisa ¥40.000–80.000/bulan. Asrama perusahaan adalah keuntungan finansial yang sangat besar!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOSIAL -->
+    <div class="topic-block">
+      <div class="topic-label reveal">👥 Kehidupan Sosial</div>
+      <div class="section-header reveal" style="text-align:left;margin-bottom:28px;">
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);">Bergaul dengan Orang Jepang</h2>
+        <p style="margin-top:8px;text-align:left;">Orang Jepang terkenal sopan, disiplin, dan menjaga privasi. Memahami budaya mereka akan membuat hidupmu jauh lebih nyaman di sana.</p>
+      </div>
+      <div class="sosial-grid reveal">
+        <div class="sosial-card">
+          <div class="sc-icon" style="background:rgba(59,130,196,.1);">🙇</div>
+          <h3>Budaya Membungkuk</h3>
+          <p>Salam standar orang Jepang adalah membungkuk (お辞儀/ojigi). Tidak perlu berjabat tangan. Semakin dalam membungkuk, semakin hormat.</p>
+          <span class="sc-tag">Etika dasar</span>
+        </div>
+        <div class="sosial-card">
+          <div class="sc-icon" style="background:rgba(245,158,11,.1);">🤫</div>
+          <h3>Tenang di Tempat Umum</h3>
+          <p>Orang Jepang sangat menjaga ketenangan di transportasi dan ruang publik. Tidak mengangkat telepon keras-keras, tidak berbicara berisik di kereta.</p>
+          <span class="sc-tag">Etika publik</span>
+        </div>
+        <div class="sosial-card">
+          <div class="sc-icon" style="background:rgba(34,197,94,.1);">⏰</div>
+          <h3>Tepat Waktu Itu Wajib</h3>
+          <p>Terlambat 5 menit di Jepang sudah dianggap tidak sopan. Datang lebih awal adalah norma. Ini berlaku di tempat kerja maupun pertemuan sosial.</p>
+          <span class="sc-tag">Budaya kerja</span>
+        </div>
+        <div class="sosial-card">
+          <div class="sc-icon" style="background:rgba(139,92,246,.1);">🧹</div>
+          <h3>Kebersihan adalah Harga Mati</h3>
+          <p>Jepang sangat bersih karena warganya menjaga kebersihan bersama. Sampah dipisah (organik, plastik, kaleng, kertas), dan ada jadwal pembuangan tertentu.</p>
+          <span class="sc-tag">Kehidupan sehari-hari</span>
+        </div>
+        <div class="sosial-card">
+          <div class="sc-icon" style="background:rgba(239,68,68,.1);">🤝</div>
+          <h3>Rekan Kerja & Senpai</h3>
+          <p>Di tempat kerja ada sistem senpai (senior) dan kouhai (junior). Hormati senpai, tunjukkan inisiatif, dan jangan ragu bertanya dengan sopan jika tidak mengerti.</p>
+          <span class="sc-tag">Budaya kerja</span>
+        </div>
+        <div class="sosial-card">
+          <div class="sc-icon" style="background:rgba(16,185,129,.1);">🇮🇩</div>
+          <h3>Komunitas WNI di Jepang</h3>
+          <p>Ada banyak komunitas WNI di berbagai prefektur Jepang. Mereka sangat membantu untuk adaptasi, berbagi info, dan merayakan hari-hari penting Indonesia bersama.</p>
+          <span class="sc-tag">Komunitas</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 3: PERBANDINGAN -->
+<section id="perbandingan">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">🆚 Perbandingan</span>
+      <h2>Kehidupan Indonesia vs Jepang:<br>Apa yang Berbeda?</h2>
+      <p>Bukan untuk menilai mana yang lebih baik, tapi agar kamu tahu apa yang perlu disiapkan secara mental sebelum berangkat.</p>
+    </div>
+
+    <div class="compare-table reveal">
+      <div class="compare-header">
+        <div class="ch-cell">Aspek</div>
+        <div class="ch-cell idn">🇮🇩 Indonesia</div>
+        <div class="ch-cell jpn">🇯🇵 Jepang</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">🌡️</span><span class="cat-label">Cuaca</span></div>
+        <div class="cr-idn">Tropis, panas sepanjang tahun. 25–35°C</div>
+        <div class="cr-jpn"><strong>4 musim.</strong> Bisa -20°C di Hokkaido saat musim dingin</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">🍽️</span><span class="cat-label">Makanan</span></div>
+        <div class="cr-idn">Beragam, mudah dapat makanan halal di mana-mana</div>
+        <div class="cr-jpn"><strong>Perlu ekstra usaha</strong> cari makanan halal, tapi bisa masak sendiri</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">🚌</span><span class="cat-label">Transportasi</span></div>
+        <div class="cr-idn">Ojek, angkot, macet. Fleksibel tapi tidak selalu tepat waktu</div>
+        <div class="cr-jpn"><strong>Sangat tepat waktu.</strong> Kereta delay 1 menit saja sudah minta maaf</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">🗣️</span><span class="cat-label">Bahasa</span></div>
+        <div class="cr-idn">Indonesia + daerah. Bahasa Inggris cukup di kota besar</div>
+        <div class="cr-jpn"><strong>Bahasa Jepang dominan.</strong> Bahasa Inggris terbatas terutama di pedesaan</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">👥</span><span class="cat-label">Gaya Sosial</span></div>
+        <div class="cr-idn">Hangat, ramah, suka ngobrol, sering "nyambung" langsung</div>
+        <div class="cr-jpn"><strong>Sopan tapi lebih tertutup.</strong> Perlu waktu untuk jadi akrab</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">🧹</span><span class="cat-label">Kebersihan</span></div>
+        <div class="cr-idn">Bervariasi. Di kota besar sering ada sampah berserakan</div>
+        <div class="cr-jpn"><strong>Sangat bersih.</strong> Sampah dipisah ketat, tidak ada tempat sampah di jalan</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">⏰</span><span class="cat-label">Kedisiplinan</span></div>
+        <div class="cr-idn">"Jam karet" adalah budaya yang umum</div>
+        <div class="cr-jpn"><strong>Tepat waktu adalah standar minimum,</strong> bukan prestasi</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">💰</span><span class="cat-label">Biaya Hidup</span></div>
+        <div class="cr-idn">Relatif murah, tapi gaji juga lebih kecil</div>
+        <div class="cr-jpn"><strong>Lebih mahal,</strong> tapi gaji jauh lebih tinggi. Tabungan akhirnya lebih besar</div>
+      </div>
+      <div class="compare-row">
+        <div class="cr-cat"><span class="cat-icon">🏥</span><span class="cat-label">Kesehatan</span></div>
+        <div class="cr-idn">BPJS tersedia, fasilitas bervariasi antar daerah</div>
+        <div class="cr-jpn"><strong>Asuransi kesehatan wajib</strong> ditanggung bersama perusahaan. Fasilitas sangat baik</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: TIPS SURVIVE -->
+<section id="tips">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">💪 Tips Survive</span>
+      <h2>10 Tips Bertahan dan<br>Berkembang di Jepang</h2>
+      <p>Dari pengalaman pekerja Indonesia yang sudah lebih dulu di sana. Baca ini sebelum berangkat.</p>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card reveal d1">
+        <div class="tc-num">Tips 01</div>
+        <div class="tc-icon">🗓️</div>
+        <h3>Datang di Musim Semi atau Panas</h3>
+        <p>Kalau bisa pilih, usahakan tiba di Jepang antara April–Agustus. Cuaca lebih bersahabat untuk adaptasi awal. Tiba di musim dingin langsung bisa membuat shock dan menurunkan semangat.</p>
+        <span class="tc-tag">Timing keberangkatan</span>
+      </div>
+      <div class="tip-card reveal d2">
+        <div class="tc-num">Tips 02</div>
+        <div class="tc-icon">📱</div>
+        <h3>Install Aplikasi Wajib Sebelum Berangkat</h3>
+        <p>Google Translate (dengan download bahasa Jepang offline), Google Maps (download peta offline), Line (aplikasi chat utama di Jepang), dan Yahoo! Weather Japan untuk cuaca.</p>
+        <span class="tc-tag">Persiapan digital</span>
+      </div>
+      <div class="tip-card reveal d3">
+        <div class="tc-num">Tips 03</div>
+        <div class="tc-icon">💬</div>
+        <h3>Jangan Malu Bicara Bahasa Jepang</h3>
+        <p>Orang Jepang sangat menghargai usahamu berbicara dalam bahasa mereka, meski masih terbata-bata. Jangan takut salah. Mereka lebih suka kamu mencoba daripada langsung menyerah pakai bahasa isyarat.</p>
+        <span class="tc-tag">Bahasa & komunikasi</span>
+      </div>
+      <div class="tip-card reveal d4">
+        <div class="tc-num">Tips 04</div>
+        <div class="tc-icon">🧥</div>
+        <h3>Investasi di Pakaian Musim Dingin</h3>
+        <p>Beli pakaian musim dingin yang berkualitas, bukan yang termurah. Thermal innerwear, jaket tebal, sepatu boots waterproof, dan sarung tangan adalah investasi untuk kesehatan dan kenyamananmu.</p>
+        <span class="tc-tag">Persiapan fisik</span>
+      </div>
+      <div class="tip-card reveal d1">
+        <div class="tc-num">Tips 05</div>
+        <div class="tc-icon">🍳</div>
+        <h3>Belajar Masak Sebelum Berangkat</h3>
+        <p>Masak sendiri adalah cara terbaik hemat pengeluaran dan tetap makan enak. Kalau belum bisa masak, mulailah belajar dari sekarang. Minimal kuasai 5–10 masakan sederhana Indonesia.</p>
+        <span class="tc-tag">Finansial</span>
+      </div>
+      <div class="tip-card reveal d2">
+        <div class="tc-num">Tips 06</div>
+        <div class="tc-icon">📞</div>
+        <h3>Jadwalkan Waktu Video Call Keluarga</h3>
+        <p>Jangan tunggu kangen dulu baru telepon. Jadwalkan rutin setiap minggu. Ini penting untuk kesehatan mentalmu. Perbedaan waktu Indonesia-Jepang sekitar 2 jam (WIB lebih lambat).</p>
+        <span class="tc-tag">Kesehatan mental</span>
+      </div>
+      <div class="tip-card reveal d3">
+        <div class="tc-num">Tips 07</div>
+        <div class="tc-icon">🏦</div>
+        <h3>Buka Rekening Bank Jepang Segera</h3>
+        <p>Prioritas di minggu pertama: buka rekening Japan Post Bank (ゆうちょ銀行) atau bank lokal. Ini dibutuhkan untuk menerima gaji, bayar tagihan, dan transfer uang ke Indonesia.</p>
+        <span class="tc-tag">Keuangan</span>
+      </div>
+      <div class="tip-card reveal d4">
+        <div class="tc-num">Tips 08</div>
+        <div class="tc-icon">🇮🇩</div>
+        <h3>Bergabung dengan Komunitas WNI</h3>
+        <p>Cari komunitas WNI di prefekturmuk. Mereka bisa bantu banyak hal: dari beli bumbu Indonesia, informasi masjid, sampai teman curhat saat rindu kampung halaman.</p>
+        <span class="tc-tag">Komunitas</span>
+      </div>
+      <div class="tip-card reveal d1">
+        <div class="tc-num">Tips 09</div>
+        <div class="tc-icon">🚴</div>
+        <h3>Beli Sepeda untuk Mobilitas Lokal</h3>
+        <p>Di area peternakan yang jauh dari kota, sepeda adalah alat transportasi paling praktis untuk ke minimarket atau jalan-jalan. Beli sepeda bekas di sayonara sale atau pasar lokal, harganya sangat terjangkau.</p>
+        <span class="tc-tag">Mobilitas</span>
+      </div>
+      <div class="tip-card reveal d2">
+        <div class="tc-num">Tips 10</div>
+        <div class="tc-icon">📚</div>
+        <h3>Terus Belajar Bahasa Jepang</h3>
+        <p>Jangan berhenti belajar setelah lulus JFT-Basic. Semakin lancar bahasamu, semakin mudah hidupmu dan semakin besar peluang naik ke SSW-2. Target JLPT N3 dalam 2 tahun pertama.</p>
+        <span class="tc-tag">Pengembangan diri</span>
+      </div>
+    </div>
+
+    <div class="mental-banner reveal">
+      <div class="mb-icon">🧠</div>
+      <div>
+        <h3>Soal Kesehatan Mental: Ini Penting!</h3>
+        <p>Homesick, kesepian, culture shock, dan tekanan kerja adalah hal nyata yang dialami hampir semua pekerja migran di bulan-bulan pertama. Ini normal dan bukan tanda kelemahan. Yang terpenting: jangan pendam sendiri. Cerita ke keluarga, teman sesama WNI, atau supervisor di tempat kerja. Banyak perusahaan Jepang juga punya program konseling untuk pekerja asing. Ingat mengapa kamu berangkat, dan ingat bahwa banyak yang sudah membuktikan bahwa masa sulitnya pasti bisa dilewati.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="ey">🚀 Siap Melangkah?</span>
+      <h2>Sudah Tahu Kehidupan di Sana.<br>Sekarang Waktunya Persiapkan Diri.</h2>
+      <p>Pelajari sistem SSW, cek simulasi gajimu, atau tanya langsung ke asisten AI kami.</p>
+      <div class="cta-btns">
+        <a href="./sistem-tokutei-ginou.html" class="btn btn-white btn-lg">🏛️ Pelajari Sistem SSW</a>
+        <a href="./simulasi-biaya.html" class="btn btn-ghost btn-lg">🧮 Simulasi Gaji & Tabungan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 <a href="./index.html">TokuNou Japan</a> · Dibuat untuk keperluan edukasi 農業 · 畜産 · 日本</p>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (window.scrollY / h * 100) + '%';
+  });
+  // Reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+</script>
+</body>
+</html>

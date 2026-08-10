@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Persiapan Mental — TokuNou Japan</title>
+  <meta name="description" content="Panduan persiapan mental sebelum berangkat ke Jepang: menjaga motivasi, komunikasi keluarga, strategi bertahan tahun pertama, dan cara bangkit saat ingin menyerah." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:      #0A2550;
+      --blue:      #1A5DAD;
+      --blue-mid:  #3B82C4;
+      --blue-light:#DBEEFF;
+      --white:     #FFFFFF;
+      --off-white: #F8F9FF;
+      --gray-200:  #C9DFFF;
+      --gray-400:  #7BAAD4;
+      --gray-600:  #3D6A9E;
+      --gray-800:  #1A3A6B;
+      --purple:    #7C3AED;
+      --purple-light: #EDE9FE;
+      --teal:      #0D9488;
+      --teal-light:#CCFBF1;
+      --amber:     #D97706;
+      --green:     #059669;
+      --font-display: 'Sora', sans-serif;
+      --font-jp:      'Noto Serif JP', serif;
+      --font-body:    'DM Sans', sans-serif;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(11,31,58,.07);
+      --shadow-md: 0 6px 24px rgba(11,31,58,.12);
+      --transition: .25s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--gray-800); background: var(--white); line-height: 1.7; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 88px 0; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 50px; font-family: var(--font-display); font-weight: 600; font-size: .95rem; border: 2px solid transparent; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), background var(--transition); white-space: nowrap; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-lg { padding: 18px 36px; font-size: 1.05rem; }
+    .btn-white { background: var(--white); color: var(--navy); font-weight: 700; box-shadow: 0 4px 20px rgba(0,0,0,.2); }
+    .btn-white:hover { background: var(--blue-light); }
+    .btn-ghost { background: rgba(255,255,255,.1); color: var(--white); border: 2px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+
+    /* NAVBAR */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; color: var(--white); }
+    .nav-logo .logo-mark { width: 36px; height: 36px; background: var(--blue-mid); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 1.1rem; color: var(--white); font-weight: 700; }
+    .nav-logo .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2; }
+    .nav-logo .logo-sub { font-size: .7rem; color: rgba(255,255,255,.55); }
+    .nav-back { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; font-family: var(--font-display); transition: color var(--transition); }
+    .nav-back:hover { color: var(--white); }
+    .nav-back:hover svg { transform: translateX(-3px); }
+    .nav-back svg { transition: transform var(--transition); }
+
+    /* PROGRESS BAR */
+    .progress-bar { position: fixed; top: 68px; left: 0; height: 3px; background: linear-gradient(90deg, #7C3AED, #0D9488, #059669); z-index: 999; width: 0%; transition: width .1s ease; }
+
+    /* =============================================
+       HERO — hangat & personal
+    ============================================= */
+    #hero {
+      position: relative;
+      min-height: 72vh;
+      background: linear-gradient(155deg, #1E1B4B 0%, #4C1D95 45%, #0D9488 100%);
+      display: flex; align-items: center;
+      padding: 130px 0 80px;
+      overflow: hidden;
+    }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(124,58,237,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(13,148,136,.3) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(5rem,12vw,11rem); color: rgba(255,255,255,.05); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; }
+    .hero-content { position: relative; z-index: 2; color: var(--white); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 28px; }
+    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5.5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    #hero h1 em { font-style: normal; color: #A5F3FC; }
+    .hero-desc { font-size: 1.08rem; line-height: 1.75; color: rgba(255,255,255,.82); max-width: 540px; margin-bottom: 36px; }
+    .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
+    .hero-stat .val { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; line-height: 1; color: #A5F3FC; }
+    .hero-stat .key { font-size: .76rem; color: rgba(255,255,255,.6); font-weight: 500; margin-top: 4px; }
+
+    /* SECTION HEADER */
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .eyebrow { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 12px; }
+    .section-header h2 { font-family: var(--font-display); font-size: clamp(1.7rem,3.5vw,2.8rem); font-weight: 700; line-height: 1.2; color: var(--navy); }
+    .section-header p { color: var(--gray-600); margin-top: 14px; font-size: 1.02rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.75; }
+
+    /* TOPIC LABEL */
+    .topic-label { display: inline-flex; align-items: center; gap: 8px; border-radius: 50px; padding: 7px 18px; font-family: var(--font-display); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 20px; }
+    .tl-purple { background: #EDE9FE; color: #5B21B6; }
+    .tl-teal   { background: #CCFBF1; color: #0F766E; }
+    .tl-amber  { background: #FEF3C7; color: #92400E; }
+    .tl-green  { background: #DCFCE7; color: #14532D; }
+
+    /* =============================================
+       SECTION 1: NARASI PEMBUKA (SURAT)
+    ============================================= */
+    #surat { background: var(--off-white); }
+    .surat-wrap { max-width: 720px; margin: 0 auto; }
+    .surat-card { background: var(--white); border-radius: var(--radius-lg); padding: 48px; box-shadow: var(--shadow-md); border: 1px solid var(--gray-200); position: relative; }
+    .surat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, #7C3AED, #0D9488, #059669); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+    .surat-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px dashed var(--gray-200); }
+    .surat-icon { width: 52px; height: 52px; background: linear-gradient(135deg, #7C3AED, #0D9488); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .surat-meta h3 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--navy); }
+    .surat-meta p { font-size: .78rem; color: var(--gray-400); margin-top: 2px; }
+    .surat-body p { font-size: .97rem; color: var(--gray-600); line-height: 1.85; margin-bottom: 18px; }
+    .surat-body p:last-child { margin-bottom: 0; }
+    .surat-body strong { color: var(--navy); }
+    .surat-body em { font-style: italic; color: var(--purple); }
+    .surat-sign { margin-top: 28px; padding-top: 20px; border-top: 1px dashed var(--gray-200); font-family: var(--font-display); font-size: .88rem; color: var(--gray-600); }
+    .surat-sign strong { color: var(--navy); font-size: 1rem; }
+
+    /* =============================================
+       SECTION 2: MOTIVASI
+    ============================================= */
+    #motivasi { background: var(--white); }
+
+    .motivasi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+    .mot-card { border-radius: var(--radius-md); padding: 26px 22px; border: 1.5px solid; transition: transform var(--transition), box-shadow var(--transition); }
+    .mot-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .mot-card .mc-icon { font-size: 2rem; margin-bottom: 14px; }
+    .mot-card h3 { font-family: var(--font-display); font-size: .98rem; font-weight: 700; margin-bottom: 8px; }
+    .mot-card p { font-size: .85rem; line-height: 1.65; }
+    .mot-card .mc-action { display: inline-flex; align-items: center; gap: 5px; font-size: .78rem; font-weight: 700; margin-top: 12px; }
+
+    .mc-finansial { background: linear-gradient(135deg, #FFF7ED, #FFFBEB); border-color: #FDE68A; }
+    .mc-finansial h3 { color: #78350F; }
+    .mc-finansial p { color: #92400E; }
+    .mc-finansial .mc-action { color: #D97706; }
+
+    .mc-keluarga { background: linear-gradient(135deg, #FDF4FF, #FAE8FF); border-color: #E9D5FF; }
+    .mc-keluarga h3 { color: #4C1D95; }
+    .mc-keluarga p { color: #5B21B6; }
+    .mc-keluarga .mc-action { color: #7C3AED; }
+
+    .mc-diri { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); border-color: #6EE7B7; }
+    .mc-diri h3 { color: #064E3B; }
+    .mc-diri p { color: #065F46; }
+    .mc-diri .mc-action { color: #059669; }
+
+    /* Alasan berangkat interactive */
+    .alasan-box { background: linear-gradient(135deg, #1E1B4B, #4C1D95); border-radius: var(--radius-lg); padding: 32px; }
+    .alasan-box h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .alasan-box p { font-size: .88rem; color: rgba(255,255,255,.7); margin-bottom: 20px; line-height: 1.65; }
+    .alasan-input-row { display: flex; gap: 10px; margin-bottom: 12px; }
+    .alasan-input { flex: 1; border: 1.5px solid rgba(255,255,255,.2); border-radius: 12px; padding: 12px 16px; font-size: .88rem; font-family: var(--font-body); color: var(--white); background: rgba(255,255,255,.1); outline: none; transition: border-color var(--transition); }
+    .alasan-input::placeholder { color: rgba(255,255,255,.4); }
+    .alasan-input:focus { border-color: #A5F3FC; }
+    .alasan-btn { padding: 12px 20px; background: rgba(165,243,252,.2); border: 1.5px solid rgba(165,243,252,.35); border-radius: 12px; color: #A5F3FC; font-family: var(--font-display); font-size: .82rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: all var(--transition); }
+    .alasan-btn:hover { background: rgba(165,243,252,.3); }
+    .alasan-list { display: flex; flex-direction: column; gap: 8px; min-height: 40px; }
+    .alasan-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 10px; padding: 10px 14px; }
+    .alasan-item .ai-text { font-size: .85rem; color: var(--white); flex: 1; }
+    .alasan-item .ai-del { background: none; border: none; color: rgba(255,255,255,.3); cursor: pointer; font-size: 1rem; padding: 0 4px; transition: color var(--transition); }
+    .alasan-item .ai-del:hover { color: #FCA5A5; }
+    .alasan-empty { font-size: .82rem; color: rgba(255,255,255,.35); font-style: italic; text-align: center; padding: 12px 0; }
+    .alasan-hint { font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 10px; }
+
+    /* =============================================
+       SECTION 3: KOMUNIKASI KELUARGA
+    ============================================= */
+    #keluarga { background: var(--off-white); }
+
+    .keluarga-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    .kel-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 26px 22px; transition: transform var(--transition), box-shadow var(--transition); }
+    .kel-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .kel-card .kc-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .kel-card h3 { font-family: var(--font-display); font-size: .98rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .kel-card p { font-size: .86rem; color: var(--gray-600); line-height: 1.65; margin-bottom: 10px; }
+    .kel-tip { display: flex; align-items: flex-start; gap: 8px; font-size: .82rem; color: var(--gray-600); margin-bottom: 6px; line-height: 1.5; }
+    .kel-tip .kt { color: var(--teal); font-weight: 700; flex-shrink: 0; }
+
+    /* Jadwal interaktif */
+    .jadwal-box { background: var(--white); border: 1.5px solid var(--gray-200); border-radius: var(--radius-lg); padding: 28px 32px; }
+    .jadwal-box h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .jadwal-box p { font-size: .86rem; color: var(--gray-600); margin-bottom: 20px; }
+    .jadwal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px; }
+    .hari-btn { padding: 10px 6px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--off-white); font-family: var(--font-display); font-size: .72rem; font-weight: 700; color: var(--gray-600); cursor: pointer; text-align: center; transition: all var(--transition); }
+    .hari-btn:hover { border-color: var(--teal); color: var(--teal); }
+    .hari-btn.active { background: var(--teal); border-color: var(--teal); color: var(--white); }
+    .jadwal-result { background: var(--off-white); border-radius: 10px; padding: 14px 16px; font-size: .85rem; color: var(--gray-600); min-height: 44px; transition: all var(--transition); }
+    .jadwal-result.has-result { background: #CCFBF1; color: #0F766E; font-weight: 600; border: 1px solid #99F6E4; }
+
+    /* =============================================
+       SECTION 4: STRATEGI BERTAHAN TAHUN PERTAMA
+    ============================================= */
+    #strategi { background: var(--navy); color: var(--white); }
+    #strategi .section-header h2 { color: var(--white); }
+    #strategi .section-header p { color: rgba(255,255,255,.65); }
+    #strategi .section-header .eyebrow { color: #A5F3FC; }
+
+    /* Timeline bulan per bulan */
+    .bulan-timeline { display: flex; flex-direction: column; gap: 0; }
+    .bulan-item { display: grid; grid-template-columns: 120px 1fr; gap: 0; position: relative; }
+    .bulan-item::before { content: ''; position: absolute; left: 59px; top: 56px; bottom: 0; width: 2px; background: rgba(165,243,252,.15); }
+    .bulan-item:last-child::before { display: none; }
+    .bulan-num { display: flex; flex-direction: column; align-items: center; padding-top: 0; padding-bottom: 32px; }
+    .bulan-circle { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: .8rem; font-weight: 800; flex-shrink: 0; border: 2px solid; }
+    .bc-hard   { background: rgba(239,68,68,.15);  border-color: rgba(239,68,68,.4);  color: #FCA5A5; }
+    .bc-adapt  { background: rgba(245,158,11,.15); border-color: rgba(245,158,11,.4); color: #FCD34D; }
+    .bc-grow   { background: rgba(16,185,129,.15); border-color: rgba(16,185,129,.4); color: #6EE7B7; }
+    .bc-thrive { background: rgba(165,243,252,.15); border-color: rgba(165,243,252,.4); color: #A5F3FC; }
+    .bulan-body { padding: 4px 0 32px 24px; }
+    .bulan-period { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #A5F3FC; margin-bottom: 6px; }
+    .bulan-body h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .bulan-body p { font-size: .88rem; color: rgba(255,255,255,.7); line-height: 1.65; margin-bottom: 10px; }
+    .bulan-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .bulan-tag { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 50px; padding: 3px 10px; font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.65); }
+    .bulan-tag.hl { background: rgba(165,243,252,.12); border-color: rgba(165,243,252,.25); color: #A5F3FC; }
+
+    /* =============================================
+       SECTION 5: BANGKIT SAAT MENYERAH
+    ============================================= */
+    #bangkit { background: var(--white); }
+
+    .bangkit-intro { background: linear-gradient(135deg, #F5F3FF, #EDE9FE); border: 1.5px solid #DDD6FE; border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 32px; display: flex; gap: 16px; align-items: flex-start; }
+    .bangkit-intro .bi-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .bangkit-intro h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: #4C1D95; margin-bottom: 6px; }
+    .bangkit-intro p { font-size: .88rem; color: #5B21B6; line-height: 1.65; }
+
+    .bangkit-steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-bottom: 32px; }
+    .bangkit-step { border-radius: var(--radius-md); padding: 24px 22px; background: var(--off-white); border: 1px solid var(--gray-200); display: flex; gap: 16px; align-items: flex-start; transition: transform var(--transition), box-shadow var(--transition); }
+    .bangkit-step:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .bs-num { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #0D9488); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: .82rem; font-weight: 800; color: var(--white); flex-shrink: 0; }
+    .bangkit-step h3 { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 5px; }
+    .bangkit-step p { font-size: .83rem; color: var(--gray-600); line-height: 1.6; }
+
+    /* =============================================
+       SECTION 6: SELF-CHECK QUIZ
+    ============================================= */
+    #quiz { background: var(--off-white); }
+
+    .quiz-wrap { max-width: 720px; margin: 0 auto; }
+    .quiz-box { background: var(--white); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-md); border: 1px solid var(--gray-200); }
+    .quiz-progress-wrap { height: 6px; background: var(--gray-200); border-radius: 3px; margin-bottom: 32px; }
+    .quiz-progress-bar { height: 100%; background: linear-gradient(90deg, #7C3AED, #0D9488); border-radius: 3px; transition: width .4s ease; }
+    .quiz-q-num { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-400); margin-bottom: 8px; }
+    .quiz-q-text { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 24px; line-height: 1.4; }
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-opt { padding: 14px 18px; border-radius: 12px; border: 1.5px solid var(--gray-200); background: var(--off-white); font-size: .9rem; color: var(--gray-800); cursor: pointer; text-align: left; font-family: var(--font-body); transition: all var(--transition); display: flex; align-items: center; gap: 10px; }
+    .quiz-opt:hover { border-color: var(--purple); background: var(--purple-light); color: var(--purple); }
+    .quiz-opt.selected { border-color: var(--purple); background: var(--purple-light); color: #4C1D95; font-weight: 600; }
+    .quiz-opt .qo-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--gray-200); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all var(--transition); }
+    .quiz-opt.selected .qo-dot { border-color: var(--purple); background: var(--purple); }
+    .quiz-opt.selected .qo-dot::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--white); }
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+    .quiz-btn { padding: 11px 24px; border-radius: 50px; font-family: var(--font-display); font-size: .85rem; font-weight: 700; border: none; cursor: pointer; transition: all var(--transition); }
+    .qbtn-next { background: linear-gradient(135deg, #7C3AED, #0D9488); color: var(--white); box-shadow: 0 4px 14px rgba(124,58,237,.35); }
+    .qbtn-next:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(124,58,237,.45); }
+    .qbtn-next:disabled { opacity: .4; cursor: not-allowed; transform: none; }
+    .qbtn-prev { background: var(--off-white); color: var(--gray-600); border: 1.5px solid var(--gray-200); }
+    .qbtn-prev:hover { background: var(--gray-200); }
+
+    /* Quiz result */
+    .quiz-result { text-align: center; }
+    .qr-emoji { font-size: 4rem; margin-bottom: 16px; }
+    .qr-score { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; margin-bottom: 4px; }
+    .qr-label { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .qr-desc { font-size: .93rem; color: var(--gray-600); line-height: 1.75; max-width: 480px; margin: 0 auto 24px; }
+    .qr-tips { background: var(--off-white); border-radius: var(--radius-md); padding: 20px 24px; text-align: left; margin-bottom: 20px; }
+    .qr-tips h4 { font-family: var(--font-display); font-size: .88rem; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .qr-tip-item { display: flex; align-items: flex-start; gap: 8px; font-size: .83rem; color: var(--gray-600); margin-bottom: 7px; line-height: 1.5; }
+    .qr-tip-item .qti { flex-shrink: 0; }
+    .qbtn-reset { padding: 11px 24px; border-radius: 50px; background: var(--off-white); border: 1.5px solid var(--gray-200); font-family: var(--font-display); font-size: .85rem; font-weight: 700; color: var(--gray-600); cursor: pointer; transition: all var(--transition); }
+    .qbtn-reset:hover { background: var(--gray-200); }
+
+    /* =============================================
+       SECTION 7: STRESS TOOLKIT
+    ============================================= */
+    #stress-toolkit { background: var(--navy); }
+    .toolkit-tabs { display: flex; gap: 8px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+    .tk-tab { padding: 10px 22px; border-radius: 50px; font-family: var(--font-display); font-size: .82rem; font-weight: 700; border: 1.5px solid rgba(255,255,255,.2); background: transparent; color: rgba(255,255,255,.55); cursor: pointer; transition: all var(--transition); }
+    .tk-tab.active { background: rgba(165,243,252,.15); border-color: rgba(165,243,252,.4); color: #A5F3FC; }
+    .toolkit-panel { display: none; }
+    .toolkit-panel.active { display: block; }
+    .breathing-wrap { text-align: center; }
+    .breathing-circle-wrap { position: relative; width: 220px; height: 220px; margin: 0 auto 28px; }
+    .breathing-circle { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, rgba(124,58,237,.6), rgba(13,148,136,.6)); border: 2px solid rgba(165,243,252,.4); display: flex; align-items: center; justify-content: center; flex-direction: column; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); transition: transform .8s ease, box-shadow .8s ease; box-shadow: 0 0 30px rgba(165,243,252,.15); }
+    .breathing-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(165,243,252,.15); animation: ringPulse 4s infinite; }
+    @keyframes ringPulse { 0%,100%{transform:scale(1);opacity:.3} 50%{transform:scale(1.1);opacity:.7} }
+    .breathing-circle .bc-text { font-family: var(--font-display); font-size: 1rem; font-weight: 800; color: var(--white); }
+    .breathing-circle .bc-sub { font-size: .68rem; color: rgba(255,255,255,.6); margin-top: 2px; }
+    .breathing-circle.inhale { transform: translate(-50%,-50%) scale(1.28); box-shadow: 0 0 55px rgba(165,243,252,.4); }
+    .breathing-circle.hold { transform: translate(-50%,-50%) scale(1.28); }
+    .breathing-circle.exhale { transform: translate(-50%,-50%) scale(1); box-shadow: 0 0 15px rgba(165,243,252,.1); }
+    .breath-desc { font-size: .88rem; color: rgba(255,255,255,.65); max-width: 380px; margin: 0 auto 20px; line-height: 1.65; }
+    .breath-count { font-family: var(--font-display); font-size: .75rem; font-weight: 600; color: rgba(255,255,255,.35); margin-top: 6px; min-height: 20px; }
+    .btn-breath { padding: 12px 28px; border-radius: 50px; background: rgba(165,243,252,.12); border: 1.5px solid rgba(165,243,252,.3); color: #A5F3FC; font-family: var(--font-display); font-size: .88rem; font-weight: 700; cursor: pointer; transition: all var(--transition); }
+    .btn-breath:hover { background: rgba(165,243,252,.22); }
+    .mood-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+    .mood-btn { border-radius: var(--radius-md); padding: 18px 10px; background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.1); cursor: pointer; text-align: center; transition: all var(--transition); }
+    .mood-btn:hover, .mood-btn.active { background: rgba(165,243,252,.12); border-color: rgba(165,243,252,.35); transform: translateY(-3px); }
+    .mood-btn .mb-emoji { font-size: 1.8rem; margin-bottom: 6px; }
+    .mood-btn .mb-label { font-size: .68rem; font-weight: 600; color: rgba(255,255,255,.55); font-family: var(--font-display); }
+    .mood-advice { background: rgba(255,255,255,.05); border: 1px solid rgba(165,243,252,.18); border-radius: var(--radius-md); padding: 20px 22px; min-height: 80px; }
+    .mood-advice h4 { font-family: var(--font-display); font-size: .9rem; font-weight: 700; color: #A5F3FC; margin-bottom: 6px; }
+    .mood-advice p { font-size: .84rem; color: rgba(255,255,255,.7); line-height: 1.65; }
+    .journal-prompts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .jp-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-md); padding: 16px; cursor: pointer; transition: all var(--transition); }
+    .jp-card:hover { background: rgba(165,243,252,.1); border-color: rgba(165,243,252,.3); transform: translateY(-2px); }
+    .jp-card .jp-num { font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #A5F3FC; margin-bottom: 5px; }
+    .jp-card .jp-text { font-size: .83rem; color: rgba(255,255,255,.8); line-height: 1.55; font-style: italic; }
+    .jp-card .jp-tap { font-size: .68rem; color: rgba(165,243,252,.45); margin-top: 7px; }
+    .journal-area { width: 100%; background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.15); border-radius: var(--radius-md); padding: 14px 16px; font-size: .88rem; font-family: var(--font-body); color: var(--white); resize: none; outline: none; min-height: 110px; transition: border-color var(--transition); line-height: 1.65; box-sizing: border-box; }
+    .journal-area::placeholder { color: rgba(255,255,255,.28); }
+    .journal-area:focus { border-color: rgba(165,243,252,.4); }
+    .journal-char { font-size: .7rem; color: rgba(255,255,255,.28); text-align: right; margin-top: 5px; }
+
+    /* CTA */
+    #cta-section { background: linear-gradient(155deg, #1E1B4B, #0D9488); padding: 88px 0; }
+    .cta-inner { text-align: center; color: var(--white); }
+    .cta-inner .ey { display: inline-block; color: #A5F3FC; font-size: .76rem; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; margin-bottom: 14px; }
+    .cta-inner h2 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,3rem); font-weight: 800; color: var(--white); margin-bottom: 14px; line-height: 1.2; }
+    .cta-inner p { font-size: 1.02rem; color: rgba(255,255,255,.7); margin-bottom: 38px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: var(--navy); color: rgba(255,255,255,.5); text-align: center; padding: 30px 24px; font-size: .8rem; }
+    footer a { color: rgba(255,255,255,.7); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; }
+    .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      .surat-card { padding: 28px 22px; }
+      .motivasi-grid { grid-template-columns: 1fr; }
+      .keluarga-grid { grid-template-columns: 1fr; }
+      .bangkit-steps { grid-template-columns: 1fr; }
+      .kutipan-grid { grid-template-columns: 1fr; }
+      .jadwal-grid { grid-template-columns: repeat(4, 1fr); }
+      .bulan-item { grid-template-columns: 80px 1fr; }
+    }
+  </style>
+<link rel="canonical" href="https://tokunoujapan.github.io/TokuNou-Japan/persiapan-mental.html">
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="./index.html" class="nav-logo">
+        <div class="logo-mark">農</div>
+        <div>
+          <div class="logo-text">TokuNou Japan</div>
+          <div class="logo-sub">Tokutei Ginou Peternakan</div>
+        </div>
+      </a>
+      <a href="./index.html" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Kembali ke Beranda
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"><div class="c1"></div><div class="c2"></div><div class="grid"></div></div>
+  <div class="kanji-deco">心構え</div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">🧠 Persiapan Mental · Sebelum & Selama di Jepang</div>
+      <h1>Mental yang Kuat<br>adalah <em>Bekal Utamamu</em></h1>
+      <p class="hero-desc">Dokumen bisa diurus. Ujian bisa diulang. Tapi mental yang tidak siap bisa meruntuhkan segalanya di tengah jalan. Di sini kamu belajar cara mempersiapkannya.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="val">80%</span><span class="key">Pekerja alami homesick di bulan pertama</span></div>
+        <div class="hero-stat"><span class="val">95%</span><span class="key">Yang bertahan bilang "layak diperjuangkan"</span></div>
+        <div class="hero-stat"><span class="val">3</span><span class="key">Bulan rata-rata adaptasi penuh</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SURAT PEMBUKA -->
+<section id="surat">
+  <div class="container">
+    <div class="surat-wrap reveal">
+      <div class="surat-card">
+        <div class="surat-header">
+          <div class="surat-icon">✉️</div>
+          <div class="surat-meta">
+            <h3>Surat untuk Kamu yang Sedang Mempertimbangkan</h3>
+            <p>Dari tim TokuNou Japan · untuk calon pekerja SSW Indonesia</p>
+          </div>
+        </div>
+        <div class="surat-body">
+          <p>Kalau kamu membaca halaman ini, kemungkinan besar kamu sedang serius mempertimbangkan untuk berangkat ke Jepang. Mungkin ada semangat yang besar. Mungkin juga ada rasa takut yang sama besarnya. Dan itu <strong>sangat wajar.</strong></p>
+          <p>Yang ingin kami sampaikan adalah ini: <em>persiapan mental bukan soal menghilangkan rasa takut.</em> Tidak ada orang yang berangkat ke negeri asing tanpa rasa takut sedikitpun. Yang membedakan mereka yang berhasil dan yang tidak bukan ketiadaan rasa takut, tapi kemampuan untuk tetap melangkah meski takut itu ada.</p>
+          <p>Akan ada malam-malam di mana kamu merindukan masakan ibu. Akan ada hari-hari di mana kamu merasa tidak dimengerti oleh rekan kerja Jepang-mu. Akan ada momen di mana kamu bertanya-tanya, <em>"Apa yang sedang aku lakukan di sini?"</em></p>
+          <p>Tapi akan ada juga momen pertama kali kamu terima gaji penuh dan transfer ke keluarga. Momen pertama kamu berhasil berkomunikasi dalam bahasa Jepang tanpa gugup. Momen kamu sadar bahwa kamu sudah tumbuh jauh melampaui versi dirimu sebelum berangkat.</p>
+          <p><strong>Halaman ini hadir untuk mempersiapkan kamu menghadapi keduanya.</strong></p>
+        </div>
+        <div class="surat-sign">
+          Dengan semangat,<br>
+          <strong>Tim TokuNou Japan</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTIVASI -->
+<section id="motivasi">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow tl-purple" style="color:#5B21B6;">💪 Motivasi</span>
+      <h2>Temukan & Jaga<br>Alasan Terdalammu</h2>
+      <p>Motivasi yang dangkal tidak akan bertahan di bulan kedua. Kamu butuh alasan yang benar-benar bermakna untukmu secara pribadi.</p>
+    </div>
+
+    <div class="motivasi-grid">
+      <div class="mot-card mc-finansial reveal d1">
+        <div class="mc-icon">💰</div>
+        <h3>Motivasi Finansial</h3>
+        <p>Ingin melunasi hutang keluarga, beli rumah, biayai adik kuliah, atau bangun usaha setelah pulang. Ini motivasi yang paling nyata dan terukur.</p>
+        <div class="mc-action">Hitung targetmu di simulasi gaji →</div>
+      </div>
+      <div class="mot-card mc-keluarga reveal d2">
+        <div class="mc-icon">👨‍👩‍👧</div>
+        <h3>Motivasi Keluarga</h3>
+        <p>Ingin jadi kebanggaan orang tua, berikan kehidupan lebih baik untuk anak, atau buktikan kepada diri sendiri bahwa kamu mampu. Ini yang paling kuat bertahan.</p>
+        <div class="mc-action">Tulis nama mereka di catatanmu →</div>
+      </div>
+      <div class="mot-card mc-diri reveal d3">
+        <div class="mc-icon">🌱</div>
+        <h3>Motivasi Pengembangan Diri</h3>
+        <p>Ingin belajar teknologi peternakan modern, fasih bahasa Jepang, dan punya pengalaman internasional yang membuka pintu karir lebih luas.</p>
+        <div class="mc-action">Bayangkan versi dirimu 3 tahun ke depan →</div>
+      </div>
+    </div>
+
+    <!-- Interaktif: Tulis alasanmu -->
+    <div class="alasan-box reveal">
+      <h3>📝 Tulis Alasanmu Berangkat</h3>
+      <p>Riset psikologi menunjukkan bahwa menuliskan tujuan secara eksplisit meningkatkan kemungkinan berhasil mencapainya. Coba sekarang, simpan di HP-mu.</p>
+      <div class="alasan-input-row">
+        <input class="alasan-input" id="alasanInput" type="text" placeholder="Contoh: Ingin bangun rumah untuk orang tua..." maxlength="100" />
+        <button class="alasan-btn" onclick="tambahAlasan()">+ Tambah</button>
+      </div>
+      <div class="alasan-list" id="alasanList">
+        <div class="alasan-empty" id="alasanEmpty">Belum ada alasan yang ditulis. Mulai sekarang!</div>
+      </div>
+      <p class="alasan-hint">💡 Simpan screenshot daftar ini dan lihat lagi saat kamu merasa ingin menyerah di Jepang nanti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- KOMUNIKASI KELUARGA -->
+<section id="keluarga">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="color:var(--teal);">📞 Keluarga</span>
+      <h2>Menjaga Hubungan dengan<br>Keluarga dari Jauh</h2>
+      <p>Jarak bukan hanya soal fisik. Ini tentang bagaimana kamu tetap hadir secara emosional meski ribuan kilometer jauhnya.</p>
+    </div>
+
+    <div class="keluarga-grid">
+      <div class="kel-card reveal d1">
+        <div class="kc-icon">📱</div>
+        <h3>Aplikasi Komunikasi Terbaik</h3>
+        <p>Pilih platform yang nyaman untuk seluruh keluarga, bukan hanya yang kamu sukai sendiri.</p>
+        <div class="kel-tip"><span class="kt">WhatsApp</span> Paling mudah dipakai semua generasi, video call gratis</div>
+        <div class="kel-tip"><span class="kt">Line</span> Populer di Jepang, bagus untuk grup keluarga</div>
+        <div class="kel-tip"><span class="kt">Zoom</span> Untuk momen spesial yang butuh kualitas video lebih baik</div>
+        <div class="kel-tip"><span class="kt">Voice note</span> Kirim pesan suara pendek setiap hari agar terasa dekat</div>
+      </div>
+      <div class="kel-card reveal d2">
+        <div class="kc-icon">🕐</div>
+        <h3>Perbedaan Waktu Indonesia-Jepang</h3>
+        <p>Jepang lebih cepat 2 jam dari WIB. Ini penting untuk menjadwalkan waktu komunikasi yang pas.</p>
+        <div class="kel-tip"><span class="kt">07.00 WIB</span> = 09.00 waktu Jepang (sebelum mulai kerja)</div>
+        <div class="kel-tip"><span class="kt">19.00 WIB</span> = 21.00 waktu Jepang (setelah makan malam)</div>
+        <div class="kel-tip"><span class="kt">Hari libur</span> Manfaatkan hari Sabtu/Minggu untuk video call lebih panjang</div>
+        <div class="kel-tip"><span class="kt">Hari Raya</span> Rencanakan video call lebih awal agar semua bisa hadir</div>
+      </div>
+      <div class="kel-card reveal d1">
+        <div class="kc-icon">💌</div>
+        <h3>Tips Menjaga Koneksi Emosional</h3>
+        <p>Komunikasi bukan hanya soal frekuensi, tapi kualitas dan cara kamu hadir.</p>
+        <div class="kel-tip"><span class="kt">Cerita rutin</span> Share foto atau video keseharianmu agar keluarga ikut merasakan</div>
+        <div class="kel-tip"><span class="kt">Jujur</span> Ceritakan suka duka, bukan hanya yang baik-baik saja</div>
+        <div class="kel-tip"><span class="kt">Libatkan</span> Tanyakan kabar detail mereka, bukan hanya update dirimu</div>
+        <div class="kel-tip"><span class="kt">Kirim hal kecil</span> Oleh-oleh kecil atau kartu pos dari Jepang sangat berarti</div>
+      </div>
+      <div class="kel-card reveal d2">
+        <div class="kc-icon">🤝</div>
+        <h3>Persiapkan Keluarga Sebelum Berangkat</h3>
+        <p>Keluarga yang tidak siap ditinggal bisa jadi beban mental tambahan. Persiapkan mereka juga.</p>
+        <div class="kel-tip"><span class="kt">Jelaskan</span> Ceritakan program SSW secara lengkap agar mereka paham dan mendukung</div>
+        <div class="kel-tip"><span class="kt">Atur keuangan</span> Tentukan berapa yang dikirim tiap bulan dan kapan waktunya</div>
+        <div class="kel-tip"><span class="kt">Kontak darurat</span> Pastikan ada satu orang yang bisa dihubungi jika ada kondisi darurat</div>
+        <div class="kel-tip"><span class="kt">Restu</span> Berangkat dengan restu keluarga membuat mentalmu jauh lebih tenang</div>
+      </div>
+    </div>
+
+    <!-- Jadwal video call interaktif -->
+    <div class="jadwal-box reveal">
+      <h3>📅 Buat Jadwal Video Call Rutinmu</h3>
+      <p>Pilih hari yang paling konsisten bisa kamu luangkan untuk video call keluarga setiap minggu.</p>
+      <div class="jadwal-grid">
+        <button class="hari-btn" onclick="pilihHari(this, 'Senin')">Sen</button>
+        <button class="hari-btn" onclick="pilihHari(this, 'Selasa')">Sel</button>
+        <button class="hari-btn" onclick="pilihHari(this, 'Rabu')">Rab</button>
+        <button class="hari-btn" onclick="pilihHari(this, 'Kamis')">Kam</button>
+        <button class="hari-btn" onclick="pilihHari(this, 'Jumat')">Jum</button>
+        <button class="hari-btn" onclick="pilihHari(this, 'Sabtu')">Sab</button>
+        <button class="hari-btn" onclick="pilihHari(this, 'Minggu')">Min</button>
+      </div>
+      <div class="jadwal-result" id="jadwalResult">Pilih hari di atas untuk lihat rekomendasinya.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGI BERTAHAN -->
+<section id="strategi">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">🗓️ Strategi</span>
+      <h2>Bulan per Bulan:<br>Apa yang Akan Kamu Rasakan</h2>
+      <p>Ini gambaran jujur perjalanan emosional di tahun pertama. Tahu apa yang akan terjadi membuat kamu jauh lebih siap menghadapinya.</p>
+    </div>
+
+    <div class="bulan-timeline">
+      <div class="bulan-item reveal">
+        <div class="bulan-num">
+          <div class="bulan-circle bc-hard">1–2</div>
+        </div>
+        <div class="bulan-body">
+          <div class="bulan-period">Bulan 1 – 2</div>
+          <h3>Fase "Mengapa Aku di Sini?"</h3>
+          <p>Ini fase terberat. Segalanya terasa asing: makanan, bahasa, ritme kerja, cuaca. Homesick menyerang paling kuat di sini. Banyak yang menangis, banyak yang ingin pulang. Ini normal dan hampir semua orang melewatinya.</p>
+          <div class="bulan-tags">
+            <span class="bulan-tag">Homesick puncak</span>
+            <span class="bulan-tag">Culture shock</span>
+            <span class="bulan-tag">Adaptasi bahasa</span>
+            <span class="bulan-tag hl">Tahan dan terus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bulan-item reveal">
+        <div class="bulan-num">
+          <div class="bulan-circle bc-adapt">3–4</div>
+        </div>
+        <div class="bulan-body">
+          <div class="bulan-period">Bulan 3 – 4</div>
+          <h3>Fase "Mulai Paham Polanya"</h3>
+          <p>Rutinitas kerja mulai terasa familiar. Kamu sudah hafal jalan ke minimarket. Bisa sedikit ngobrol dengan rekan kerja Jepang. Gaji pertama sudah masuk dan dikirim ke keluarga. Rasanya luar biasa.</p>
+          <div class="bulan-tags">
+            <span class="bulan-tag">Mulai adaptasi</span>
+            <span class="bulan-tag">Gaji pertama</span>
+            <span class="bulan-tag">Bahasa meningkat</span>
+            <span class="bulan-tag hl">Momentum membangun</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bulan-item reveal">
+        <div class="bulan-num">
+          <div class="bulan-circle bc-grow">5–8</div>
+        </div>
+        <div class="bulan-body">
+          <div class="bulan-period">Bulan 5 – 8</div>
+          <h3>Fase "Aku Bisa Ini"</h3>
+          <p>Kamu mulai percaya diri. Bisa mengurus keperluan sehari-hari sendiri tanpa bantuan. Mulai punya teman, rutinitas yang nyaman, dan tabungan yang mulai terlihat. Rasa rindu masih ada tapi tidak lagi melumpuhkan.</p>
+          <div class="bulan-tags">
+            <span class="bulan-tag">Kepercayaan diri naik</span>
+            <span class="bulan-tag">Tabungan bertambah</span>
+            <span class="bulan-tag">Teman baru</span>
+            <span class="bulan-tag hl">Mulai menikmati</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bulan-item reveal">
+        <div class="bulan-num">
+          <div class="bulan-circle bc-thrive">9–12</div>
+        </div>
+        <div class="bulan-body">
+          <div class="bulan-period">Bulan 9 – 12</div>
+          <h3>Fase "Aku Tumbuh di Sini"</h3>
+          <p>Tahun pertama hampir selesai. Kamu sudah melewati semua 4 musim. Tabungan signifikan. Bahasa Jepang jauh lebih lancar. Dan kamu mulai sadar betapa banyak yang sudah kamu pelajari tentang dirimu sendiri.</p>
+          <div class="bulan-tags">
+            <span class="bulan-tag">Tahun pertama selesai</span>
+            <span class="bulan-tag">Tabungan nyata</span>
+            <span class="bulan-tag hl">Pertumbuhan luar biasa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANGKIT SAAT INGIN MENYERAH -->
+<section id="bangkit">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="color:var(--purple);">💜 Bangkit</span>
+      <h2>Cara Bangkit Saat<br>Ingin Menyerah</h2>
+      <p>Bukan soal apakah kamu akan merasa ingin menyerah, tapi <em>kapan</em>. Dan inilah yang perlu kamu lakukan saat momen itu datang.</p>
+    </div>
+
+    <div class="bangkit-intro reveal">
+      <div class="bi-icon">💜</div>
+      <div>
+        <h3>Keinginan untuk Menyerah Bukan Berarti Kamu Lemah</h3>
+        <p>Itu hanya berarti kamu manusia biasa yang sedang menanggung beban yang tidak ringan. Yang penting adalah apa yang kamu lakukan 5 menit setelah pikiran itu datang. Di bawah ini adalah langkah-langkah konkret yang bisa kamu ambil.</p>
+      </div>
+    </div>
+
+    <div class="bangkit-steps">
+      <div class="bangkit-step reveal d1">
+        <div class="bs-num">1</div>
+        <div>
+          <h3>Berhenti Sejenak, Jangan Ambil Keputusan Besar</h3>
+          <p>Keputusan untuk pulang yang diambil di puncak emosi hampir selalu disesali. Beri dirimu 48–72 jam sebelum membuat keputusan besar apapun. Tidur, makan, dan istirahat dulu.</p>
+        </div>
+      </div>
+      <div class="bangkit-step reveal d2">
+        <div class="bs-num">2</div>
+        <div>
+          <h3>Ceritakan ke Seseorang yang Kamu Percaya</h3>
+          <p>Jangan pendam sendiri. Hubungi sesama WNI di prefekturmmu, atau anggota keluarga yang bisa mendengarkan tanpa menghakimi. Suara manusia yang peduli bisa mengubah segalanya.</p>
+        </div>
+      </div>
+      <div class="bangkit-step reveal d3">
+        <div class="bs-num">3</div>
+        <div>
+          <h3>Buka Kembali Alasan Terdalammu</h3>
+          <p>Ingat foto keluarga, ingat tujuan finansialmu, ingat semua yang sudah kamu korbankan untuk bisa sampai di titik ini. Buka catatan alasanmu yang kamu tulis sebelum berangkat.</p>
+        </div>
+      </div>
+      <div class="bangkit-step reveal d4">
+        <div class="bs-num">4</div>
+        <div>
+          <h3>Fokus ke 24 Jam ke Depan, Bukan Setahun</h3>
+          <p>Jangan pikir "aku harus bertahan 2 tahun lagi." Pikir saja: "aku hanya perlu melewati hari ini." Satu hari demi satu hari. Gunung setinggi apapun didaki satu langkah per langkah.</p>
+        </div>
+      </div>
+      <div class="bangkit-step reveal d1">
+        <div class="bs-num">5</div>
+        <div>
+          <h3>Lakukan Sesuatu yang Menyenangkan Hari Itu</h3>
+          <p>Masak makanan Indonesia favoritmu. Telepon teman lama. Tonton film Indonesia. Jalan-jalan ke toko. Kadang tubuh dan pikiran hanya butuh sesuatu yang terasa familiar dan menyenangkan.</p>
+        </div>
+      </div>
+      <div class="bangkit-step reveal d2">
+        <div class="bs-num">6</div>
+        <div>
+          <h3>Evaluasi dengan Kepala Dingin</h3>
+          <p>Jika setelah semua langkah di atas rasa ingin pulang tetap ada, barulah evaluasi secara rasional. Apakah ada masalah konkret yang bisa diselesaikan? Apakah kondisinya benar-benar tidak aman? Atau hanya fase yang akan berlalu?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SELF-CHECK QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="color:var(--purple);">🎯 Self-Check</span>
+      <h2>Seberapa Siap<br>Mental Kamu Sekarang?</h2>
+      <p>Jawab 7 pertanyaan jujur ini untuk tahu di mana posisimu saat ini.</p>
+    </div>
+
+    <div class="quiz-wrap reveal">
+      <div class="quiz-box">
+        <div id="quizContent">
+          <div class="quiz-progress-wrap">
+            <div class="quiz-progress-bar" id="quizProgressBar" style="width:14%"></div>
+          </div>
+          <div class="quiz-q-num" id="quizQNum">Pertanyaan 1 dari 7</div>
+          <div class="quiz-q-text" id="quizQText"></div>
+          <div class="quiz-options" id="quizOptions"></div>
+          <div class="quiz-nav">
+            <button class="quiz-btn qbtn-prev" id="quizPrev" onclick="prevQ()" style="visibility:hidden">← Sebelumnya</button>
+            <button class="quiz-btn qbtn-next" id="quizNext" onclick="nextQ()" disabled>Selanjutnya →</button>
+          </div>
+        </div>
+        <div id="quizResult" style="display:none" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRESS TOOLKIT -->
+<section id="stress-toolkit" style="background:var(--navy);padding:88px 0;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow" style="color:#A5F3FC;">🧰 Stress Toolkit</span>
+      <h2 style="color:var(--white);">Tools Nyata untuk<br>Kelola Stres & Emosi</h2>
+      <p style="color:rgba(255,255,255,.65);">Bukan teori panjang. Langsung coba sekarang — tiga tools yang terbukti efektif secara psikologis, bisa dipakai kapanpun kamu butuh.</p>
+    </div>
+
+    <div class="toolkit-tabs reveal">
+      <button class="tk-tab active" onclick="switchTool('breathing', this)">🫁 Box Breathing</button>
+      <button class="tk-tab" onclick="switchTool('mood', this)">🌡️ Mood Check</button>
+      <button class="tk-tab" onclick="switchTool('journal', this)">✍️ Quick Journal</button>
+    </div>
+
+    <!-- PANEL 1: BOX BREATHING -->
+    <div class="toolkit-panel active reveal" id="panel-breathing">
+      <div class="breathing-wrap">
+        <p class="breath-desc">Teknik <strong style="color:#A5F3FC;">Box Breathing</strong> dipakai Navy SEAL dan atlet profesional untuk menenangkan sistem saraf dalam hitungan menit. Klik lingkaran untuk mulai.</p>
+        <div class="breathing-circle-wrap">
+          <div class="breathing-ring"></div>
+          <div class="breathing-circle" id="breathCircle" onclick="startBreathing()">
+            <div class="bc-text" id="breathText">Mulai</div>
+            <div class="bc-sub" id="breathSub">Tap untuk mulai</div>
+          </div>
+        </div>
+        <div class="breath-count" id="breathCount"></div>
+        <p class="breath-desc" style="margin-top:16px;font-size:.82rem;color:rgba(255,255,255,.5);">Hirup 4 detik → Tahan 4 detik → Hembuskan 4 detik → Tahan 4 detik. Ulangi 4x untuk efek maksimal.</p>
+        <button class="btn-breath" id="breathBtn" onclick="startBreathing()">▶ Mulai Sesi (4 putaran)</button>
+      </div>
+    </div>
+
+    <!-- PANEL 2: MOOD CHECK -->
+    <div class="toolkit-panel" id="panel-mood">
+      <p style="text-align:center;font-size:.9rem;color:rgba(255,255,255,.65);margin-bottom:24px;">Pilih yang paling menggambarkan perasaanmu sekarang. Kamu akan dapat saran yang relevan.</p>
+      <div class="mood-grid">
+        <button class="mood-btn" onclick="checkMood(this,'sangat-baik')"><div class="mb-emoji">🤩</div><div class="mb-label">Semangat!</div></button>
+        <button class="mood-btn" onclick="checkMood(this,'baik')"><div class="mb-emoji">😊</div><div class="mb-label">Oke sih</div></button>
+        <button class="mood-btn" onclick="checkMood(this,'biasa')"><div class="mb-emoji">😐</div><div class="mb-label">Biasa aja</div></button>
+        <button class="mood-btn" onclick="checkMood(this,'lelah')"><div class="mb-emoji">😔</div><div class="mb-label">Lelah</div></button>
+        <button class="mood-btn" onclick="checkMood(this,'berat')"><div class="mb-emoji">😢</div><div class="mb-label">Berat banget</div></button>
+      </div>
+      <div class="mood-advice" id="moodAdvice">
+        <h4>Pilih mood-mu di atas</h4>
+        <p>Saran personal akan muncul di sini berdasarkan kondisimu saat ini.</p>
+      </div>
+    </div>
+
+    <!-- PANEL 3: QUICK JOURNAL -->
+    <div class="toolkit-panel" id="panel-journal">
+      <p style="text-align:center;font-size:.9rem;color:rgba(255,255,255,.65);margin-bottom:20px;">Journaling 5 menit terbukti mengurangi stres dan menjernihkan pikiran. Klik prompt di bawah untuk mulai.</p>
+      <div class="journal-prompts">
+        <div class="jp-card" onclick="setPrompt('Hari ini saya merasa... karena...')">
+          <div class="jp-num">Prompt 01</div>
+          <div class="jp-text">"Hari ini saya merasa... karena..."</div>
+          <div class="jp-tap">Tap untuk pakai prompt ini →</div>
+        </div>
+        <div class="jp-card" onclick="setPrompt('Satu hal yang membuat saya bersyukur hari ini adalah...')">
+          <div class="jp-num">Prompt 02</div>
+          <div class="jp-text">"Satu hal yang membuat saya bersyukur hari ini adalah..."</div>
+          <div class="jp-tap">Tap untuk pakai prompt ini →</div>
+        </div>
+        <div class="jp-card" onclick="setPrompt('Tantangan terbesar saya sekarang adalah... dan langkah kecil yang bisa saya ambil adalah...')">
+          <div class="jp-num">Prompt 03</div>
+          <div class="jp-text">"Tantangan terbesar saya sekarang adalah... dan langkah kecil yang bisa saya ambil adalah..."</div>
+          <div class="jp-tap">Tap untuk pakai prompt ini →</div>
+        </div>
+        <div class="jp-card" onclick="setPrompt('Saya berangkat ke Jepang karena... dan ini yang akan saya capai...')">
+          <div class="jp-num">Prompt 04</div>
+          <div class="jp-text">"Saya berangkat ke Jepang karena... dan ini yang akan saya capai..."</div>
+          <div class="jp-tap">Tap untuk pakai prompt ini →</div>
+        </div>
+      </div>
+      <textarea class="journal-area" id="journalArea" placeholder="Tulis apa yang ada di pikiranmu di sini... tidak ada yang menilai." maxlength="500" oninput="updateChar()"></textarea>
+      <div class="journal-char" id="journalChar">0 / 500</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="ey">✅ Mental Siap</span>
+      <h2>Sekarang Lengkapi<br>Persiapan Lainnya.</h2>
+      <p>Mental sudah dipersiapkan. Saatnya pastikan persiapan praktis kamu juga matang.</p>
+      <div class="cta-btns">
+        <a href="./sistem-tokutei-ginou.html" class="btn btn-white btn-lg">🏛️ Pelajari Sistem SSW</a>
+        <a href="./tanya-ai.html" class="btn btn-ghost btn-lg">🤖 Tanya AI Nousan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2025 <a href="./index.html">TokuNou Japan</a> · Dibuat dengan penuh kepedulian untuk calon pekerja SSW Indonesia.</p>
+  </div>
+</footer>
+
+<script>
+// =============================================
+// STRESS TOOLKIT
+// =============================================
+
+// --- Tab switcher ---
+function switchTool(id, el) {
+  document.querySelectorAll('.toolkit-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tk-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+// --- Box Breathing ---
+let breathRunning = false;
+let breathInterval = null;
+let breathRound = 0;
+const totalRounds = 4;
+const phases = [
+  { text: 'Hirup', sub: '4 detik', cls: 'inhale', dur: 4000 },
+  { text: 'Tahan', sub: '4 detik', cls: 'hold',   dur: 4000 },
+  { text: 'Hembuskan', sub: '4 detik', cls: 'exhale', dur: 4000 },
+  { text: 'Tahan', sub: '4 detik', cls: 'hold',   dur: 4000 },
+];
+
+function startBreathing() {
+  if (breathRunning) return;
+  breathRunning = true;
+  breathRound = 0;
+  document.getElementById('breathBtn').style.display = 'none';
+  runPhase(0);
+}
+
+function runPhase(phaseIdx) {
+  if (breathRound >= totalRounds) {
+    endBreathing(); return;
+  }
+  const phase = phases[phaseIdx];
+  const circle = document.getElementById('breathCircle');
+  circle.className = 'breathing-circle ' + phase.cls;
+  document.getElementById('breathText').textContent = phase.text;
+  document.getElementById('breathSub').textContent = phase.sub;
+  document.getElementById('breathCount').textContent = `Putaran ${breathRound + 1} dari ${totalRounds}`;
+
+  let secs = phase.dur / 1000;
+  let countdown = setInterval(() => {
+    secs--;
+    if (secs <= 0) clearInterval(countdown);
+    document.getElementById('breathSub').textContent = secs > 0 ? `${secs} detik` : phase.sub;
+  }, 1000);
+
+  setTimeout(() => {
+    clearInterval(countdown);
+    const next = (phaseIdx + 1) % phases.length;
+    if (next === 0) breathRound++;
+    runPhase(next);
+  }, phase.dur);
+}
+
+function endBreathing() {
+  breathRunning = false;
+  const circle = document.getElementById('breathCircle');
+  circle.className = 'breathing-circle';
+  document.getElementById('breathText').textContent = '✓ Selesai';
+  document.getElementById('breathSub').textContent = 'Semoga lebih tenang!';
+  document.getElementById('breathCount').textContent = '4 putaran selesai 🎉';
+  const btn = document.getElementById('breathBtn');
+  btn.style.display = 'inline-flex';
+  btn.textContent = '🔄 Ulangi Sesi';
+}
+
+// --- Mood Check ---
+const moodData = {
+  'sangat-baik': {
+    title: '🤩 Kamu lagi semangat banget!',
+    text: 'Manfaatkan energi ini sebaik mungkin. Ini saat yang tepat untuk belajar hal baru, menyelesaikan tugas berat, atau menghubungi keluarga. Simpan "screenshot" perasaan ini di ingatanmu untuk diingat saat hari-hari yang lebih berat nanti.'
+  },
+  'baik': {
+    title: '😊 Kondisi yang bagus untuk produktif',
+    text: 'Kamu dalam kondisi yang seimbang. Cocok untuk menjalani rutinitas dengan fokus. Jangan lupa apresiasi dirimu sendiri karena sudah berhasil sampai di titik ini. Kamu lebih tangguh dari yang kamu kira.'
+  },
+  'biasa': {
+    title: '😐 Flat day — itu normal kok',
+    text: 'Tidak semua hari harus luar biasa. Hari yang "biasa aja" juga bagian dari perjalanan. Coba lakukan satu hal kecil yang menyenangkan hari ini, masak makanan favorit, telepon seseorang yang kamu rindukan, atau jalan-jalan sebentar.'
+  },
+  'lelah': {
+    title: '😔 Tubuh dan pikiranmu butuh istirahat',
+    text: 'Kelelahan adalah sinyal, bukan kelemahan. Izinkan dirimu beristirahat tanpa rasa bersalah. Tidur cukup, makan yang bergizi, dan kurangi scrolling HP. Coba box breathing di tab sebelah, terbukti bantu pulihkan energi dalam 5 menit.'
+  },
+  'berat': {
+    title: '😢 Kamu tidak harus menanggung ini sendirian',
+    text: 'Perasaan ini valid. Jangan pendam. Hubungi seseorang yang kamu percaya sekarang, bisa keluarga, teman WNI di sana, atau supervisor. Kalau terasa sangat berat, ingat bahwa mencari bantuan adalah tanda keberanian, bukan kelemahan. Kamu tidak sendirian.'
+  }
+};
+
+function checkMood(el, mood) {
+  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const d = moodData[mood];
+  const adv = document.getElementById('moodAdvice');
+  adv.innerHTML = `<h4>${d.title}</h4><p>${d.text}</p>`;
+}
+
+// --- Quick Journal ---
+function setPrompt(text) {
+  const area = document.getElementById('journalArea');
+  area.value = text + ' ';
+  area.focus();
+  area.setSelectionRange(area.value.length, area.value.length);
+  updateChar();
+}
+function updateChar() {
+  const area = document.getElementById('journalArea');
+  document.getElementById('journalChar').textContent = area.value.length + ' / 500';
+}
+
+// Progress bar
+
+const bar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (window.scrollY / h * 100) + '%';
+});
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+// =============================================
+// ALASAN BERANGKAT
+// =============================================
+const alasanData = [];
+function tambahAlasan() {
+  const input = document.getElementById('alasanInput');
+  const val = input.value.trim();
+  if (!val) return;
+  alasanData.push(val);
+  input.value = '';
+  renderAlasan();
+}
+document.getElementById('alasanInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') tambahAlasan();
+});
+function hapusAlasan(i) {
+  alasanData.splice(i, 1);
+  renderAlasan();
+}
+function renderAlasan() {
+  const list = document.getElementById('alasanList');
+  const empty = document.getElementById('alasanEmpty');
+  if (alasanData.length === 0) {
+    list.innerHTML = '<div class="alasan-empty" id="alasanEmpty">Belum ada alasan yang ditulis. Mulai sekarang!</div>';
+    return;
+  }
+  list.innerHTML = alasanData.map((a, i) => `
+    <div class="alasan-item">
+      <span class="ai-text">✨ ${a}</span>
+      <button class="ai-del" onclick="hapusAlasan(${i})">✕</button>
+    </div>`).join('');
+}
+
+// =============================================
+// JADWAL VIDEO CALL
+// =============================================
+const jadwalTips = {
+  'Senin':  'Senin pagi sebelum kerja (pukul 07.00 WIB = 09.00 Jepang) atau Senin malam (19.00 WIB = 21.00 Jepang) adalah waktu yang pas untuk mulai minggu dengan semangat.',
+  'Selasa': 'Selasa malam setelah makan malam (19.00–20.00 WIB = 21.00–22.00 Jepang) adalah waktu santai yang cocok untuk video call agak panjang.',
+  'Rabu':   'Rabu adalah titik tengah minggu. Video call Rabu malam bisa jadi "pengisian energi" untuk melewati sisa minggu.',
+  'Kamis':  'Kamis malam bagus karena esoknya Jumat, akhir pekan sudah dekat. Semua biasanya dalam mood yang lebih santai.',
+  'Jumat':  'Jumat malam Jepang (sekitar 21.00) = 19.00 WIB. Ini waktu favorite banyak pekerja SSW karena esoknya libur!',
+  'Sabtu':  'Sabtu adalah pilihan terbaik! Hari libur di Jepang, lebih fleksibel. Bisa video call lebih lama dan lebih santai bersama seluruh keluarga.',
+  'Minggu': 'Minggu juga sangat bagus, tapi sisakan waktu untuk istirahat sebelum kerja besok. Video call siang hari (12.00–14.00 WIB = 14.00–16.00 Jepang) sangat pas.'
+};
+function pilihHari(el, hari) {
+  document.querySelectorAll('.hari-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const result = document.getElementById('jadwalResult');
+  result.textContent = jadwalTips[hari];
+  result.classList.add('has-result');
+}
+
+// =============================================
+// SELF-CHECK QUIZ
+// =============================================
+const questions = [
+  {
+    q: "Jika kamu harus jauh dari keluarga selama 1–2 tahun, bagaimana kamu biasanya mengatasi rasa rindu?",
+    opts: ["Sangat sulit, saya belum pernah jauh dari keluarga sama sekali", "Cukup sulit tapi saya bisa atasi dengan komunikasi rutin", "Saya cukup mandiri dan terbiasa jauh dari keluarga", "Saya pernah merantau/kuliah di luar kota dan berhasil melewatinya"],
+    scores: [1, 2, 3, 4]
+  },
+  {
+    q: "Bagaimana reaksimu saat menghadapi situasi yang sangat tidak nyaman atau menekan?",
+    opts: ["Saya sering panik dan butuh orang lain untuk menenangkan saya", "Saya berusaha tenang tapi kadang kewalahan", "Saya bisa mengidentifikasi masalah dan mencari solusi", "Saya cenderung tenang dan bisa berpikir jernih dalam tekanan"],
+    scores: [1, 2, 3, 4]
+  },
+  {
+    q: "Seberapa jelas alasan dan tujuanmu ingin bekerja di Jepang?",
+    opts: ["Masih kabur, saya belum terlalu yakin", "Ada alasan tapi belum terlalu spesifik", "Punya alasan yang jelas tapi belum tertulis", "Sangat jelas, sudah saya tulis dan sering saya ingat"],
+    scores: [1, 2, 3, 4]
+  },
+  {
+    q: "Bagaimana cara kamu menghadapi kegagalan atau penolakan?",
+    opts: ["Sangat terpukul dan butuh waktu lama untuk bangkit", "Sedih tapi bisa bangkit dalam beberapa hari", "Bisa evaluasi dan coba lagi dalam waktu relatif singkat", "Anggap sebagai pelajaran dan langsung mencari solusi"],
+    scores: [1, 2, 3, 4]
+  },
+  {
+    q: "Keluargamu (orang tua/pasangan) tahu rencana keberangkatanmu dan bagaimana reaksi mereka?",
+    opts: ["Belum tahu sama sekali", "Sudah tahu tapi mereka tidak setuju", "Sudah tahu dan netral, belum ada dukungan penuh", "Sudah tahu, mendukung penuh, dan kami sudah diskusi panjang"],
+    scores: [1, 2, 3, 4]
+  },
+  {
+    q: "Seberapa siap kamu menghadapi lingkungan baru yang sangat berbeda budayanya?",
+    opts: ["Belum pernah keluar dari zona nyaman, cukup khawatir", "Sedikit pengalaman adaptasi, agak gugup tapi mau mencoba", "Pernah adaptasi di lingkungan baru dan berhasil", "Sangat senang dengan tantangan baru dan sudah banyak belajar soal budaya Jepang"],
+    scores: [1, 2, 3, 4]
+  },
+  {
+    q: "Jika di tengah jalan kamu sangat ingin pulang, apa yang paling mungkin kamu lakukan?",
+    opts: ["Langsung pulang, kesehatan mental lebih penting", "Mungkin pulang setelah beberapa hari mempertimbangkan", "Hubungi keluarga dan komunitas WNI, coba bertahan dulu", "Punya strategi jelas untuk melewati momen sulit dan tetap di sana"],
+    scores: [1, 2, 3, 4]
+  }
+];
+
+let currentQ = 0;
+const answers = new Array(questions.length).fill(null);
+
+function renderQ() {
+  const q = questions[currentQ];
+  document.getElementById('quizQNum').textContent = `Pertanyaan ${currentQ + 1} dari ${questions.length}`;
+  document.getElementById('quizQText').textContent = q.q;
+  document.getElementById('quizProgressBar').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+  document.getElementById('quizPrev').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+  document.getElementById('quizNext').textContent = currentQ === questions.length - 1 ? 'Lihat Hasil →' : 'Selanjutnya →';
+
+  const optsEl = document.getElementById('quizOptions');
+  optsEl.innerHTML = q.opts.map((o, i) => `
+    <button class="quiz-opt ${answers[currentQ] === i ? 'selected' : ''}" onclick="selectOpt(${i})">
+      <div class="qo-dot"></div>
+      ${o}
+    </button>`).join('');
+
+  document.getElementById('quizNext').disabled = answers[currentQ] === null;
+}
+
+function selectOpt(i) {
+  answers[currentQ] = i;
+  document.querySelectorAll('.quiz-opt').forEach((el, idx) => {
+    el.classList.toggle('selected', idx === i);
+    const dot = el.querySelector('.qo-dot');
+    if (idx === i) {
+      dot.style.borderColor = '#7C3AED';
+      dot.style.background = '#7C3AED';
+    } else {
+      dot.style.borderColor = '';
+      dot.style.background = '';
+    }
+  });
+  document.getElementById('quizNext').disabled = false;
+}
+
+function nextQ() {
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQ();
+  } else {
+    showResult();
+  }
+}
+
+function prevQ() {
+  if (currentQ > 0) { currentQ--; renderQ(); }
+}
+
+function showResult() {
+  const total = answers.reduce((sum, a, i) => sum + (a !== null ? questions[i].scores[a] : 0), 0);
+  const max = questions.length * 4;
+  const pct = Math.round((total / max) * 100);
+
+  let emoji, label, desc, color, tips;
+  if (pct >= 80) {
+    emoji = '🌟'; label = 'Mental Sangat Siap!'; color = '#059669';
+    desc = 'Luar biasa! Berdasarkan jawabanmu, kamu punya fondasi mental yang sangat kuat untuk menghadapi tantangan di Jepang. Kamu mandiri, punya tujuan jelas, dan tahu cara bangkit dari kesulitan.';
+    tips = [
+      { icon: '✅', text: 'Tetap jaga komunikasi dengan keluarga meski merasa kuat' },
+      { icon: '✅', text: 'Jadikan kekuatan mentalmu sebagai modal untuk bantu sesama WNI di sana' },
+      { icon: '✅', text: 'Tetap rendah hati, karena Jepang selalu punya kejutan' }
+    ];
+  } else if (pct >= 60) {
+    emoji = '💪'; label = 'Cukup Siap, Perlu Persiapan Lebih'; color = '#D97706';
+    desc = 'Kamu punya modal mental yang baik. Ada beberapa area yang perlu diperkuat sebelum berangkat, tapi ini bukan penghalang, hanya tantangan yang bisa kamu persiapkan.';
+    tips = [
+      { icon: '📝', text: 'Tuliskan alasan dan tujuanmu secara spesifik sebelum berangkat' },
+      { icon: '👥', text: 'Bergabung komunitas WNI di Jepang sebelum berangkat agar sudah ada support system' },
+      { icon: '📞', text: 'Diskusi panjang dengan keluarga dan pastikan mereka mendukung penuh' }
+    ];
+  } else if (pct >= 40) {
+    emoji = '⚠️'; label = 'Perlu Banyak Persiapan Mental'; color = '#EA580C';
+    desc = 'Ada beberapa area penting yang masih perlu diperkuat. Ini bukan berarti kamu tidak bisa, tapi kamu perlu investasi lebih di persiapan mental sebelum memutuskan untuk berangkat.';
+    tips = [
+      { icon: '🧘', text: 'Coba dulu merantau di dalam negeri untuk latihan kemandirian' },
+      { icon: '💬', text: 'Ceritakan rencana ke keluarga dan dapatkan dukungan penuh mereka dulu' },
+      { icon: '📚', text: 'Baca lebih banyak pengalaman pekerja SSW agar ekspektasimu lebih realistis' }
+    ];
+  } else {
+    emoji = '🤔'; label = 'Belum Siap Saat Ini'; color = '#DC2626';
+    desc = 'Berdasarkan jawabanmu, ada banyak hal yang perlu dipersiapkan terlebih dulu. Ini bukan penilaian permanen, hanya gambaran kondisi saat ini. Persiapan yang matang membutuhkan waktu.';
+    tips = [
+      { icon: '⏳', text: 'Tidak ada salahnya menunda 6–12 bulan untuk mempersiapkan diri lebih baik' },
+      { icon: '🗣️', text: 'Bicarakan rencana ini dengan keluarga dan cari dukungan mereka' },
+      { icon: '📖', text: 'Pelajari lebih dalam tentang kehidupan di Jepang agar ekspektasi lebih realistis' }
+    ];
+  }
+
+  document.getElementById('quizContent').style.display = 'none';
+  const result = document.getElementById('quizResult');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <div class="qr-emoji">${emoji}</div>
+    <div class="qr-score" style="color:${color}">${pct}%</div>
+    <div class="qr-label">${label}</div>
+    <div class="qr-desc">${desc}</div>
+    <div class="qr-tips">
+      <h4>Yang Bisa Kamu Lakukan Sekarang:</h4>
+      ${tips.map(t => `<div class="qr-tip-item"><span class="qti">${t.icon}</span>${t.text}</div>`).join('')}
+    </div>
+    <button class="qbtn-reset" onclick="resetQuiz()">🔄 Ulangi Quiz</button>
+  `;
+}
+
+function resetQuiz() {
+  currentQ = 0;
+  answers.fill(null);
+  document.getElementById('quizContent').style.display = 'block';
+  document.getElementById('quizResult').style.display = 'none';
+  renderQ();
+}
+
+renderQ();
+</script>
+</body>
+</html>
