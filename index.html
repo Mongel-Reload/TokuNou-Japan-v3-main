@@ -106,7 +106,7 @@
     ============================================= */
     .container {
       width: 100%;
-      max-width: 1140px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -116,7 +116,7 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    section { padding: 96px 0; }
+    section { padding: 80px 0; }
 
     /* =============================================
        BUTTON COMPONENTS
@@ -174,17 +174,33 @@
     ============================================= */
     .section-header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 48px;
     }
     .section-header .eyebrow {
       display: inline-block;
       color: var(--red);
       margin-bottom: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.5vw, 3.6rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 16px;
     }
     .section-header p {
       color: var(--gray-600);
       margin-top: 16px;
-      font-size: 1.05rem;
+      font-size: 17px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     /* =============================================
@@ -1057,89 +1073,64 @@
     .farm-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-bottom: 48px;
+      gap: 28px;
     }
     .farm-card {
-      border-radius: var(--radius-md);
+      border-radius: 24px;
       overflow: hidden;
       border: 1px solid var(--gray-200);
       transition: transform var(--transition), box-shadow var(--transition);
+      background: var(--white);
+      height: 100%;
     }
     .farm-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-lg);
     }
-    .farm-illustration {
+    .farm-image-wrapper {
       width: 100%;
-      height: 120px;
-      background: var(--off-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--blue-light);
     }
-    .farm-illustration svg {
+    .farm-image {
       width: 100%;
       height: 100%;
-    }
-    .farm-card-header {
-      display: none;
+      object-fit: cover;
     }
     .farm-card-body {
-      padding: 24px 20px;
+      padding: 24px 28px;
     }
     .farm-card-body h3 {
       font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: var(--navy);
-    }
-    .farm-card-body p { font-size: .9rem; color: var(--gray-600); margin-bottom: 16px; }
-    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      background: var(--gray-100);
-      color: var(--gray-600);
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-size: .75rem;
-      font-weight: 500;
-    }
-
-    .farm-tech-banner {
-      background: linear-gradient(135deg, var(--blue-light), #DCE8FC);
-      border-radius: var(--radius-md);
-      padding: 36px 40px;
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      border: 1px solid rgba(26,75,140,.15);
-    }
-    .farm-tech-banner .tech-icon {
-      font-size: 3.5rem;
-      flex-shrink: 0;
-    }
-    .farm-tech-banner h3 {
-      font-family: var(--font-display);
-      font-weight: 700;
       font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 4px;
       color: var(--navy);
-      margin-bottom: 8px;
     }
-    .farm-tech-banner p { color: var(--gray-600); font-size: .95rem; }
-    .tech-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .tech-pill {
-      background: var(--blue);
-      color: var(--white);
-      padding: 5px 14px;
-      border-radius: 50px;
-      font-size: .78rem;
+    .farm-subtitle {
+      font-size: 0.9rem;
+      color: var(--gray-400);
       font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .farm-card-body p {
+      font-size: 0.9rem;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .farm-card-cta {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     /* =============================================
@@ -1254,23 +1245,45 @@
       position: relative;
       max-width: 1200px;
       margin: 0 auto;
-    }
-    .timeline::before {
-      display: none;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      align-items: start;
     }
     .timeline-item {
+      position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 16px;
-      margin-bottom: 0;
-      position: relative;
+      gap: 12px;
     }
-    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 40px;
+      font-size: 1.5rem;
+      color: var(--blue);
+      font-weight: 700;
+    }
+    .tl-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
     .tl-icon {
-      width: 80px;
-      height: 80px;
+      width: 150px;
+      height: 150px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -1285,13 +1298,9 @@
       height: 100%;
       object-fit: cover;
     }
-    .tl-dot {
-      display: none;
-    }
     .tl-content {
       flex: 1;
-      padding-top: 0;
-      max-width: 200px;
+      padding-top: 8px;
     }
     .tl-content h3 {
       font-family: var(--font-display);
@@ -1299,107 +1308,45 @@
       font-weight: 700;
       color: var(--navy);
       margin-bottom: 4px;
+      line-height: 1.3;
     }
     .tl-content p { 
       color: var(--gray-600); 
       font-size: .85rem; 
       line-height: 1.4;
-      display: none;
     }
-    .tl-duration {
-      display: inline-block;
-      background: var(--blue-light);
-      color: var(--blue);
-      padding: 4px 12px;
-      border-radius: 50px;
-      font-size: .75rem;
-      font-weight: 600;
-      margin-top: 8px;
-    }
-    @media (min-width: 768px) {
-      .timeline {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 20px;
-        align-items: start;
-      }
-      .timeline-item {
-        position: relative;
-      }
-      .timeline-item:not(:last-child)::after {
-        content: '→';
-        position: absolute;
-        right: -12px;
-        top: 40px;
-        font-size: 1.5rem;
-        color: var(--blue);
-        font-weight: 700;
-      }
-    }
-    @media (max-width: 767px) {
+    @media (max-width: 768px) {
       .timeline {
         display: flex;
         flex-direction: column;
         gap: 32px;
         max-width: 760px;
       }
-      .timeline::before {
-        display: block;
-        position: absolute;
-        left: 40px;
-        top: 0; bottom: 0;
-        width: 2px;
-        background: linear-gradient(180deg, var(--blue), var(--red));
-      }
       .timeline-item {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         text-align: left;
-        gap: 32px;
+        gap: 20px;
       }
       .timeline-item:not(:last-child)::after {
         display: none;
       }
+      .tl-number {
+        width: 48px;
+        height: 48px;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
       .tl-icon {
         width: 80px;
         height: 80px;
-        border-radius: 50%;
-        border: 3px solid var(--white);
-        box-shadow: 0 0 0 3px var(--blue), var(--shadow-sm);
+        border-radius: 12px;
       }
       .tl-content {
         max-width: none;
         flex: 1;
-        padding-top: 16px;
-      }
-      .tl-content p {
-        display: block;
-      }
-      .tl-dot {
-        display: flex;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: center;
-        border: 3px solid var(--white);
-        box-shadow: 0 0 0 3px var(--blue), var(--shadow-sm);
-        background: var(--white);
-        font-family: var(--font-display);
-        font-weight: 800;
-        font-size: 1.4rem;
-        color: var(--blue);
-        position: absolute;
-        left: 0;
-        z-index: 1;
-      }
-      .tl-dot .step-num {
-        font-size: .65rem;
-        color: var(--gray-400);
-        font-weight: 500;
-        letter-spacing: .06em;
+        padding-top: 0;
       }
     }
 
@@ -2584,112 +2531,174 @@
 <!-- =============================================
      SECTION: QUICK STATS
 ============================================= -->
-<section id="quick-stats" style="padding:40px 0;background:var(--white);">
+<section id="quick-stats" style="padding: 0 0 80px; background: #F7FAFF;">
   <div class="container">
-    <div class="stats-grid fade-up">
-      <div class="stat-card">
-        <div class="stat-icon">💰</div>
-        <div class="stat-value">¥220k+</div>
-        <div class="stat-label">Gaji Awal / Bulan</div>
+    <div class="stats-strip fade-up">
+      <div class="stat-item">
+        <div class="stat-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"></line>
+            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+          </svg>
+        </div>
+        <div class="stat-number">¥220k+</div>
+        <div class="stat-text">Gaji Awal / Bulan</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-icon">📅</div>
-        <div class="stat-value">5 Tahun</div>
-        <div class="stat-label">Durasi Visa SSW-1</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </div>
+        <div class="stat-number">5 Tahun</div>
+        <div class="stat-text">Durasi Visa SSW-1</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-icon">📊</div>
-        <div class="stat-value">82k</div>
-        <div class="stat-label">Kuota Pertanian 2024–2029</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+          </svg>
+        </div>
+        <div class="stat-number">82k</div>
+        <div class="stat-text">Kuota Pertanian 2024–2029</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-icon">🎯</div>
-        <div class="stat-value">N4 / JFT</div>
-        <div class="stat-label">Level Bahasa Minimal</div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+        </div>
+        <div class="stat-number">N4 / JFT</div>
+        <div class="stat-text">Level Bahasa Minimal</div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-  }
-  @media (max-width: 1024px) {
-    .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 600px) {
-    .stats-grid { grid-template-columns: 1fr; }
-  }
-  .stat-card {
+  .stats-strip {
+    max-width: 1180px;
+    margin: 0 auto;
     background: var(--white);
     border: 1px solid var(--gray-200);
-    border-radius: var(--radius-md);
-    padding: 32px 24px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(11,31,58,.05);
+    display: flex;
+    align-items: center;
+    padding: 36px 40px;
+    transform: translateY(-24px);
+  }
+  .stat-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    transition: transform var(--transition), box-shadow var(--transition);
+    padding: 0 20px;
   }
-  .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
-  .stat-icon {
-    font-size: 2.5rem;
+  .stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
     margin-bottom: 12px;
   }
-  .stat-value {
+  .stat-number {
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: clamp(2rem, 2.5vw, 2.8rem);
     font-weight: 700;
     color: var(--navy);
-    margin-bottom: 8px;
+    line-height: 1;
+    margin-bottom: 4px;
   }
-  .stat-label {
-    font-size: .9rem;
+  .stat-text {
+    font-size: 15px;
     color: var(--gray-600);
+    font-weight: 500;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--gray-200);
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .stats-strip {
+      flex-direction: column;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      padding: 28px 24px;
+      transform: translateY(0);
+    }
+    .stat-item {
+      padding: 0;
+    }
+    .stat-divider {
+      display: none;
+    }
   }
 </style>
 
 <!-- =============================================
      SECTION: MULAI DARI MANA?
 ============================================= -->
-<section id="mulai-dari-mana" style="padding:80px 0;background:var(--white);">
+<section id="mulai-dari-mana" style="padding:80px 0;background:#F7FAFF;">
   <div class="container">
     <div class="section-header fade-up">
       <span class="label eyebrow" style="color:var(--red);">Mulai dari Mana?</span>
-      <h2 class="display-lg">Pilih sesuai tahap persiapanmu saat ini</h2>
-      <p>Tidak perlu bingung. Sesuaikan langkahmu dengan kondisi saat ini.</p>
+      <h2 class="display-lg">Pilih Jalur Persiapanmu</h2>
+      <p>Mulai dari tahap yang paling sesuai dengan kondisimu sekarang.</p>
     </div>
 
-    <div class="mulai-grid fade-up">
-      <div class="mulai-card">
-        <div class="mulai-illustration">
-          <img src="assets/illustrations/02-start-program.png" alt="Ilustrasi mengenal program Tokutei Ginou" class="mulai-illustration-img" loading="lazy" width="200" height="100">
+    <div class="journey-grid fade-up">
+      <a href="sistem-tokutei-ginou.html" class="journey-card">
+        <div class="journey-image-wrapper">
+          <img src="assets/illustrations/02-start-program.png" alt="Ilustrasi mengenal program Tokutei Ginou" class="journey-image" loading="lazy">
         </div>
-        <h3>Baru Mengenal Tokutei Ginou</h3>
-        <p>Pelajari program Tokutei Ginou, persyaratan, sektor peternakan, dan gambaran proses keberangkatan.</p>
-        <a href="sistem-tokutei-ginou.html" class="mulai-cta">Pelajari Program →</a>
-      </div>
+        <div class="journey-content">
+          <div class="journey-step" style="color:var(--blue);">TAHAP 01</div>
+          <h3>Baru Mengenal Tokutei Ginou</h3>
+          <p>Kenali program, persyaratan, sektor peternakan, dan alur keberangkatan ke Jepang.</p>
+          <div class="journey-cta">Pelajari Program →</div>
+        </div>
+      </a>
 
-      <div class="mulai-card">
-        <div class="mulai-illustration">
-          <img src="assets/illustrations/03-start-language.png" alt="Ilustrasi belajar bahasa Jepang" class="mulai-illustration-img" loading="lazy" width="200" height="100">
+      <a href="#alur" class="journey-card">
+        <div class="journey-image-wrapper">
+          <img src="assets/illustrations/03-start-language.png" alt="Ilustrasi belajar bahasa Jepang" class="journey-image" loading="lazy">
         </div>
-        <h3>Sedang Mempersiapkan Diri</h3>
-        <p>Pelajari bahasa Jepang, ujian keterampilan peternakan, budaya kerja, dan tahapan menuju Jepang.</p>
-        <a href="#alur" class="mulai-cta">Lihat Roadmap →</a>
-      </div>
+        <div class="journey-content">
+          <div class="journey-step" style="color:#5BA8E8;">TAHAP 02</div>
+          <h3>Sedang Mempersiapkan Diri</h3>
+          <p>Persiapkan bahasa Jepang, ujian keterampilan, budaya kerja, dan proses seleksi.</p>
+          <div class="journey-cta">Lihat Roadmap →</div>
+        </div>
+      </a>
 
-      <div class="mulai-card">
-        <div class="mulai-illustration">
-          <img src="assets/illustrations/04-start-ready.png" alt="Ilustrasi persiapan dokumen keberangkatan Jepang" class="mulai-illustration-img" loading="lazy" width="200" height="100">
+      <a href="cek-kesiapan.html" class="journey-card">
+        <div class="journey-image-wrapper">
+          <img src="assets/illustrations/04-start-ready.png" alt="Ilustrasi persiapan dokumen keberangkatan Jepang" class="journey-image" loading="lazy">
         </div>
-        <h3>Sudah Siap Mendaftar</h3>
-        <p>Cek kesiapan dokumen, bahasa, pengetahuan, dan persiapan sebelum mengikuti proses seleksi.</p>
-        <a href="cek-kesiapan.html" class="mulai-cta">Cek Kesiapan →</a>
-      </div>
+        <div class="journey-content">
+          <div class="journey-step" style="color:var(--red);">TAHAP 03</div>
+          <h3>Sudah Siap Mendaftar</h3>
+          <p>Periksa bahasa, dokumen, keterampilan, dan kesiapanmu sebelum mengikuti proses seleksi.</p>
+          <div class="journey-cta">Cek Kesiapan →</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -2704,63 +2713,63 @@
 <!-- =============================================
      SECTION 6: ALUR BERANGKAT (TIMELINE) - MOVED UP
 ============================================= -->
-<section id="alur">
+<section id="alur" style="background: #F7FAFF;">
   <div class="container">
     <div class="section-header fade-up">
       <span class="label eyebrow" style="color:var(--red);">Peta Perjalanan</span>
-      <h2 class="display-lg">5 Langkah Menuju<br>Jepang, Sesederhana Ini</h2>
-      <p>Terlihat panjang? Tenang. Setiap langkah ada panduan dan komunitasnya.<br>Kamu tidak perlu berjalan sendiri.</p>
+      <h2 class="display-lg">5 Langkah Menuju Jepang</h2>
+      <p>Terlihat panjang? Tenang. Setiap langkah ada panduan dan komunitasnya. Kamu tidak perlu berjalan sendiri.</p>
     </div>
 
     <div class="timeline fade-up">
       <div class="timeline-item">
+        <div class="tl-number">01</div>
         <div class="tl-icon">
-          <img src="assets/illustrations/05-roadmap-program.png" alt="Kenal Program" class="tl-icon-img" loading="lazy" width="80" height="80">
+          <img src="assets/illustrations/05-roadmap-program.png" alt="Kenal Program" class="tl-icon-img" loading="lazy">
         </div>
         <div class="tl-content">
           <h3>Kenal Program</h3>
           <p>Pelajari program Tokutei Ginou, persyaratan, dan sektor peternakan.</p>
-          <span class="tl-duration">Step 01</span>
         </div>
       </div>
       <div class="timeline-item">
+        <div class="tl-number">02</div>
         <div class="tl-icon">
-          <img src="assets/illustrations/06-roadmap-language.png" alt="Belajar Bahasa" class="tl-icon-img" loading="lazy" width="80" height="80">
+          <img src="assets/illustrations/06-roadmap-language.png" alt="Belajar Bahasa" class="tl-icon-img" loading="lazy">
         </div>
         <div class="tl-content">
           <h3>Belajar Bahasa</h3>
           <p>Target minimal JLPT N4 atau setara. Konsisten belajar setiap hari.</p>
-          <span class="tl-duration">Step 02</span>
         </div>
       </div>
       <div class="timeline-item">
+        <div class="tl-number">03</div>
         <div class="tl-icon">
-          <img src="assets/illustrations/07-roadmap-exam.png" alt="Ujian Keterampilan" class="tl-icon-img" loading="lazy" width="80" height="80">
+          <img src="assets/illustrations/07-roadmap-exam.png" alt="Ujian Keterampilan" class="tl-icon-img" loading="lazy">
         </div>
         <div class="tl-content">
           <h3>Ujian Keterampilan</h3>
           <p>Ikuti tes bahasa dan tes keterampilan sektor peternakan.</p>
-          <span class="tl-duration">Step 03</span>
         </div>
       </div>
       <div class="timeline-item">
+        <div class="tl-number">04</div>
         <div class="tl-icon">
-          <img src="assets/illustrations/08-roadmap-interview.png" alt="Matching & Interview" class="tl-icon-img" loading="lazy" width="80" height="80">
+          <img src="assets/illustrations/08-roadmap-interview.png" alt="Matching & Interview" class="tl-icon-img" loading="lazy">
         </div>
         <div class="tl-content">
           <h3>Matching</h3>
           <p>Daftar ke perusahaan dan ikuti wawancara dengan pemberi kerja.</p>
-          <span class="tl-duration">Step 04</span>
         </div>
       </div>
       <div class="timeline-item">
+        <div class="tl-number">05</div>
         <div class="tl-icon">
-          <img src="assets/illustrations/09-roadmap-departure.png" alt="Keberangkatan" class="tl-icon-img" loading="lazy" width="80" height="80">
+          <img src="assets/illustrations/09-roadmap-departure.png" alt="Keberangkatan" class="tl-icon-img" loading="lazy">
         </div>
         <div class="tl-content">
           <h3>Keberangkatan</h3>
           <p>Pengurusan visa dan berangkat ke Jepang untuk mulai bekerja.</p>
-          <span class="tl-duration" style="background:var(--red-light); color:var(--red);">Step 05</span>
         </div>
       </div>
     </div>
@@ -2773,75 +2782,287 @@
 <!-- =============================================
      SECTION 4: KERJA DI PETERNAKAN
 ============================================= -->
-<section id="peternakan">
+<section id="peternakan" style="background:#FFFFFF;">
   <div class="container">
     <div class="section-header fade-up">
       <span class="label eyebrow" style="color:var(--red);">Gambaran Nyata</span>
-      <h2 class="display-lg">Seperti Apa Kerja di<br>Peternakan Jepang?</h2>
-      <p>Lupakan bayangan peternakan kumuh dan bau menyengat. Peternakan Jepang adalah tempat<br>kerja yang terorganisir, bersih, dan menggunakan teknologi mutakhir.</p>
+      <h2 class="display-lg">Seperti Apa Kerja di Peternakan Jepang?</h2>
+      <p>Lupakan bayangan peternakan kumuh dan bau menyengat. Peternakan Jepang adalah tempat kerja yang terorganisir, bersih, dan menggunakan teknologi mutakhir.</p>
     </div>
 
     <div class="farm-grid">
-      <div class="farm-card fade-up fade-up-delay-1">
-        <div class="farm-illustration">
-          <img src="assets/illustrations/10-farm-cattle.png" alt="Pekerja peternakan sapi di Jepang" class="farm-illustration-img" loading="lazy" width="200" height="120">
-        </div>
-        <div class="farm-card-body">
-          <h3>Peternakan Sapi</h3>
-          <p>Merawat sapi perah dan sapi pedaging, memerah susu (dengan mesin otomatis), memberi pakan, menjaga kebersihan kandang, dan memantau kesehatan ternak.</p>
-          <div class="tag-list">
-            <span class="tag">🥛 Sapi Perah</span>
-            <span class="tag">🥩 Sapi Pedaging</span>
-            <span class="tag">⚙️ Mesin Pemerah</span>
+      <a href="kerja-peternakan-sapi.html" class="farm-card-link fade-up fade-up-delay-1">
+        <div class="farm-card">
+          <div class="farm-image-wrapper">
+            <img src="assets/illustrations/10-farm-cattle.png" alt="Pekerja peternakan sapi di Jepang" class="farm-image" loading="lazy">
+          </div>
+          <div class="farm-card-body">
+            <h3>Peternakan Sapi</h3>
+            <p class="farm-subtitle">Dairy & Beef</p>
+            <p>Pelajari pekerjaan utama pada peternakan sapi di Jepang.</p>
+            <div class="farm-card-cta">Pelajari →</div>
           </div>
         </div>
-      </div>
-      <div class="farm-card fade-up fade-up-delay-2">
-        <div class="farm-illustration">
-          <img src="assets/illustrations/11-farm-poultry.png" alt="Pekerja peternakan ayam di Jepang" class="farm-illustration-img" loading="lazy" width="200" height="120">
-        </div>
-        <div class="farm-card-body">
-          <h3>Peternakan Ayam</h3>
-          <p>Mengelola kandang ayam petelur atau pedaging, pengumpulan telur, pengawasan kualitas pakan otomatis, dan menjaga sanitasi kandang sesuai standar ketat.</p>
-          <div class="tag-list">
-            <span class="tag">🥚 Ayam Petelur</span>
-            <span class="tag">🍗 Ayam Pedaging</span>
-            <span class="tag">🤖 Pakan Otomatis</span>
+      </a>
+      <a href="kerja-peternakan-ayam.html" class="farm-card-link fade-up fade-up-delay-2">
+        <div class="farm-card">
+          <div class="farm-image-wrapper">
+            <img src="assets/illustrations/11-farm-poultry.png" alt="Pekerja peternakan ayam di Jepang" class="farm-image" loading="lazy">
+          </div>
+          <div class="farm-card-body">
+            <h3>Peternakan Ayam</h3>
+            <p class="farm-subtitle">Layer & Broiler</p>
+            <p>Pelajari pekerjaan utama pada peternakan ayam di Jepang.</p>
+            <div class="farm-card-cta">Pelajari →</div>
           </div>
         </div>
-      </div>
-      <div class="farm-card fade-up fade-up-delay-3">
-        <div class="farm-illustration">
-          <img src="assets/illustrations/12-farm-pig.png" alt="Pekerja peternakan babi di Jepang" class="farm-illustration-img" loading="lazy" width="200" height="120">
-        </div>
-        <div class="farm-card-body">
-          <h3>Peternakan Babi</h3>
-          <p>Mengelola siklus pemeliharaan babi dari lahir hingga siap panen, pemberian pakan, pemantauan reproduksi, dan penanganan hewan sesuai prosedur.</p>
-          <div class="tag-list">
-            <span class="tag">📋 Pemeliharaan</span>
-            <span class="tag">🔬 Monitoring</span>
-            <span class="tag">📊 Data Tracking</span>
+      </a>
+      <a href="kerja-peternakan-babi.html" class="farm-card-link fade-up fade-up-delay-3">
+        <div class="farm-card">
+          <div class="farm-image-wrapper">
+            <img src="assets/illustrations/12-farm-pig.png" alt="Pekerja peternakan babi di Jepang" class="farm-image" loading="lazy">
+          </div>
+          <div class="farm-card-body">
+            <h3>Peternakan Babi</h3>
+            <p class="farm-subtitle">Swine Production</p>
+            <p>Pelajari pekerjaan utama pada peternakan babi di Jepang.</p>
+            <div class="farm-card-cta">Pelajari →</div>
           </div>
         </div>
-      </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     SECTION: TOOLS
+============================================= -->
+<section id="tools" style="background: #F1F7FD; padding: 80px 0;">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="label eyebrow" style="color:var(--blue);">Tools Interaktif</span>
+      <h2 class="display-lg">Persiapkan Diri dengan Tools</h2>
+      <p>Gunakan tools interaktif untuk mengukur kesiapan, simulasi biaya, dan berlatih sebelum tes.</p>
     </div>
 
-    <div class="farm-tech-banner fade-up">
-      <div class="tech-icon">🤖</div>
-      <div>
-        <h3>Teknologi Modern di Peternakan Jepang</h3>
-        <p>Tidak seperti yang dibayangkan, peternakan Jepang sudah sangat modern. Kamu akan bekerja dengan berbagai teknologi canggih yang justru membuat pekerjaan lebih ringan dan efisien.</p>
-        <div class="tech-pills">
-          <span class="tech-pill">🤖 Robot Pemerah Susu</span>
-          <span class="tech-pill">📡 Sensor IoT Ternak</span>
-          <span class="tech-pill">🌡️ Kontrol Suhu Otomatis</span>
-          <span class="tech-pill">📱 Aplikasi Monitoring</span>
-          <span class="tech-pill">🚜 Traktor Otomasi</span>
+    <div class="tools-grid fade-up">
+      <a href="cek-kesiapan.html" class="tool-card">
+        <div class="tool-icon-wrapper">
+          <img src="assets/illustrations/14-tool-readiness.png" alt="Cek Kesiapan" class="tool-icon" loading="lazy">
+        </div>
+        <div class="tool-content">
+          <h3>Cek Kesiapan</h3>
+          <p>Evaluasi kesiapan dokumen, bahasa, dan keterampilanmu.</p>
+          <div class="tool-cta">Cek Sekarang →</div>
+        </div>
+      </a>
+
+      <a href="simulasi-biaya.html" class="tool-card">
+        <div class="tool-icon-wrapper">
+          <img src="assets/illustrations/15-tool-salary.png" alt="Simulasi Biaya" class="tool-icon" loading="lazy">
+        </div>
+        <div class="tool-content">
+          <h3>Simulasi Gaji & Biaya</h3>
+          <p>Hitung estimasi gaji dan biaya hidup di Jepang.</p>
+          <div class="tool-cta">Simulasi →</div>
+        </div>
+      </a>
+
+      <a href="quiz.html" class="tool-card">
+        <div class="tool-icon-wrapper">
+          <img src="assets/illustrations/16-tool-quiz.png" alt="Quiz" class="tool-icon" loading="lazy">
+        </div>
+        <div class="tool-content">
+          <h3>Latihan Quiz</h3>
+          <p>Uji pengetahuanmu tentang Tokutei Ginou dan Jepang.</p>
+          <div class="tool-cta">Mulai Quiz →</div>
+        </div>
+      </a>
+
+      <a href="tanya-ai.html" class="tool-card">
+        <div class="tool-icon-wrapper">
+          <img src="assets/illustrations/17-tool-ai.png" alt="Tanya AI" class="tool-icon" loading="lazy">
+        </div>
+        <div class="tool-content">
+          <div class="ai-badge">AI Assistant</div>
+          <h3>Tanya Nousan AI</h3>
+          <p>Tanya pertanyaan seputar persiapan ke Jepang.</p>
+          <div class="tool-cta">Tanya Sekarang →</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  }
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--blue);
+  }
+  .tool-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .tool-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  .ai-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    width: fit-content;
+  }
+  .tool-content h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .tool-content p {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    margin-bottom: 16px;
+    line-height: 1.5;
+    flex: 1;
+  }
+  .tool-cta {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--blue);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  @media (max-width: 1024px) {
+    .tools-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 600px) {
+    .tools-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<!-- =============================================
+     SECTION: KEHIDUPAN JEPANG
+============================================= -->
+<section id="japan-life" style="background:#F7FAFF; padding: 80px 0;">
+  <div class="container">
+    <div class="japan-life-wrapper fade-up">
+      <div class="japan-life-image">
+        <img src="assets/illustrations/13-japan-life.png" alt="Kehidupan di Jepang" class="japan-life-img" loading="lazy">
+      </div>
+      <div class="japan-life-content">
+        <span class="label eyebrow" style="color:var(--red);">Lebih dari Sekadar Bekerja</span>
+        <h2 class="display-lg">Persiapkan Kehidupanmu di Jepang</h2>
+        <p>Bekerja di Jepang juga membutuhkan pemahaman budaya, biaya hidup, transportasi, komunikasi, dan adaptasi.</p>
+        <div class="japan-life-links">
+          <a href="budaya-jepang.html" class="japan-link">Budaya Kerja →</a>
+          <a href="kehidupan-di-jepang.html" class="japan-link">Kehidupan Jepang →</a>
+          <a href="kosakata-peternakan.html" class="japan-link">Kosakata →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .japan-life-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .japan-life-image {
+    width: 100%;
+  }
+  .japan-life-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+  .japan-life-content {
+    padding: 20px;
+  }
+  .japan-life-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin: 16px 0;
+  }
+  .japan-life-content p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .japan-life-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .japan-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color var(--transition);
+  }
+  .japan-link:hover {
+    color: var(--blue-mid);
+  }
+  @media (max-width: 768px) {
+    .japan-life-wrapper {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .japan-life-image {
+      order: -1;
+    }
+  }
+</style>
+
 <!-- =============================================
      SECTION 5: CERITA INSPIRATIF
 ============================================= -->
