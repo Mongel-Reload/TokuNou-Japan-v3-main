@@ -75,26 +75,37 @@
        HERO — energik & bold
     ============================================= */
     #hero {
-      position: relative; min-height: 75vh;
+      position: relative;
       background: linear-gradient(155deg, #052e16 0%, #065f46 45%, #0d9488 100%);
       display: flex; align-items: center;
-      padding: 130px 0 80px; overflow: hidden;
+      padding: 64px 0 72px; overflow: hidden;
     }
-    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 550px; height: 550px; background: radial-gradient(circle, rgba(5,150,105,.45) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .c2 { position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(13,148,136,.3) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 550px; height: 550px; background: radial-gradient(circle, rgba(5,150,105,.45) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .c2 { position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(13,148,136,.3) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 48px 48px; }
     /* floating emojis deco */
-    .hero-deco { position: absolute; right: 6%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; pointer-events: none; opacity: .12; }
+    .hero-deco { position: absolute; right: 6%; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 16px; pointer-events: none; opacity: .08; }
     .hero-deco span { font-size: clamp(3rem,6vw,5.5rem); line-height: 1; animation: floatDeco 4s ease-in-out infinite; }
     .hero-deco span:nth-child(2) { animation-delay: .8s; margin-left: 30px; }
     .hero-deco span:nth-child(3) { animation-delay: 1.6s; }
     @keyframes floatDeco { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
+    .hero-wrapper { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+    @media (min-width: 1024px) {
+      .hero-wrapper { grid-template-columns: 55% 45%; }
+    }
     .hero-content { position: relative; z-index: 2; color: var(--white); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 24px; }
-    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5.5vw,4.2rem); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; margin-bottom: 20px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; }
+    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 3.6vw, 3.8rem); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; margin-bottom: 16px; }
     #hero h1 em { font-style: normal; color: #6EE7B7; }
-    .hero-desc { font-size: 1.08rem; line-height: 1.75; color: rgba(255,255,255,.82); max-width: 520px; margin-bottom: 32px; }
+    .hero-desc { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 600px; margin-bottom: 32px; }
+    .hero-image { display: none; position: relative; align-items: center; justify-content: center; }
+    @media (min-width: 1024px) {
+      .hero-image { display: flex; }
+    }
+    .hero-image-bg { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.12) 0%, transparent 70%); }
+    .hero-image-img { width: 100%; max-width: 480px; height: auto; object-fit: contain; display: block; margin: auto; position: relative; z-index: 2; }
 
     /* Quick stats strip */
     .hero-strip { display: flex; gap: 0; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-md); overflow: hidden; max-width: 560px; }
@@ -356,32 +367,36 @@
   <div class="hero-bg"><div class="c1"></div><div class="c2"></div><div class="grid"></div></div>
   <div class="hero-deco"><span>🐄</span><span>🐖</span><span>🐔</span></div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow">🐄 Ujian Wajib SSW · Sektor Peternakan</div>
-      <h1>Satu Ujian Lagi<br>Menuju <em>Jepang</em></h1>
-      <p class="hero-desc">Selain bahasa Jepang, kamu wajib lulus ujian keterampilan peternakan via Prometric. Ini panduan lengkapnya — dari materi, cara daftar, sampai contoh soal interaktif.</p>
-      <div class="hero-strip">
-        <div class="hs-item">
-          <div class="hs-val">CBT</div>
-          <div class="hs-key">Format ujian komputer</div>
+    <div class="hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-eyebrow">🐄 Ujian Wajib SSW · Sektor Peternakan</div>
+        <h1>Satu Ujian Lagi<br>Menuju <em>Jepang</em></h1>
+        <p class="hero-desc">Selain bahasa Jepang, kamu wajib lulus ujian keterampilan peternakan via Prometric. Ini panduan lengkapnya — dari materi, cara daftar, sampai contoh soal interaktif.</p>
+        <div class="hero-strip">
+          <div class="hs-item">
+            <div class="hs-val">CBT</div>
+            <div class="hs-key">Format ujian komputer</div>
+          </div>
+          <div class="hs-item">
+            <div class="hs-val">🇮🇩</div>
+            <div class="hs-key">Bisa pakai Bahasa Indonesia</div>
+          </div>
+          <div class="hs-item">
+            <div class="hs-val">70</div>
+            <div class="hs-key">Soal, durasi 60 menit</div>
+          </div>
+          <div class="hs-item">
+            <div class="hs-val">Rp450rb</div>
+            <div class="hs-key">Biaya di lokasi Indonesia (¥8.000 jika di Jepang)</div>
         </div>
-        <div class="hs-item">
-          <div class="hs-val">🇮🇩</div>
-          <div class="hs-key">Bisa pakai Bahasa Indonesia</div>
-        </div>
-        <div class="hs-item">
-          <div class="hs-val">70</div>
-          <div class="hs-key">Soal, durasi 60 menit</div>
-        </div>
-        <div class="hs-item">
-          <div class="hs-val">Rp450rb</div>
-          <div class="hs-key">Biaya di lokasi Indonesia (¥8.000 jika di Jepang)</div>
-        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-bg"></div>
+        <img src="assets/illustrations/pages/page-exam-hero.png" alt="Ilustrasi ujian keterampilan peternakan SSW" class="hero-image-img" fetchpriority="high" loading="eager" width="480" height="480">
       </div>
     </div>
   </div>
 </section>
-
 <!-- APA ITU UJIAN INI -->
 <section id="apa-ujian">
   <div class="container">

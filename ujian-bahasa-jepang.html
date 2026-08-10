@@ -74,19 +74,30 @@
     .progress-bar { position: fixed; top: 68px; left: 0; height: 3px; background: linear-gradient(90deg, var(--red), var(--blue-mid)); z-index: 999; width: 0%; transition: width .1s ease; }
 
     /* HERO */
-    #hero { position: relative; min-height: 68vh; background: linear-gradient(155deg, #0A2550 0%, #1A5DAD 55%, #3B9EE8 100%); display: flex; align-items: center; padding: 130px 0 80px; overflow: hidden; }
-    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(91,168,232,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(219,238,255,.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
-    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(5rem,12vw,11rem); color: rgba(255,255,255,.05); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; letter-spacing: .1em; }
+    #hero { position: relative; background: linear-gradient(155deg, #0A2550 0%, #1A5DAD 55%, #3B9EE8 100%); display: flex; align-items: center; padding: 64px 0 72px; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(91,168,232,.4) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(219,238,255,.15) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 48px 48px; }
+    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(4rem,10vw,8rem); color: rgba(255,255,255,.04); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; letter-spacing: .1em; }
+    .hero-wrapper { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+    @media (min-width: 1024px) {
+      .hero-wrapper { grid-template-columns: 55% 45%; }
+    }
     .hero-content { position: relative; z-index: 2; color: var(--white); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 28px; backdrop-filter: blur(8px); }
-    .hero-content h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5.5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; backdrop-filter: blur(8px); }
+    .hero-content h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 3.6vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }
     .hero-content h1 em { font-style: normal; color: #93C5FD; }
-    .hero-desc { font-size: 1.08rem; line-height: 1.75; color: rgba(255,255,255,.82); max-width: 540px; margin-bottom: 36px; }
+    .hero-desc { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 600px; margin-bottom: 32px; }
     .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
     .hero-stat .val { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; line-height: 1; color: #93C5FD; }
     .hero-stat .key { font-size: .76rem; color: rgba(255,255,255,.6); font-weight: 500; margin-top: 4px; }
+    .hero-image { display: none; position: relative; align-items: center; justify-content: center; }
+    @media (min-width: 1024px) {
+      .hero-image { display: flex; }
+    }
+    .hero-image-bg { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(219,238,255,.12) 0%, transparent 70%); }
+    .hero-image-img { width: 100%; max-width: 480px; height: auto; object-fit: contain; display: block; margin: auto; position: relative; z-index: 2; }
 
     /* SECTION HEADER */
     .section-header { text-align: center; margin-bottom: 56px; }
@@ -318,17 +329,23 @@
   </div>
   <div class="kanji-deco">日本語</div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow">🗣️ <span>Panduan Lengkap</span> · Ujian Bahasa Jepang SSW</div>
-      <h1>Ujian Bahasa Jepang:<br><em>Dari Nol Sampai Lulus</em></h1>
-      <p class="hero-desc">
-        JFT-Basic atau JLPT N4? Belajar dari mana? Kapan ujian? Semua dijawab di sini, dengan panduan step-by-step dan rekomendasi aplikasi yang sudah terbukti.
-      </p>
-      <div class="hero-stats">
-        <div class="hero-stat"><span class="val">6–12</span><span class="key">Bulan persiapan rata-rata</span></div>
-        <div class="hero-stat"><span class="val">2x</span><span class="key">Opsi ujian tersedia</span></div>
-        <div class="hero-stat"><span class="val">Gratis</span><span class="key">Aplikasi belajar utama</span></div>
-        <div class="hero-stat"><span class="val">N4</span><span class="key">Level yang dibutuhkan</span></div>
+    <div class="hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-eyebrow">🗣️ <span>Panduan Lengkap</span> · Ujian Bahasa Jepang SSW</div>
+        <h1>Ujian Bahasa Jepang:<br><em>Dari Nol Sampai Lulus</em></h1>
+        <p class="hero-desc">
+          JFT-Basic atau JLPT N4? Belajar dari mana? Kapan ujian? Semua dijawab di sini, dengan panduan step-by-step dan rekomendasi aplikasi yang sudah terbukti.
+        </p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="val">6–12</span><span class="key">Bulan persiapan rata-rata</span></div>
+          <div class="hero-stat"><span class="val">2x</span><span class="key">Opsi ujian tersedia</span></div>
+          <div class="hero-stat"><span class="val">Gratis</span><span class="key">Aplikasi belajar utama</span></div>
+          <div class="hero-stat"><span class="val">N4</span><span class="key">Level yang dibutuhkan</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-bg"></div>
+        <img src="assets/illustrations/pages/page-language-hero.png" alt="Ilustrasi belajar bahasa Jepang untuk SSW" class="hero-image-img" fetchpriority="high" loading="eager" width="480" height="480">
       </div>
     </div>
   </div>

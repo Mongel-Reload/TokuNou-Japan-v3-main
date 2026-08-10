@@ -70,24 +70,34 @@
     ============================================= */
     #hero {
       position: relative;
-      min-height: 72vh;
       background: linear-gradient(155deg, #1E1B4B 0%, #4C1D95 45%, #0D9488 100%);
       display: flex; align-items: center;
-      padding: 130px 0 80px;
+      padding: 64px 0 72px;
       overflow: hidden;
     }
-    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(124,58,237,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(13,148,136,.3) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
-    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(5rem,12vw,11rem); color: rgba(255,255,255,.05); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(124,58,237,.4) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(13,148,136,.3) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 48px 48px; }
+    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(4rem,10vw,8rem); color: rgba(255,255,255,.04); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; }
+    .hero-wrapper { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+    @media (min-width: 1024px) {
+      .hero-wrapper { grid-template-columns: 55% 45%; }
+    }
     .hero-content { position: relative; z-index: 2; color: var(--white); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 28px; }
-    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5.5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; }
+    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 3.6vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }
     #hero h1 em { font-style: normal; color: #A5F3FC; }
-    .hero-desc { font-size: 1.08rem; line-height: 1.75; color: rgba(255,255,255,.82); max-width: 540px; margin-bottom: 36px; }
+    .hero-desc { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 600px; margin-bottom: 32px; }
     .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
     .hero-stat .val { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; line-height: 1; color: #A5F3FC; }
     .hero-stat .key { font-size: .76rem; color: rgba(255,255,255,.6); font-weight: 500; margin-top: 4px; }
+    .hero-image { display: none; position: relative; align-items: center; justify-content: center; }
+    @media (min-width: 1024px) {
+      .hero-image { display: flex; }
+    }
+    .hero-image-bg { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); }
+    .hero-image-img { width: 100%; max-width: 480px; height: auto; object-fit: contain; display: block; margin: auto; position: relative; z-index: 2; }
 
     /* SECTION HEADER */
     .section-header { text-align: center; margin-bottom: 56px; }
@@ -375,14 +385,20 @@
   <div class="hero-bg"><div class="c1"></div><div class="c2"></div><div class="grid"></div></div>
   <div class="kanji-deco">心構え</div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-eyebrow">🧠 Persiapan Mental · Sebelum & Selama di Jepang</div>
-      <h1>Mental yang Kuat<br>adalah <em>Bekal Utamamu</em></h1>
-      <p class="hero-desc">Dokumen bisa diurus. Ujian bisa diulang. Tapi mental yang tidak siap bisa meruntuhkan segalanya di tengah jalan. Di sini kamu belajar cara mempersiapkannya.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><span class="val">80%</span><span class="key">Pekerja alami homesick di bulan pertama</span></div>
-        <div class="hero-stat"><span class="val">95%</span><span class="key">Yang bertahan bilang "layak diperjuangkan"</span></div>
-        <div class="hero-stat"><span class="val">3</span><span class="key">Bulan rata-rata adaptasi penuh</span></div>
+    <div class="hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-eyebrow">🧠 Persiapan Mental · Sebelum & Selama di Jepang</div>
+        <h1>Mental yang Kuat<br>adalah <em>Bekal Utamamu</em></h1>
+        <p class="hero-desc">Dokumen bisa diurus. Ujian bisa diulang. Tapi mental yang tidak siap bisa meruntuhkan segalanya di tengah jalan. Di sini kamu belajar cara mempersiapkannya.</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><span class="val">80%</span><span class="key">Pekerja alami homesick di bulan pertama</span></div>
+          <div class="hero-stat"><span class="val">95%</span><span class="key">Yang bertahan bilang "layak diperjuangkan"</span></div>
+          <div class="hero-stat"><span class="val">3</span><span class="key">Bulan rata-rata adaptasi penuh</span></div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-bg"></div>
+        <img src="assets/illustrations/pages/page-mental-hero.png" alt="Ilustrasi persiapan mental kerja di Jepang" class="hero-image-img" fetchpriority="high" loading="eager" width="480" height="480">
       </div>
     </div>
   </div>

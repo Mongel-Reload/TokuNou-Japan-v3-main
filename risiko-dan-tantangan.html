@@ -69,12 +69,12 @@
     ============================================= */
     #hero {
       position: relative;
-      min-height: 72vh;
       background: linear-gradient(155deg, #1A0A0A 0%, #7F1D1D 50%, #991B1B 100%);
       display: flex; align-items: center;
-      padding: 130px 0 80px;
+      padding: 64px 0 72px;
       overflow: hidden;
     }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
     .hero-bg .stripe {
       position: absolute; inset: 0;
       background-image: repeating-linear-gradient(
@@ -82,30 +82,40 @@
         transparent, transparent 40px,
         rgba(255,255,255,.015) 40px, rgba(255,255,255,.015) 80px
       );
-      pointer-events: none;
     }
-    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(220,38,38,.4) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
-    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(5rem,12vw,11rem); color: rgba(255,255,255,.04); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; }
+    .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(220,38,38,.4) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); border-radius: 50%; }
+    .hero-bg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 48px 48px; }
+    .kanji-deco { position: absolute; right: 4%; top: 50%; transform: translateY(-50%); font-family: var(--font-jp); font-size: clamp(4rem,10vw,8rem); color: rgba(255,255,255,.04); line-height: 1; pointer-events: none; user-select: none; writing-mode: vertical-rl; }
+    .hero-wrapper { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+    @media (min-width: 1024px) {
+      .hero-wrapper { grid-template-columns: 55% 45%; }
+    }
     .hero-content { position: relative; z-index: 2; color: var(--white); }
     .hero-warning-badge {
       display: inline-flex; align-items: center; gap: 10px;
       background: rgba(220,38,38,.25);
       border: 1.5px solid rgba(220,38,38,.5);
       border-radius: 50px; padding: 8px 20px;
-      font-family: var(--font-display); font-size: .8rem; font-weight: 700;
-      letter-spacing: .1em; text-transform: uppercase;
-      margin-bottom: 28px; color: #FCA5A5;
+      font-family: var(--font-display); font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 20px; color: #FCA5A5;
     }
     .hero-warning-badge .pulse { width: 8px; height: 8px; border-radius: 50%; background: #EF4444; animation: pulse 1.5s infinite; }
     @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .5; transform: scale(1.4); } }
-    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem,5.5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px; }
+    #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 3.6vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }
     #hero h1 em { font-style: normal; color: #FCA5A5; }
-    .hero-desc { font-size: 1.08rem; line-height: 1.75; color: rgba(255,255,255,.8); max-width: 560px; margin-bottom: 36px; }
-    .hero-honest { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-md); padding: 18px 20px; max-width: 560px; }
+    .hero-desc { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,.8); max-width: 600px; margin-bottom: 32px; }
+    .hero-honest { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: var(--radius-md); padding: 18px 20px; max-width: 600px; }
     .hero-honest .hi { font-size: 1.4rem; flex-shrink: 0; }
     .hero-honest p { font-size: .88rem; color: rgba(255,255,255,.75); line-height: 1.65; }
     .hero-honest strong { color: var(--white); }
+    .hero-image { display: none; position: relative; align-items: center; justify-content: center; }
+    @media (min-width: 1024px) {
+      .hero-image { display: flex; }
+    }
+    .hero-image-bg { position: absolute; width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.08) 0%, transparent 70%); }
+    .hero-image-img { width: 100%; max-width: 480px; height: auto; object-fit: contain; display: block; margin: auto; position: relative; z-index: 2; }
 
     /* =============================================
        SECTION HEADER
@@ -282,19 +292,25 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg"><div class="stripe"></div><div class="c1"></div><div class="grid"></div></div>
+  <div class="hero-bg"><div class="stripe"></div><div class="c1"></div><div class="c2"></div><div class="grid"></div></div>
   <div class="kanji-deco">危険</div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-warning-badge">
-        <div class="pulse"></div>
-        ⚠️ Baca Ini Sebelum Memutuskan
+    <div class="hero-wrapper">
+      <div class="hero-content">
+        <div class="hero-warning-badge">
+          <div class="pulse"></div>
+          ⚠️ Baca Ini Sebelum Memutuskan
+        </div>
+        <h1>Risiko & Tantangan<br>yang <em>Jarang Dibahas</em></h1>
+        <p class="hero-desc">Kami percaya kamu berhak tahu sisi gelapnya juga. Bukan untuk menakut-nakuti, tapi agar keputusanmu matang dan kamu benar-benar siap menghadapi realitanya.</p>
+        <div class="hero-honest">
+          <div class="hi">🤝</div>
+          <p><strong>Komitmen kami:</strong> Halaman ini ditulis seobjektif mungkin. Kami tidak ingin kamu berangkat dengan ekspektasi yang salah, karena itu justru yang paling berbahaya.</p>
+        </div>
       </div>
-      <h1>Risiko & Tantangan<br>yang <em>Jarang Dibahas</em></h1>
-      <p class="hero-desc">Kami percaya kamu berhak tahu sisi gelapnya juga. Bukan untuk menakut-nakuti, tapi agar keputusanmu matang dan kamu benar-benar siap menghadapi realitanya.</p>
-      <div class="hero-honest">
-        <div class="hi">🤝</div>
-        <p><strong>Komitmen kami:</strong> Halaman ini ditulis seobjektif mungkin. Kami tidak ingin kamu berangkat dengan ekspektasi yang salah, karena itu justru yang paling berbahaya.</p>
+      <div class="hero-image">
+        <div class="hero-image-bg"></div>
+        <img src="assets/illustrations/pages/page-risk-hero.png" alt="Ilustrasi risiko dan tantangan kerja di Jepang" class="hero-image-img" fetchpriority="high" loading="eager" width="480" height="480">
       </div>
     </div>
   </div>
