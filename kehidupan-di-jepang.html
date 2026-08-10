@@ -28,6 +28,7 @@
       --shadow-sm: 0 2px 8px rgba(11,31,58,.07);
       --shadow-md: 0 6px 24px rgba(11,31,58,.12);
       --transition: .25s ease;
+      --site-header-height: 76px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -48,21 +49,25 @@
 
     /* NAVBAR */
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: var(--site-header-height); }
     .nav-logo { display: flex; align-items: center; gap: 10px; color: var(--white); }
-    .nav-logo .logo-mark { width: 36px; height: 36px; background: var(--blue-mid); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 1.1rem; color: var(--white); font-weight: 700; }
-    .nav-logo .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2; }
-    .nav-logo .logo-sub { font-size: .7rem; color: rgba(255,255,255,.55); font-weight: 400; }
+    .nav-logo-img { height: 44px; max-height: 48px; width: auto; object-fit: contain; }
+    @media (max-width: 768px) {
+      .nav-logo-img { height: 38px; max-height: 42px; }
+    }
     .nav-back { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; font-family: var(--font-display); transition: color var(--transition); }
     .nav-back:hover { color: var(--white); }
     .nav-back:hover svg { transform: translateX(-3px); }
     .nav-back svg { transition: transform var(--transition); }
 
     /* PROGRESS BAR */
-    .progress-bar { position: fixed; top: 68px; left: 0; height: 3px; background: linear-gradient(90deg, #F59E0B, #EF4444, #3B82C4); z-index: 999; width: 0%; transition: width .1s ease; }
+    .progress-bar { position: fixed; top: var(--site-header-height); left: 0; height: 3px; background: linear-gradient(90deg, #F59E0B, #EF4444, #3B82C4); z-index: 999; width: 0%; transition: width .1s ease; }
 
     /* HERO */
-    #hero { position: relative; background: linear-gradient(155deg, #0A2550 0%, #1A5DAD 50%, #059669 100%); display: flex; align-items: center; padding: 64px 0 72px; overflow: hidden; }
+    #hero { position: relative; background: linear-gradient(155deg, #0A2550 0%, #1A5DAD 50%, #059669 100%); display: flex; align-items: center; padding: calc(var(--site-header-height) + 32px) 0 64px; overflow: hidden; }
+    @media (max-width: 768px) {
+      #hero { padding: calc(var(--site-header-height) + 24px) 0 48px; }
+    }
     .hero-bg { position: absolute; inset: 0; pointer-events: none; }
     .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(5,150,105,.35) 0%, transparent 70%); border-radius: 50%; }
     .hero-bg .c2 { position: absolute; bottom: -60px; left: -60px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(219,238,255,.12) 0%, transparent 70%); border-radius: 50%; }
@@ -73,7 +78,7 @@
       .hero-wrapper { grid-template-columns: 55% 45%; }
     }
     .hero-content { position: relative; z-index: 2; color: var(--white); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 20px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: 50px; padding: 6px 16px; font-family: var(--font-display); font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 24px; }
     #hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 3.6vw, 3.8rem); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }
     #hero h1 em { font-style: normal; color: #6EE7B7; }
     .hero-desc { font-size: 1.05rem; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 600px; margin-bottom: 32px; }

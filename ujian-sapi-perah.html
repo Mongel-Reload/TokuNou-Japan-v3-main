@@ -11,6 +11,7 @@
       --gray2: #94A3B8; --dark: #1E293B; --green: #059669;
       --red: #DC2626; --amber: #D97706;
       --font: 'Segoe UI', 'Noto Sans', sans-serif;
+      --site-header-height: 76px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--font); background: var(--off); color: var(--dark); min-height: 100vh; }
@@ -19,7 +20,7 @@
     .exam-header {
       background: var(--navy);
       padding: 0 24px;
-      height: 56px;
+      height: var(--site-header-height);
       display: flex; align-items: center; justify-content: space-between;
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       box-shadow: 0 2px 8px rgba(0,0,0,.3);
@@ -41,12 +42,12 @@
     .q-counter strong { color: var(--white); font-size: 1rem; }
 
     /* ── MAIN LAYOUT ── */
-    .exam-body { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; padding-top: 56px; }
+    .exam-body { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; padding-top: var(--site-header-height); }
 
     /* ── LEFT PANEL: question map ── */
     .qmap-panel {
       background: var(--white); border-right: 1px solid var(--gray);
-      padding: 20px 16px; position: sticky; top: 56px; height: calc(100vh - 56px);
+      padding: 20px 16px; position: sticky; top: var(--site-header-height); height: calc(100vh - var(--site-header-height));
       overflow-y: auto; display: flex; flex-direction: column; gap: 16px;
     }
     .qmap-label { font-size: .7rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gray2); }
@@ -75,7 +76,7 @@
     .submit-btn:hover { background: #047857; transform: translateY(-1px); }
 
     /* ── RIGHT PANEL: question ── */
-    .question-panel { padding: 28px 36px; overflow-y: auto; height: calc(100vh - 56px); }
+    .question-panel { padding: 28px 36px; overflow-y: auto; height: calc(100vh - var(--site-header-height)); }
 
     .q-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; gap: 16px; }
     .q-num-badge {

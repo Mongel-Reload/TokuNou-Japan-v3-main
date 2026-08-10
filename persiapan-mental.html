@@ -34,6 +34,7 @@
       --shadow-sm: 0 2px 8px rgba(11,31,58,.07);
       --shadow-md: 0 6px 24px rgba(11,31,58,.12);
       --transition: .25s ease;
+      --site-header-height: 76px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -52,18 +53,19 @@
 
     /* NAVBAR */
     .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(11,31,58,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: var(--site-header-height); }
     .nav-logo { display: flex; align-items: center; gap: 10px; color: var(--white); }
-    .nav-logo .logo-mark { width: 36px; height: 36px; background: var(--blue-mid); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--font-jp); font-size: 1.1rem; color: var(--white); font-weight: 700; }
-    .nav-logo .logo-text { font-family: var(--font-display); font-weight: 700; font-size: 1rem; line-height: 1.2; }
-    .nav-logo .logo-sub { font-size: .7rem; color: rgba(255,255,255,.55); }
+    .nav-logo-img { height: 44px; max-height: 48px; width: auto; object-fit: contain; }
+    @media (max-width: 768px) {
+      .nav-logo-img { height: 38px; max-height: 42px; }
+    }
     .nav-back { display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,.8); font-size: .9rem; font-weight: 500; font-family: var(--font-display); transition: color var(--transition); }
     .nav-back:hover { color: var(--white); }
     .nav-back:hover svg { transform: translateX(-3px); }
     .nav-back svg { transition: transform var(--transition); }
 
     /* PROGRESS BAR */
-    .progress-bar { position: fixed; top: 68px; left: 0; height: 3px; background: linear-gradient(90deg, #7C3AED, #0D9488, #059669); z-index: 999; width: 0%; transition: width .1s ease; }
+    .progress-bar { position: fixed; top: var(--site-header-height); left: 0; height: 3px; background: linear-gradient(90deg, #7C3AED, #0D9488, #059669); z-index: 999; width: 0%; transition: width .1s ease; }
 
     /* =============================================
        HERO — hangat & personal
@@ -72,8 +74,11 @@
       position: relative;
       background: linear-gradient(155deg, #1E1B4B 0%, #4C1D95 45%, #0D9488 100%);
       display: flex; align-items: center;
-      padding: 64px 0 72px;
+      padding: calc(var(--site-header-height) + 32px) 0 64px;
       overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      #hero { padding: calc(var(--site-header-height) + 24px) 0 48px; }
     }
     .hero-bg { position: absolute; inset: 0; pointer-events: none; }
     .hero-bg .c1 { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(124,58,237,.4) 0%, transparent 70%); border-radius: 50%; }
