@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulasi Biaya Hidup di Jepang — TokuNou Japan</title>
+  <meta name="description" content="Simulasi lengkap biaya hidup pekerja SSW di Jepang: gaji kotor, potongan wajib, biaya hidup per prefektur, dan estimasi tabungan bulanan." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0B1E3D; --navy2:#112347; --blue:#2563EB; --blue-lt:#3B82F6;
+      --gold:#F59E0B; --gold-lt:#FCD34D; --red:#EF4444; --green:#10B981;
+      --white:#FFFFFF; --text:rgba(255,255,255,.88); --text2:rgba(255,255,255,.55);
+      --card:rgba(255,255,255,.05); --border:rgba(255,255,255,.1); --radius:14px;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--navy); color:var(--text); min-height:100vh; line-height:1.6; }
+
+    /* TOPBAR */
+    .topbar { position:sticky; top:0; z-index:100; background:rgba(11,30,61,.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .topbar-logo { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--white); font-family:'Noto Serif JP',serif; font-weight:900; font-size:1.2rem; }
+    .logo-kanji { width:36px; height:36px; background:linear-gradient(135deg,var(--gold),#e08b00); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; box-shadow:0 2px 12px rgba(245,158,11,.35); }
+    .back-btn { display:inline-flex; align-items:center; gap:7px; padding:8px 18px; border:1px solid var(--border); border-radius:8px; color:var(--text2); text-decoration:none; font-size:.85rem; font-weight:600; transition:all .2s; }
+    .back-btn:hover { color:var(--white); border-color:rgba(255,255,255,.3); }
+
+    /* HERO */
+    .hero { padding:56px 24px 36px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,.18) 0%,transparent 70%); pointer-events:none; }
+    .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; background:rgba(37,99,235,.15); border:1px solid rgba(37,99,235,.35); border-radius:100px; padding:5px 16px; font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#93C5FD; margin-bottom:18px; }
+    .hero h1 { font-family:'Noto Serif JP',serif; font-size:clamp(1.7rem,4.5vw,2.8rem); font-weight:900; line-height:1.2; color:var(--white); margin-bottom:12px; }
+    .hero h1 span { color:var(--gold-lt); }
+    .hero-sub { font-size:.92rem; color:var(--text2); max-width:540px; margin:0 auto 24px; }
+    .hero-sources { display:flex; align-items:center; justify-content:center; gap:6px; flex-wrap:wrap; font-size:.7rem; color:var(--text2); }
+    .hero-sources span { background:rgba(255,255,255,.06); border:1px solid var(--border); border-radius:5px; padding:2px 9px; }
+
+    /* LAYOUT */
+    .page-wrap { max-width:960px; margin:0 auto; padding:0 20px 120px; }
+
+    /* SEC LABEL */
+    .sec-label { font-size:.7rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; margin-top:40px; display:flex; align-items:center; gap:8px; }
+    .sec-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+    /* CARD */
+    .card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+    .card-title { font-size:.97rem; font-weight:700; color:var(--white); margin-bottom:5px; }
+    .card-sub { font-size:.8rem; color:var(--text2); margin-bottom:20px; }
+
+    /* PREFEKTUR */
+    .pref-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:8px; margin-bottom:20px; }
+    .pref-btn { padding:9px 7px; border:1px solid var(--border); border-radius:10px; background:transparent; color:var(--text2); font-family:'Plus Jakarta Sans',sans-serif; font-size:.75rem; font-weight:600; cursor:pointer; text-align:center; transition:all .2s; line-height:1.3; }
+    .pref-btn:hover { border-color:rgba(255,255,255,.3); color:var(--white); }
+    .pref-btn.active { border-color:var(--gold); background:rgba(245,158,11,.12); color:var(--gold-lt); }
+    .pref-btn .pref-umr { display:block; font-size:.65rem; font-weight:400; opacity:.6; margin-top:2px; }
+
+    /* SLIDER */
+    .slider-row { margin-bottom:18px; }
+    .slider-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; }
+    .slider-name { font-size:.83rem; font-weight:600; color:var(--text); }
+    .slider-val { font-size:.88rem; font-weight:800; color:var(--gold-lt); font-family:'Noto Serif JP',serif; }
+    .slider-desc { font-size:.7rem; color:var(--text2); margin-top:3px; }
+    input[type=range] { -webkit-appearance:none; width:100%; height:5px; border-radius:3px; background:rgba(255,255,255,.1); outline:none; cursor:pointer; }
+    input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:18px; height:18px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px rgba(245,158,11,.2); transition:box-shadow .2s; }
+    input[type=range]::-webkit-slider-thumb:hover { box-shadow:0 0 0 7px rgba(245,158,11,.3); }
+    input[type=range]::-moz-range-thumb { width:18px; height:18px; border-radius:50%; background:var(--gold); border:none; }
+
+    /* POTONGAN TOGGLE */
+    .toggle-row { display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:.82rem; }
+    .toggle-row:last-of-type { border-bottom:none; }
+    .toggle-left { display:flex; flex-direction:column; gap:2px; flex:1; padding-right:12px; }
+    .toggle-name { font-weight:600; color:var(--text); }
+    .toggle-pct { font-size:.7rem; color:var(--text2); }
+    .toggle-right { display:flex; align-items:center; gap:10px; }
+    .toggle-yen { font-size:.85rem; font-weight:700; color:#FCA5A5; min-width:78px; text-align:right; }
+    .toggle { position:relative; width:36px; height:21px; cursor:pointer; flex-shrink:0; }
+    .toggle input { display:none; }
+    .toggle-track { position:absolute; inset:0; background:rgba(255,255,255,.15); border-radius:11px; transition:background .2s; }
+    .toggle-thumb { position:absolute; top:3px; left:3px; width:15px; height:15px; border-radius:50%; background:var(--white); transition:transform .2s; }
+    .toggle input:checked ~ .toggle-track { background:var(--green); }
+    .toggle input:checked ~ .toggle-thumb { transform:translateX(15px); }
+
+    /* BIAYA BREAKDOWN */
+    .biaya-grid { display:grid; gap:9px; }
+    .biaya-row { display:flex; align-items:center; gap:11px; padding:11px 13px; background:rgba(255,255,255,.04); border:1px solid var(--border); border-radius:10px; }
+    .biaya-icon { font-size:1.1rem; flex-shrink:0; }
+    .biaya-info { flex:1; }
+    .biaya-name { font-size:.81rem; font-weight:600; color:var(--white); }
+    .biaya-hint { font-size:.69rem; color:var(--text2); margin-top:1px; }
+    .biaya-right { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
+    .biaya-yen { font-size:.88rem; font-weight:800; color:var(--gold-lt); font-family:'Noto Serif JP',serif; }
+    .biaya-slider-wrap { width:110px; }
+    .biaya-slider-wrap input[type=range] { height:4px; }
+    .biaya-slider-wrap input[type=range]::-webkit-slider-thumb { width:13px; height:13px; }
+
+    /* PROGRESS */
+    .progress-wrap { background:rgba(255,255,255,.08); border-radius:100px; height:7px; overflow:hidden; margin-top:10px; }
+    .progress-bar { height:100%; border-radius:100px; transition:width .5s ease; }
+    .progress-bar.red { background:linear-gradient(90deg,#F87171,#EF4444); }
+
+    /* STICKY RESULT */
+    .result-section { position:fixed; bottom:0; left:0; right:0; background:rgba(11,30,61,.97); backdrop-filter:blur(16px); border-top:1px solid var(--border); padding:16px 24px; z-index:50; }
+    .result-inner { max-width:960px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; align-items:center; }
+    .res-item { text-align:center; }
+    .res-label { font-size:.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text2); margin-bottom:3px; }
+    .res-yen { font-size:1.05rem; font-weight:800; font-family:'Noto Serif JP',serif; }
+    .res-idr { font-size:.68rem; color:var(--text2); margin-top:1px; }
+    .res-item.gross .res-yen { color:var(--blue-lt); }
+    .res-item.net   .res-yen { color:#A78BFA; }
+    .res-item.spend .res-yen { color:#FCA5A5; }
+    .res-item.save  .res-yen { color:var(--green); }
+    .res-div { width:1px; height:38px; background:var(--border); margin:0 auto; }
+
+    /* TIPS */
+    .tips-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(255px,1fr)); gap:11px; }
+    .tip-card { background:rgba(16,185,129,.07); border:1px solid rgba(16,185,129,.2); border-radius:12px; padding:15px; display:flex; gap:11px; }
+    .tip-icon { font-size:1.3rem; flex-shrink:0; }
+    .tip-title { font-size:.81rem; font-weight:700; color:#6EE7B7; margin-bottom:3px; }
+    .tip-text { font-size:.76rem; color:rgba(255,255,255,.62); line-height:1.55; }
+
+    /* TABLE */
+    .compare-table { width:100%; border-collapse:collapse; font-size:.8rem; }
+    .compare-table th { padding:9px 13px; text-align:left; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text2); border-bottom:1px solid var(--border); }
+    .compare-table td { padding:11px 13px; border-bottom:1px solid rgba(255,255,255,.05); color:var(--text); }
+    .compare-table tr:last-child td { border-bottom:none; }
+    .compare-table tr:hover td { background:rgba(255,255,255,.03); }
+    .tag-hemat { display:inline-block; background:rgba(16,185,129,.15); color:#6EE7B7; border:1px solid rgba(16,185,129,.3); border-radius:4px; padding:1px 7px; font-size:.68rem; font-weight:700; }
+    .tag-mahal { display:inline-block; background:rgba(239,68,68,.12); color:#FCA5A5; border:1px solid rgba(239,68,68,.25); border-radius:4px; padding:1px 7px; font-size:.68rem; font-weight:700; }
+
+    /* DISCLAIMER */
+    .disclaimer { background:rgba(245,158,11,.07); border:1px solid rgba(245,158,11,.2); border-radius:10px; padding:13px 16px; font-size:.76rem; color:rgba(255,255,255,.6); line-height:1.6; }
+    .disclaimer strong { color:var(--gold-lt); }
+
+    /* NENKIN */
+    .nenkin-note { background:rgba(139,92,246,.08); border:1px solid rgba(139,92,246,.25); border-radius:10px; padding:13px 16px; font-size:.78rem; color:rgba(255,255,255,.7); margin-top:13px; line-height:1.6; }
+    .nenkin-note strong { color:#C4B5FD; }
+
+    /* CTA */
+    .cta-back { text-align:center; padding:40px 0 100px; }
+    .btn-primary { display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,var(--gold),#D97706); color:#1A1A2E; font-weight:800; font-size:.88rem; padding:13px 26px; border-radius:10px; text-decoration:none; box-shadow:0 4px 20px rgba(245,158,11,.3); transition:all .2s; }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(245,158,11,.4); }
+    .btn-outline { display:inline-flex; align-items:center; gap:7px; border:1px solid var(--border); color:var(--text2); font-weight:600; font-size:.85rem; padding:12px 22px; border-radius:10px; text-decoration:none; margin-left:10px; transition:all .2s; }
+    .btn-outline:hover { color:var(--white); border-color:rgba(255,255,255,.3); }
+
+    @media (max-width:640px) {
+      .result-inner { grid-template-columns:1fr 1fr; gap:8px; }
+      .res-div { display:none; }
+      .pref-grid { grid-template-columns:repeat(3,1fr); }
+      .hero { padding:44px 18px 28px; }
+      .btn-outline { margin-left:0; margin-top:10px; }
+    }
+  </style>
+<link rel="canonical" href="https://tokunoujapan.github.io/TokuNou-Japan/simulasi-biaya.html">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a href="index.html" class="topbar-logo">
+    <div class="logo-kanji">農</div>
+    TokuNou
+  </a>
+  <a href="index.html" class="back-btn">← Kembali ke Beranda</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🧮 Kalkulator Interaktif</div>
+  <h1>Simulasi Biaya Hidup<br><span>Pekerja SSW di Jepang</span></h1>
+  <p class="hero-sub">Hitung gaji bersih, estimasi pengeluaran, dan potensi tabungan kamu secara realistis. Sesuaikan prefektur dan gaya hidup sesuka kamu.</p>
+  <div class="hero-sources">
+    <span>📊 Sumber:</span>
+    <span>MHLW Jepang 2024–25</span>
+    <span>OhayoJepang Kompas</span>
+    <span>Izumi.co.id</span>
+    <span>SuksesdijJepang.id</span>
+    <span>Tensai Indonesia</span>
+    <span>ArkaLearn</span>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="page-wrap">
+
+  <!-- ① PREFEKTUR -->
+  <div class="sec-label" style="margin-top:20px">① Pilih Prefektur Kerja</div>
+  <div class="card">
+    <div class="card-title">Di mana kamu akan ditempatkan?</div>
+    <div class="card-sub">UMR & biaya hidup sangat berbeda antar prefektur. Peternakan SSW banyak di daerah rural dengan biaya hidup lebih rendah.</div>
+    <div class="pref-grid" id="prefGrid"></div>
+    <div class="disclaimer" id="prefNote">📍 <strong>Hokkaido</strong> — Pusat peternakan sapi perah #1 Jepang (63% populasi sapi perah nasional). Asrama sering gratis/sangat murah. Prefektur paling umum untuk SSW peternakan.</div>
+  </div>
+
+  <!-- ② GAJI -->
+  <div class="sec-label">② Gaji & Lembur</div>
+  <div class="card">
+    <div class="card-title">Atur estimasi penghasilan bulanan</div>
+    <div class="card-sub">Gaji SSW peternakan ¥150.000–¥210.000/bln kotor. Lembur bisa +¥20.000–¥50.000/bln terutama saat musim panen.</div>
+    <div class="slider-row">
+      <div class="slider-head"><span class="slider-name">💴 Gaji Pokok (per bulan)</span><span class="slider-val" id="lbl-gaji">¥220.000</span></div>
+      <input type="range" min="170000" max="300000" step="5000" value="220000" id="sl-gaji" oninput="hitung()">
+      <div class="slider-desc">Range: ¥140.000 (pemula) — ¥230.000 (berpengalaman + bahasa baik). Sumber: MHLW, edukator.id, izumi.co.id</div>
+    </div>
+    <div class="slider-row">
+      <div class="slider-head"><span class="slider-name">⏰ Lembur (per bulan)</span><span class="slider-val" id="lbl-lembur">¥20.000</span></div>
+      <input type="range" min="0" max="60000" step="5000" value="20000" id="sl-lembur" oninput="hitung()">
+      <div class="slider-desc">Lembur dibayar 25% lebih tinggi dari tarif normal. Set 0 jika tidak ada lembur.</div>
+    </div>
+    <div class="slider-row" style="margin-bottom:0">
+      <div class="slider-head"><span class="slider-name">💹 Kurs ¥ ke Rupiah</span><span class="slider-val" id="lbl-kurs">¥1 = Rp 107</span></div>
+      <input type="range" min="90" max="130" step="1" value="107" id="sl-kurs" oninput="hitung()">
+      <div class="slider-desc">Kurs rata-rata Mei 2026 ~Rp 105–110/¥. Geser untuk simulasi nilai tukar berbeda.</div>
+    </div>
+  </div>
+
+  <!-- RINCIAN HARIAN/MINGGUAN -->
+  <div class="card" style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(59,130,246,.08));">
+    <div class="card-title">📆 Berapa Sebenarnya Kamu Dapat Per Hari & Per Minggu?</div>
+    <div class="card-sub">Dihitung dari gaji kotor bulanan (gaji pokok + lembur), diasumsikan ±26 hari kerja/bulan — wajar untuk peternakan yang sering rotasi shift 7 hari (hewan perlu dirawat tiap hari, termasuk akhir pekan).</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:14px;">
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:.7rem;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;">Per Hari</div>
+        <div style="font-size:1.5rem;font-weight:800;color:#A78BFA;margin-top:4px;" id="r-harian">¥8.460</div>
+        <div style="font-size:.75rem;color:var(--text2);" id="r-harian-idr">≈ Rp 905rb</div>
+      </div>
+      <div style="background:rgba(255,255,255,.04);border-radius:12px;padding:16px;text-align:center;">
+        <div style="font-size:.7rem;color:var(--text2);text-transform:uppercase;letter-spacing:.05em;">Per Minggu</div>
+        <div style="font-size:1.5rem;font-weight:800;color:#93C5FD;margin-top:4px;" id="r-mingguan">¥55.400</div>
+        <div style="font-size:.75rem;color:var(--text2);" id="r-mingguan-idr">≈ Rp 5,9 jt</div>
+      </div>
+    </div>
+    <div class="disclaimer" style="margin-top:14px">⚠️ Ini angka <strong>gaji kotor</strong> (sebelum potongan). Untuk gambaran uang yang benar-benar bisa dipakai/ditabung harian, lihat "Gaji Bersih" di panel bawah lalu bagi dengan pola kerja aktualmu.</div>
+  </div>
+
+  <!-- ③ POTONGAN -->
+  <div class="sec-label">③ Potongan Wajib (Shakai Hoken & Pajak)</div>
+  <div class="card">
+    <div class="card-title">Komponen potongan dari gaji kotor</div>
+    <div class="card-sub">Total potongan rata-rata 20–25% dari gaji kotor. Aktif/nonaktif sesuai kondisi kamu. Sumber: OhayoJepang, suksesdijepang.id, arkalearn.com</div>
+    <div class="toggle-row">
+      <div class="toggle-left"><span class="toggle-name">🏥 Asuransi Kesehatan (Kenko Hoken)</span><span class="toggle-pct">~5% dari gaji kotor — ditanggung bersama perusahaan. Menanggung 70% biaya RS.</span></div>
+      <div class="toggle-right"><span class="toggle-yen" id="pot-kenko">−¥0</span><label class="toggle"><input type="checkbox" id="chk-kenko" checked onchange="hitung()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+    </div>
+    <div class="toggle-row">
+      <div class="toggle-left"><span class="toggle-name">🏦 Dana Pensiun (Kosei Nenkin)</span><span class="toggle-pct">~9,15% dari gaji kotor — bisa diklaim kembali (lump-sum) saat pulang ke Indonesia!</span></div>
+      <div class="toggle-right"><span class="toggle-yen" id="pot-nenkin">−¥0</span><label class="toggle"><input type="checkbox" id="chk-nenkin" checked onchange="hitung()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+    </div>
+    <div class="toggle-row">
+      <div class="toggle-left"><span class="toggle-name">💼 Asuransi Ketenagakerjaan (Koyo Hoken)</span><span class="toggle-pct">~0,6% dari gaji kotor — tunjangan pengangguran & pelatihan kerja</span></div>
+      <div class="toggle-right"><span class="toggle-yen" id="pot-koyo">−¥0</span><label class="toggle"><input type="checkbox" id="chk-koyo" checked onchange="hitung()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+    </div>
+    <div class="toggle-row">
+      <div class="toggle-left"><span class="toggle-name">📋 Pajak Penghasilan (Shotoku-zei)</span><span class="toggle-pct">~5% progresif — tahun pertama biasanya kecil karena ada pengurangan otomatis</span></div>
+      <div class="toggle-right"><span class="toggle-yen" id="pot-pajak">−¥0</span><label class="toggle"><input type="checkbox" id="chk-pajak" checked onchange="hitung()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+    </div>
+    <div class="toggle-row">
+      <div class="toggle-left"><span class="toggle-name">🏙️ Pajak Penduduk (Jumin-zei)</span><span class="toggle-pct">~8–10% dari penghasilan tahun lalu — HANYA muncul mulai tahun ke-2. Nonaktif jika tahun pertama.</span></div>
+      <div class="toggle-right"><span class="toggle-yen" id="pot-jumin">−¥0</span><label class="toggle"><input type="checkbox" id="chk-jumin" onchange="hitung()"><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div>
+    </div>
+    <div class="nenkin-note">
+      💡 <strong>Tips Nenkin:</strong> Dana pensiun yang dipotong tiap bulan bisa <strong>diklaim kembali saat kamu pulang ke Indonesia</strong>. Dengan kontrak 3 tahun, kamu bisa dapat kembali sekitar ¥300.000–¥500.000 sekaligus. Ini artinya uang yang "dipotong" tidak hilang begitu saja!
+    </div>
+  </div>
+
+  <!-- ④ BIAYA HIDUP -->
+  <div class="sec-label">④ Biaya Hidup Bulanan</div>
+  <div class="card">
+    <div class="card-title">Atur pengeluaran sesuai gaya hidup kamu</div>
+    <div class="card-sub">Angka default disesuaikan dengan prefektur yang dipilih. Geser untuk menyesuaikan.</div>
+    <div class="biaya-grid" id="biayaGrid"></div>
+    <div class="progress-wrap" style="margin-top:14px">
+      <div class="progress-bar red" id="prog-biaya" style="width:40%"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text2);margin-top:5px;">
+      <span>Total biaya: <strong id="prog-label" style="color:#FCA5A5">¥0</strong></span>
+      <span>dari gaji bersih: <strong id="prog-net" style="color:#A78BFA">¥0</strong></span>
+    </div>
+  </div>
+
+  <!-- ⑤ DURASI -->
+  <div class="sec-label">⑤ Durasi Kontrak</div>
+  <div class="card">
+    <div class="slider-row" style="margin-bottom:0">
+      <div class="slider-head"><span class="slider-name">📅 Berencana kerja selama</span><span class="slider-val" id="lbl-tahun">3 tahun</span></div>
+      <input type="range" min="1" max="5" step="1" value="3" id="sl-tahun" oninput="hitung()">
+      <div class="slider-desc">SSW Tipe 1 maksimal 5 tahun. Bisa diperpanjang ke SSW Tipe 2 jika lulus ujian lanjutan.</div>
+    </div>
+  </div>
+
+  <!-- PERBANDINGAN PREFEKTUR -->
+  <div class="sec-label">📊 Perbandingan Biaya Hidup Antar Prefektur</div>
+  <div class="card">
+    <div class="card-title">Estimasi biaya & gaji pekerja SSW 2025–2026</div>
+    <div class="card-sub">Hanya prefektur dengan aktivitas peternakan nyata — dipilih dari data resmi Kementerian Pertanian Jepang (MAFF), bukan kota besar yang jarang/tidak ada peternakan.</div>
+    <div style="overflow-x:auto">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Prefektur</th><th>UMR/jam (¥)</th><th>Est. Gaji/Hari (¥)</th><th>Est. Gaji/Minggu (¥)</th><th>Est. Gaji/Bulan (¥)</th><th>Karakter</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>🐔 Ibaraki</strong></td><td>1.074</td><td>7.900–9.000</td><td>47.300–54.300</td><td>205.000–235.000</td><td><span class="tag-hemat">Seimbang</span></td></tr>
+          <tr><td><strong>🌊 Fukuoka</strong></td><td>1.057</td><td>7.700–8.800</td><td>46.200–53.100</td><td>200.000–230.000</td><td><span class="tag-hemat">Seimbang</span></td></tr>
+          <tr><td><strong>🐄 Hokkaido</strong></td><td>1.075</td><td>7.700–8.800</td><td>46.200–53.100</td><td>200.000–230.000</td><td><span class="tag-hemat">Paling Populer</span></td></tr>
+          <tr><td><strong>🥛 Kumamoto</strong></td><td>1.034</td><td>7.500–8.700</td><td>45.000–52.000</td><td>195.000–225.000</td><td><span class="tag-hemat">Hemat</span></td></tr>
+          <tr><td><strong>🌾 Miyagi</strong></td><td>1.038</td><td>7.500–8.700</td><td>45.000–52.000</td><td>195.000–225.000</td><td><span class="tag-hemat">Hemat</span></td></tr>
+          <tr><td><strong>🐖 Fukushima</strong></td><td>1.033</td><td>7.400–8.500</td><td>44.300–51.300</td><td>192.000–222.000</td><td><span class="tag-hemat">Hemat</span></td></tr>
+          <tr><td><strong>🐮 Iwate</strong></td><td>1.031</td><td>7.300–8.500</td><td>43.900–50.800</td><td>190.000–220.000</td><td><span class="tag-hemat">Paling Hemat</span></td></tr>
+          <tr><td><strong>🐷 Kagoshima</strong></td><td>1.026</td><td>7.300–8.500</td><td>43.900–50.800</td><td>190.000–220.000</td><td><span class="tag-hemat">Paling Hemat</span></td></tr>
+          <tr><td><strong>🐓 Miyazaki</strong></td><td>1.023</td><td>7.200–8.400</td><td>43.400–50.300</td><td>188.000–218.000</td><td><span class="tag-hemat">Paling Hemat</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="disclaimer" style="margin-top:14px">
+      <strong>Sumber data:</strong> UMR per jam adalah <strong>upah minimum regional resmi Reiwa 7/2025</strong> dari Kementerian Kesehatan, Ketenagakerjaan & Kesejahteraan Jepang (MHLW, "地域別最低賃金"). Estimasi gaji/hari & gaji/minggu dihitung dari estimasi gaji bulanan dibagi ±26 hari kerja & ±4,33 minggu — asumsi wajar untuk peternakan yang sering kerja 6–7 hari/minggu (hewan perlu dirawat tiap hari). Prefektur dipilih berdasarkan data sebaran industri peternakan resmi MAFF (Chikusan Toukei), bukan asumsi. Prefektur yang menyediakan asrama gratis akan sangat memengaruhi total biaya hidup riil.
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="sec-label">💡 Tips Hemat Pekerja SSW</div>
+  <div class="tips-grid">
+    <div class="tip-card"><div class="tip-icon">🛒</div><div><div class="tip-title">Belanja di Supermarket, Bukan Konbini</div><div class="tip-text">Konbini bisa 2–3× lebih mahal dari supermarket untuk makanan yang sama. Masak sendiri bisa hemat ¥20.000–¥30.000/bulan.</div></div></div>
+    <div class="tip-card"><div class="tip-icon">🚲</div><div><div class="tip-title">Sepeda untuk Transportasi Harian</div><div class="tip-text">Di area rural peternakan, sepeda lebih praktis. Beli second-hand seharga ¥3.000–¥8.000 jauh lebih hemat dari naik bus setiap hari.</div></div></div>
+    <div class="tip-card"><div class="tip-icon">📱</div><div><div class="tip-title">SIM Card MVNO, Bukan Operator Besar</div><div class="tip-text">Docomo/SoftBank/au sangat mahal. Pakai IIJmio atau Rakuten Mobile dengan harga setengahnya untuk kualitas jaringan yang sama.</div></div></div>
+    <div class="tip-card"><div class="tip-icon">🏠</div><div><div class="tip-title">Manfaatkan Asrama Perusahaan</div><div class="tip-text">Asrama perusahaan biasanya ¥20.000–¥30.000/bulan. Banyak peternakan di Hokkaido & Tohoku menyediakan ini gratis atau subsidi penuh.</div></div></div>
+    <div class="tip-card"><div class="tip-icon">🍱</div><div><div class="tip-title">Bento Homemade & Masak Sendiri</div><div class="tip-text">Masak dan bawa bento ke tempat kerja bisa pangkas biaya makan dari ¥50.000 menjadi ¥20.000–¥25.000/bulan. Hemat hampir Rp 20 juta/tahun!</div></div></div>
+    <div class="tip-card"><div class="tip-icon">💰</div><div><div class="tip-title">Klaim Nenkin Saat Pulang Indonesia</div><div class="tip-text">Dana pensiun bulanan bisa diklaim kembali (lump-sum withdrawal) saat kamu pulang permanen. Kontrak 3 tahun bisa dapat ¥300.000–¥500.000 kembali!</div></div></div>
+  </div>
+
+  <div class="disclaimer" style="margin-top:32px">
+    ⚠️ <strong>Disclaimer:</strong> Semua angka di halaman ini adalah <strong>estimasi berdasarkan data rata-rata 2024–2025</strong> dari berbagai sumber terpercaya. Gaji dan biaya hidup aktual sangat bervariasi tergantung perusahaan, lokasi, dan gaya hidup. Gunakan sebagai panduan perencanaan, bukan jaminan penghasilan. Konfirmasi detail gaji ke perusahaan atau lembaga pengirim resmi (BP2MI).
+  </div>
+
+  <div class="cta-back">
+    <a href="index.html#alur" class="btn-primary">🚀 Mulai Proses Pendaftaran</a>
+    <a href="index.html" class="btn-outline">← Kembali ke Beranda</a>
+  </div>
+
+</div>
+
+<!-- STICKY RESULT -->
+<div class="result-section">
+  <div class="result-inner">
+    <div class="res-item gross"><div class="res-label">💴 Gaji Kotor</div><div class="res-yen" id="r-gross">¥220.000</div><div class="res-idr" id="r-gross-idr">≈ Rp 23,5 jt</div></div>
+    <div class="res-div"></div>
+    <div class="res-item net"><div class="res-label">💵 Gaji Bersih</div><div class="res-yen" id="r-net">¥174.000</div><div class="res-idr" id="r-net-idr">≈ Rp 18,6 jt</div></div>
+    <div class="res-div"></div>
+    <div class="res-item spend"><div class="res-label">🧾 Total Pengeluaran</div><div class="res-yen" id="r-spend">¥80.000</div><div class="res-idr" id="r-spend-idr">≈ Rp 8,6 jt</div></div>
+    <div class="res-div"></div>
+    <div class="res-item save"><div class="res-label">🏦 Tabungan / Bln</div><div class="res-yen" id="r-save">¥94.000</div><div class="res-idr" id="r-save-idr">≈ Rp 362 jt / 3 thn</div></div>
+  </div>
+</div>
+
+<script>
+const PREFS = [
+  { id:'hokkaido',  name:'Hokkaido',  flag:'🐄', umr:1075, gajiBase:225000, sewa:20000, makan:25000, transport:5000,  note:'Pusat peternakan sapi perah #1 Jepang (63% populasi sapi perah nasional). Asrama sering gratis/sangat murah. Prefektur paling umum untuk SSW peternakan.' },
+  { id:'iwate',     name:'Iwate',     flag:'🐮', umr:1031, gajiBase:210000, sewa:23000, makan:26000, transport:6000,  note:'Tohoku, sentra peternakan sapi & susu aktif. Biaya hidup sangat rendah, sudah ada komunitas WNI.' },
+  { id:'miyagi',    name:'Miyagi',    flag:'🌾', umr:1038, gajiBase:213000, sewa:28000, makan:28000, transport:7000,  note:'Kota Sendai jadi pusat, tapi peternakan tersebar di area sekitarnya. Balance kota & biaya hidup.' },
+  { id:'fukushima', name:'Fukushima', flag:'🐖', umr:1033, gajiBase:211000, sewa:26000, makan:27000, transport:7000,  note:'Pusat pertanian buah & peternakan babi/sapi. Biaya hidup rendah, udara bersih.' },
+  { id:'ibaraki',   name:'Ibaraki',   flag:'🐔', umr:1074, gajiBase:222000, sewa:32000, makan:29000, transport:8000,  note:'Dekat Tokyo tapi tetap sentra peternakan unggas & babi terbesar wilayah Kanto — banyak penempatan SSW nyata di sini.' },
+  { id:'fukuoka',   name:'Fukuoka',   flag:'🌊', umr:1057, gajiBase:218000, sewa:33000, makan:30000, transport:8000,  note:'Kota terbesar di Kyushu, dekat sentra peternakan Kagoshima & Miyazaki. Biaya moderat, komunitas WNI besar.' },
+  { id:'kumamoto',  name:'Kumamoto',  flag:'🥛', umr:1034, gajiBase:212000, sewa:27000, makan:27000, transport:7000,  note:'Sentra sapi perah & sapi potong Kyushu (kawasan Aso). Biaya hidup rendah, alam pegunungan.' },
+  { id:'miyazaki',  name:'Miyazaki',  flag:'🐓', umr:1023, gajiBase:205000, sewa:23000, makan:26000, transport:6000,  note:'Peringkat #2 nasional ayam broiler, #3 babi & sapi potong. Salah satu daerah terpadat SSW peternakan.' },
+  { id:'kagoshima', name:'Kagoshima', flag:'🐷', umr:1026, gajiBase:207000, sewa:23000, makan:26000, transport:6000,  note:'Peringkat #1 nasional populasi babi, #2 sapi potong. Sentra peternakan terbesar di Kyushu.' },
+];
+
+const BIAYA_ITEMS = [
+  { id:'sewa',       icon:'🏠', name:'Sewa / Asrama',          hint:'Asrama perusahaan jauh lebih murah dari apartemen — banyak peternakan menyediakan gratis',     min:0,     max:70000, step:1000 },
+  { id:'makan',      icon:'🍱', name:'Makan & Kebutuhan Dapur', hint:'Masak sendiri bisa menekan dari ¥50.000 jadi ¥20.000–¥28.000/bln',                          min:15000, max:60000, step:1000 },
+  { id:'transport',  icon:'🚌', name:'Transportasi',            hint:'Sepeda atau bus — tiket komuter bulanan jika rute tetap',                                     min:0,     max:20000, step:500  },
+  { id:'komunikasi', icon:'📱', name:'Komunikasi (SIM/WiFi)',   hint:'MVNO (IIJmio/Rakuten) jauh lebih murah dari Docomo/SoftBank',                                min:1500,  max:8000,  step:500  },
+  { id:'listrik',    icon:'💡', name:'Utilitas (Listrik/Gas)',  hint:'Jika di asrama: biasanya sudah termasuk. Jika apartemen sendiri: ¥8.000–¥13.000/bln',        min:0,     max:15000, step:500  },
+  { id:'pribadi',    icon:'🛍️', name:'Kebutuhan Pribadi',       hint:'Toiletries, pakaian, kebersihan, langganan hiburan, dll.',                                   min:4000,  max:25000, step:1000 },
+  { id:'kesehatan',  icon:'💊', name:'Kesehatan & Dana Darurat',hint:'Sudah ada Kenko Hoken. Ini untuk biaya sisa/obat ringan/dana darurat kecil.',                min:2000,  max:15000, step:500  },
+  { id:'kirim',      icon:'💸', name:'Kirim ke Keluarga (IDR)', hint:'Atur sesuai kebutuhan keluarga di Indonesia. Set 0 jika tidak rutin mengirim.',              min:0,     max:80000, step:1000 },
+];
+
+let activePref = PREFS[0];
+let biayaValues = {};
+
+function initPrefs() {
+  const grid = document.getElementById('prefGrid');
+  grid.innerHTML = '';
+  PREFS.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'pref-btn' + (p.id === activePref.id ? ' active' : '');
+    btn.innerHTML = p.flag + ' ' + p.name + '<span class="pref-umr">¥' + p.umr.toLocaleString() + '/jam</span>';
+    btn.onclick = () => {
+      activePref = p;
+      document.querySelectorAll('.pref-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('prefNote').innerHTML = '📍 <strong>' + p.flag + ' ' + p.name + '</strong> — ' + p.note;
+      document.getElementById('sl-gaji').value = p.gajiBase;
+      resetBiaya(p);
+      renderBiaya();
+      hitung();
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function resetBiaya(p) {
+  biayaValues = {
+    sewa:       p.sewa,
+    makan:      p.makan,
+    transport:  p.transport,
+    komunikasi: 2500,
+    listrik:    ['hokkaido','iwate','fukushima','miyazaki','kagoshima','kumamoto'].includes(p.id) ? 0 : 8000,
+    pribadi:    7000,
+    kesehatan:  3000,
+    kirim:      20000,
+  };
+}
+
+function renderBiaya() {
+  const grid = document.getElementById('biayaGrid');
+  grid.innerHTML = '';
+  BIAYA_ITEMS.forEach(item => {
+    const val = biayaValues[item.id] || 0;
+    const row = document.createElement('div');
+    row.className = 'biaya-row';
+    row.innerHTML =
+      '<div class="biaya-icon">' + item.icon + '</div>' +
+      '<div class="biaya-info"><div class="biaya-name">' + item.name + '</div><div class="biaya-hint">' + item.hint + '</div></div>' +
+      '<div class="biaya-right">' +
+        '<div class="biaya-yen" id="bval-' + item.id + '">¥' + val.toLocaleString('id-ID') + '</div>' +
+        '<div class="biaya-slider-wrap"><input type="range" min="' + item.min + '" max="' + item.max + '" step="' + item.step + '" value="' + val + '" id="bsl-' + item.id + '" oninput="onBiaya(\'' + item.id + '\',this.value)"></div>' +
+      '</div>';
+    grid.appendChild(row);
+  });
+}
+
+function onBiaya(id, v) {
+  biayaValues[id] = parseInt(v);
+  document.getElementById('bval-' + id).textContent = '¥' + parseInt(v).toLocaleString('id-ID');
+  hitung();
+}
+
+function fmt(n)  { return '¥' + Math.round(n).toLocaleString('id-ID'); }
+function fmtR(n, k) {
+  const r = Math.round(n * k);
+  return r >= 1000000 ? '≈ Rp ' + (r/1000000).toFixed(1) + ' jt' : '≈ Rp ' + r.toLocaleString('id-ID');
+}
+
+function hitung() {
+  const gaji   = parseInt(document.getElementById('sl-gaji').value);
+  const lembur = parseInt(document.getElementById('sl-lembur').value);
+  const kurs   = parseInt(document.getElementById('sl-kurs').value);
+  const tahun  = parseInt(document.getElementById('sl-tahun').value);
+
+  document.getElementById('lbl-gaji').textContent   = fmt(gaji);
+  document.getElementById('lbl-lembur').textContent = fmt(lembur);
+  document.getElementById('lbl-kurs').textContent   = '¥1 = Rp ' + kurs;
+  document.getElementById('lbl-tahun').textContent  = tahun + ' tahun';
+
+  const gross = gaji + lembur;
+
+  document.getElementById('r-harian').textContent      = fmt(gross / 26);
+  document.getElementById('r-harian-idr').textContent   = fmtR(gross / 26, kurs);
+  document.getElementById('r-mingguan').textContent     = fmt(gross / 4.33);
+  document.getElementById('r-mingguan-idr').textContent = fmtR(gross / 4.33, kurs);
+
+  const potKenko  = document.getElementById('chk-kenko').checked  ? Math.round(gaji * 0.05)   : 0;
+  const potNenkin = document.getElementById('chk-nenkin').checked ? Math.round(gaji * 0.0915)  : 0;
+  const potKoyo   = document.getElementById('chk-koyo').checked   ? Math.round(gaji * 0.006)   : 0;
+  const potPajak  = document.getElementById('chk-pajak').checked  ? Math.round(gaji * 0.05)    : 0;
+  const potJumin  = document.getElementById('chk-jumin').checked  ? Math.round(gaji * 0.08)    : 0;
+
+  document.getElementById('pot-kenko').textContent  = '−' + fmt(potKenko);
+  document.getElementById('pot-nenkin').textContent = '−' + fmt(potNenkin);
+  document.getElementById('pot-koyo').textContent   = '−' + fmt(potKoyo);
+  document.getElementById('pot-pajak').textContent  = '−' + fmt(potPajak);
+  document.getElementById('pot-jumin').textContent  = '−' + fmt(potJumin);
+
+  const net = gross - (potKenko + potNenkin + potKoyo + potPajak + potJumin);
+  const totalBiaya = BIAYA_ITEMS.reduce((a, i) => a + (biayaValues[i.id] || 0), 0);
+  const tabBulan = Math.max(0, net - totalBiaya);
+  const tabTotal = tabBulan * tahun * 12;
+
+  const pct = net > 0 ? Math.min(100, Math.round(totalBiaya / net * 100)) : 100;
+  document.getElementById('prog-biaya').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = fmt(totalBiaya);
+  document.getElementById('prog-net').textContent   = fmt(net);
+
+  document.getElementById('r-gross').textContent     = fmt(gross);
+  document.getElementById('r-gross-idr').textContent = fmtR(gross, kurs);
+  document.getElementById('r-net').textContent       = fmt(net);
+  document.getElementById('r-net-idr').textContent   = fmtR(net, kurs);
+  document.getElementById('r-spend').textContent     = fmt(totalBiaya);
+  document.getElementById('r-spend-idr').textContent = fmtR(totalBiaya, kurs);
+  document.getElementById('r-save').textContent      = fmt(tabBulan);
+
+  const idrTab = Math.round(tabTotal * kurs);
+  const tabFmt = idrTab >= 1000000000
+    ? '≈ Rp ' + (idrTab/1000000000).toFixed(1) + ' M / ' + tahun + ' thn'
+    : '≈ Rp ' + (idrTab/1000000).toFixed(0) + ' jt / ' + tahun + ' thn';
+  document.getElementById('r-save-idr').textContent = tabFmt;
+
+  document.getElementById('r-save').style.color = tabBulan <= 0 ? '#EF4444' : tabBulan < 30000 ? '#FBBF24' : '#10B981';
+}
+
+resetBiaya(activePref);
+initPrefs();
+renderBiaya();
+hitung();
+</script>
+</body>
+</html>
