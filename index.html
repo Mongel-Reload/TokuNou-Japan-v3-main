@@ -215,21 +215,26 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: var(--white);
+      gap: 12px;
+      text-decoration: none;
     }
-    .nav-logo .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--blue-mid);
-      border-radius: 8px;
+    .nav-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-jp);
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       color: var(--white);
-      font-weight: 700;
+      flex-shrink: 0;
     }
     .nav-logo .logo-text {
       font-family: var(--font-display);
@@ -292,6 +297,16 @@
       overflow-y: auto;
     }
     .mobile-menu.open { display: block; }
+    .mobile-menu-logo {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-bottom: 12px;
+    }
+    .mobile-logo-img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+    }
     .mobile-menu a {
       display: block;
       color: rgba(255,255,255,.8);
@@ -422,6 +437,11 @@
     }
 
     .hero-illustration-svg {
+      width: 100%;
+      height: auto;
+      max-width: 500px;
+    }
+    .hero-illustration-img {
       width: 100%;
       height: auto;
       max-width: 500px;
@@ -1372,6 +1392,12 @@
       color: var(--white);
       margin-bottom: 12px;
     }
+    .footer-logo-img {
+      height: 56px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
     .footer-brand p { font-size: .9rem; line-height: 1.7; }
     .footer-disclaimer {
       margin-top: 14px;
@@ -1454,6 +1480,8 @@
       .hero-stats { gap: 24px; }
       .salary-main-card { padding: 28px 24px; }
       .story-card { padding: 28px 24px; }
+      .hero-illustration-img { max-width: 100%; }
+      .tl-icon-img { width: 50px; height: 50px; }
     }
 
 
@@ -1810,11 +1838,7 @@
   <div class="container">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <div class="logo-mark">農</div>
-        <div>
-          <div class="logo-text">TokuNou Japan</div>
-          <div class="logo-sub">Tokutei Ginou Peternakan</div>
-        </div>
+        <img src="assets/tokunou-japan-logo.png" alt="TokuNou Japan Logo" class="nav-logo-img">
       </a>
       <ul class="nav-links">
         <li><a href="sistem-tokutei-ginou.html">Gambaran SSW</a></li>
@@ -1833,6 +1857,9 @@
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-logo">
+    <img src="assets/tokunou-japan-logo.png" alt="TokuNou Japan Logo" class="mobile-logo-img">
+  </div>
   <a href="sistem-tokutei-ginou.html" onclick="closeMobileMenu()">📋 Gambaran Program SSW</a>
   <a href="ujian-bahasa-jepang.html" onclick="closeMobileMenu()">🗣️ Ujian Bahasa Jepang</a>
   <a href="ujian-sektor-peternakan.html" onclick="closeMobileMenu()">🐄 Ujian Sektor Peternakan</a>
@@ -1930,67 +1957,7 @@
       </div>
 
       <div class="hero-illustration">
-        <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg" class="hero-illustration-svg">
-          <!-- Background elements -->
-          <defs>
-            <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:#E8F4FD;stop-opacity:1" />
-              <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
-            </linearGradient>
-            <linearGradient id="fujiGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
-              <stop offset="100%" style="stop-color:#E8F4FD;stop-opacity:0.6" />
-            </linearGradient>
-          </defs>
-
-          <!-- Sky background -->
-          <rect x="0" y="0" width="500" height="400" fill="url(#skyGradient)" rx="16"/>
-
-          <!-- Mount Fuji (subtle) -->
-          <path d="M350 120 L450 280 L250 280 Z" fill="url(#fujiGradient)" opacity="0.5"/>
-          <path d="M350 120 L400 200 L300 200 Z" fill="#FFFFFF" opacity="0.4"/>
-          <ellipse cx="350" cy="140" rx="25" ry="15" fill="#FFFFFF" opacity="0.6"/>
-
-          <!-- Sun -->
-          <circle cx="100" cy="80" r="40" fill="#FF6B6B" opacity="0.3"/>
-
-          <!-- Modern barn/farm building -->
-          <rect x="50" y="200" width="180" height="120" fill="#F5F5F5" rx="8"/>
-          <path d="M40 200 L140 140 L240 200 Z" fill="#E8E8E8"/>
-          <rect x="100" y="250" width="40" height="70" fill="#1A5DAD" rx="4"/>
-          <rect x="70" y="220" width="30" height="25" fill="#3B82C4" rx="3"/>
-          <rect x="150" y="220" width="30" height="25" fill="#3B82C4" rx="3"/>
-
-          <!-- Worker figure -->
-          <g transform="translate(280, 180)">
-            <!-- Body -->
-            <ellipse cx="40" cy="100" rx="25" ry="35" fill="#1A5DAD"/>
-            <!-- Head -->
-            <circle cx="40" cy="50" r="20" fill="#FFD4A3"/>
-            <!-- Hair -->
-            <path d="M20 45 Q40 25 60 45" fill="#2C1810"/>
-            <!-- Arm holding clipboard -->
-            <line x1="65" y1="90" x2="90" y2="75" stroke="#FFD4A3" stroke-width="8" stroke-linecap="round"/>
-            <!-- Clipboard -->
-            <rect x="85" y="60" width="25" height="35" fill="#FFFFFF" rx="2" stroke="#1A5DAD" stroke-width="2"/>
-            <line x1="90" y1="70" x2="100" y2="70" stroke="#1A5DAD" stroke-width="1"/>
-            <line x1="90" y1="78" x2="100" y2="78" stroke="#1A5DAD" stroke-width="1"/>
-            <line x1="90" y1="86" x2="100" y2="86" stroke="#1A5DAD" stroke-width="1"/>
-          </g>
-
-          <!-- Cow (simplified) -->
-          <g transform="translate(80, 290)">
-            <ellipse cx="30" cy="25" rx="28" ry="20" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2"/>
-            <circle cx="15" cy="18" r="5" fill="#2C1810"/>
-            <ellipse cx="45" cy="20" rx="3" ry="5" fill="#FFB6C1"/>
-            <rect x="25" y="40" width="10" height="15" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2"/>
-          </g>
-
-          <!-- Decorative elements -->
-          <circle cx="450" cy="350" r="8" fill="#1A5DAD" opacity="0.2"/>
-          <circle cx="30" cy="100" r="5" fill="#FF6B6B" opacity="0.3"/>
-          <path d="M400 300 Q420 280 440 300" stroke="#1A5DAD" stroke-width="2" fill="none" opacity="0.3"/>
-        </svg>
+        <img src="assets/images/illustrations/hero-tokunou.png" alt="TokuNou Japan Hero Illustration" class="hero-illustration-img">
       </div>
     </div>
   </div>
@@ -2017,19 +1984,7 @@
     <div class="mulai-grid fade-up">
       <div class="mulai-card">
         <div class="mulai-illustration">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Person reading -->
-            <circle cx="60" cy="25" r="15" fill="#FFD4A3"/>
-            <path d="M45 45 Q60 35 75 45" fill="#2C1810"/>
-            <ellipse cx="60" cy="65" rx="20" ry="25" fill="#1A5DAD"/>
-            <!-- Laptop/book -->
-            <rect x="30" y="75" width="60" height="8" fill="#E0E0E0" rx="2"/>
-            <rect x="35" y="70" width="50" height="5" fill="#3B82C4" rx="1"/>
-            <!-- Document icon -->
-            <rect x="85" y="50" width="20" height="25" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="1.5" rx="2"/>
-            <line x1="88" y1="55" x2="97" y2="55" stroke="#1A5DAD" stroke-width="1"/>
-            <line x1="88" y1="60" x2="97" y2="60" stroke="#1A5DAD" stroke-width="1"/>
-          </svg>
+          <img src="assets/images/illustrations/start-program.png" alt="Baru Mengenal Tokutei Ginou" class="mulai-illustration-img">
         </div>
         <h3>Baru Mengenal Tokutei Ginou</h3>
         <p>Pelajari program Tokutei Ginou, persyaratan, sektor peternakan, dan gambaran proses keberangkatan.</p>
@@ -2038,18 +1993,7 @@
 
       <div class="mulai-card">
         <div class="mulai-illustration">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Person studying -->
-            <circle cx="60" cy="25" r="15" fill="#FFD4A3"/>
-            <path d="M45 45 Q60 35 75 45" fill="#2C1810"/>
-            <ellipse cx="60" cy="65" rx="20" ry="25" fill="#1A5DAD"/>
-            <!-- Book -->
-            <rect x="25" y="70" width="35" height="20" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="1.5" rx="2"/>
-            <line x1="42" y1="70" x2="42" y2="90" stroke="#1A5DAD" stroke-width="1"/>
-            <!-- Flashcard -->
-            <rect x="70" y="65" width="25" height="18" fill="#FF6B6B" rx="2"/>
-            <text x="82" y="77" font-size="8" fill="white" text-anchor="middle">あ</text>
-          </svg>
+          <img src="assets/images/illustrations/start-language.png" alt="Sedang Mempersiapkan Diri" class="mulai-illustration-img">
         </div>
         <h3>Sedang Mempersiapkan Diri</h3>
         <p>Pelajari bahasa Jepang, ujian keterampilan peternakan, budaya kerja, dan tahapan menuju Jepang.</p>
@@ -2058,22 +2002,7 @@
 
       <div class="mulai-card">
         <div class="mulai-illustration">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Person with checklist -->
-            <circle cx="60" cy="25" r="15" fill="#FFD4A3"/>
-            <path d="M45 45 Q60 35 75 45" fill="#2C1810"/>
-            <ellipse cx="60" cy="65" rx="20" ry="25" fill="#1A5DAD"/>
-            <!-- Clipboard -->
-            <rect x="30" y="60" width="25" height="35" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="1.5" rx="2"/>
-            <line x1="35" y1="68" x2="50" y2="68" stroke="#1A5DAD" stroke-width="1"/>
-            <line x1="35" y1="75" x2="50" y2="75" stroke="#1A5DAD" stroke-width="1"/>
-            <line x1="35" y1="82" x2="50" y2="82" stroke="#1A5DAD" stroke-width="1"/>
-            <!-- Checkmarks -->
-            <circle cx="80" cy="68" r="8" fill="#56D9A6"/>
-            <path d="M76 68 L79 71 L84 66" stroke="white" stroke-width="1.5" fill="none"/>
-            <circle cx="80" cy="82" r="8" fill="#56D9A6"/>
-            <path d="M76 82 L79 85 L84 80" stroke="white" stroke-width="1.5" fill="none"/>
-          </svg>
+          <img src="assets/images/illustrations/start-ready.png" alt="Sudah Siap Mendaftar" class="mulai-illustration-img">
         </div>
         <h3>Sudah Siap Mendaftar</h3>
         <p>Cek kesiapan dokumen, bahasa, pengetahuan, dan persiapan sebelum mengikuti proses seleksi.</p>
@@ -2104,12 +2033,7 @@
     <div class="timeline fade-up">
       <div class="timeline-item">
         <div class="tl-icon">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <rect x="15" y="10" width="30" height="40" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2" rx="2"/>
-            <line x1="20" y1="20" x2="40" y2="20" stroke="#1A5DAD" stroke-width="2"/>
-            <line x1="20" y1="28" x2="40" y2="28" stroke="#1A5DAD" stroke-width="2"/>
-            <line x1="20" y1="36" x2="35" y2="36" stroke="#1A5DAD" stroke-width="2"/>
-          </svg>
+          <img src="assets/images/illustrations/roadmap-language.png" alt="Belajar Bahasa Jepang" class="tl-icon-img">
         </div>
         <div class="tl-dot"><span class="step-num">Step 1</span></div>
         <div class="tl-content">
@@ -2120,11 +2044,7 @@
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="15" width="40" height="30" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2" rx="2"/>
-            <circle cx="30" cy="30" r="8" fill="#FF6B6B"/>
-            <text x="30" y="34" font-size="10" fill="white" text-anchor="middle" font-weight="bold">A</text>
-          </svg>
+          <img src="assets/images/illustrations/roadmap-exam.png" alt="Ujian Tokutei Ginou" class="tl-icon-img">
         </div>
         <div class="tl-dot"><span class="step-num">Step 2</span></div>
         <div class="tl-content">
@@ -2135,12 +2055,7 @@
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="20" cy="35" r="12" fill="#FFD4A3"/>
-            <circle cx="40" cy="35" r="12" fill="#FFD4A3"/>
-            <path d="M20 47 L30 55 L40 47" stroke="#1A5DAD" stroke-width="2" fill="none"/>
-            <path d="M25 30 L30 35 L35 30" stroke="#1A5DAD" stroke-width="2" fill="none"/>
-          </svg>
+          <img src="assets/images/illustrations/roadmap-interview.png" alt="Proses Matching & Interview" class="tl-icon-img">
         </div>
         <div class="tl-dot"><span class="step-num">Step 3</span></div>
         <div class="tl-content">
@@ -2151,11 +2066,7 @@
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <rect x="15" y="10" width="30" height="40" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2" rx="2"/>
-            <rect x="20" y="20" width="20" height="15" fill="#3B82C4" rx="1"/>
-            <circle cx="30" cy="42" r="5" fill="#FF6B6B"/>
-          </svg>
+          <img src="assets/images/illustrations/roadmap-program.png" alt="Pengurusan Dokumen & Visa" class="tl-icon-img">
         </div>
         <div class="tl-dot"><span class="step-num">Step 4</span></div>
         <div class="tl-content">
@@ -2166,11 +2077,7 @@
       </div>
       <div class="timeline-item">
         <div class="tl-icon">
-          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 40 L30 15 L50 40" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2"/>
-            <circle cx="30" cy="35" r="8" fill="#FF6B6B"/>
-            <rect x="25" y="42" width="10" height="8" fill="#1A5DAD"/>
-          </svg>
+          <img src="assets/images/illustrations/roadmap-departure.png" alt="Berangkat ke Jepang" class="tl-icon-img">
         </div>
         <div class="tl-dot"><span class="step-num">Step 5</span></div>
         <div class="tl-content">
@@ -2244,17 +2151,7 @@
 
       <div class="area-card">
         <div class="area-illustration">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Tools interface -->
-            <rect x="20" y="20" width="80" height="60" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2" rx="4"/>
-            <!-- Checkmark -->
-            <circle cx="45" cy="50" r="12" fill="#56D9A6"/>
-            <path d="M40 50 L44 54 L50 46" stroke="white" stroke-width="2" fill="none"/>
-            <!-- Calculator -->
-            <rect x="65" y="35" width="25" height="30" fill="#3B82C4" rx="2"/>
-            <rect x="70" y="40" width="15" height="5" fill="#FFFFFF" rx="1"/>
-            <circle cx="77" cy="55" r="4" fill="#FFFFFF"/>
-          </svg>
+          <img src="assets/images/illustrations/tool-readiness.png" alt="Cek Kesiapan" class="area-illustration-img">
         </div>
         <h3>Tools Persiapan</h3>
         <p>Tools interaktif untuk mengecek kesiapan dan simulasi.</p>
@@ -2268,19 +2165,7 @@
 
       <div class="area-card">
         <div class="area-illustration">
-          <svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- House -->
-            <rect x="30" y="45" width="60" height="45" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2" rx="2"/>
-            <path d="M25 45 L60 20 L95 45 Z" fill="#1A5DAD"/>
-            <!-- Door -->
-            <rect x="52" y="60" width="16" height="30" fill="#3B82C4" rx="1"/>
-            <!-- Window -->
-            <rect x="35" y="55" width="12" height="12" fill="#A8D8FF" stroke="#1A5DAD" stroke-width="1"/>
-            <rect x="73" y="55" width="12" height="12" fill="#A8D8FF" stroke="#1A5DAD" stroke-width="1"/>
-            <!-- Cherry blossom -->
-            <circle cx="20" cy="30" r="6" fill="#FFB6C1"/>
-            <circle cx="100" cy="35" r="5" fill="#FFB6C1"/>
-          </svg>
+          <img src="assets/images/illustrations/japan-life.png" alt="Hidup & Bekerja" class="area-illustration-img">
         </div>
         <h3>Hidup & Bekerja</h3>
         <p>Budaya, kehidupan sehari-hari, dan tantangan di Jepang.</p>
@@ -2315,14 +2200,38 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
   }
-  .area-illustration {
+  .farm-illustration {
     width: 100%;
-    height: 100px;
-    margin-bottom: 16px;
+    height: 120px;
+    margin-bottom: 20px;
   }
-  .area-illustration svg {
+  .farm-illustration svg {
     width: 100%;
     height: 100%;
+  }
+  .farm-illustration-img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    transition: transform var(--transition);
+  }
+  .farm-card:hover .farm-illustration-img {
+    transform: scale(1.05);
+  }
+  .mulai-illustration-img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    transition: transform var(--transition);
+  }
+  .area-illustration-img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    transition: transform var(--transition);
+  }
+  .area-card:hover .area-illustration-img {
+    transform: scale(1.05);
   }
   .area-icon {
     font-size: 2rem;
@@ -2698,18 +2607,7 @@
     <div class="farm-grid">
       <div class="farm-card fade-up fade-up-delay-1">
         <div class="farm-illustration">
-          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Barn background -->
-            <rect x="10" y="40" width="180" height="70" fill="#F5F5F5" rx="4"/>
-            <path d="M10 40 L100 10 L190 40 Z" fill="#E8E8E8"/>
-            <!-- Cow -->
-            <ellipse cx="100" cy="75" rx="35" ry="25" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="2"/>
-            <circle cx="80" cy="65" r="6" fill="#2C1810"/>
-            <ellipse cx="125" cy="68" rx="4" ry="6" fill="#FFB6C1"/>
-            <!-- Milk machine -->
-            <rect x="140" y="55" width="25" height="20" fill="#3B82C4" rx="2"/>
-            <line x1="140" y1="65" x2="135" y2="75" stroke="#3B82C4" stroke-width="2"/>
-          </svg>
+          <img src="assets/images/illustrations/farm-cattle.png" alt="Peternakan Sapi" class="farm-illustration-img">
         </div>
         <div class="farm-card-body">
           <h3>Peternakan Sapi</h3>
@@ -2723,20 +2621,7 @@
       </div>
       <div class="farm-card fade-up fade-up-delay-2">
         <div class="farm-illustration">
-          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Chicken coop -->
-            <rect x="20" y="50" width="160" height="60" fill="#FFF8E7" rx="4" stroke="#E8D4A0" stroke-width="2"/>
-            <path d="M20 50 L100 25 L180 50 Z" fill="#FFE4B5" stroke="#E8D4A0" stroke-width="2"/>
-            <!-- Chicken -->
-            <ellipse cx="60" cy="80" rx="15" ry="12" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1.5"/>
-            <circle cx="52" cy="75" r="3" fill="#2C1810"/>
-            <path d="M75 80 L85 75" stroke="#FF6B6B" stroke-width="2"/>
-            <!-- Eggs -->
-            <ellipse cx="120" cy="85" rx="8" ry="10" fill="#FFD700"/>
-            <ellipse cx="140" cy="82" rx="8" ry="10" fill="#FFD700"/>
-            <!-- Feeding system -->
-            <rect x="160" y="70" width="25" height="25" fill="#3B82C4" rx="2"/>
-          </svg>
+          <img src="assets/images/illustrations/farm-poultry.png" alt="Peternakan Ayam" class="farm-illustration-img">
         </div>
         <div class="farm-card-body">
           <h3>Peternakan Ayam</h3>
@@ -2750,19 +2635,7 @@
       </div>
       <div class="farm-card fade-up fade-up-delay-3">
         <div class="farm-illustration">
-          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
-            <!-- Pig pen -->
-            <rect x="15" y="45" width="170" height="65" fill="#F0F0F0" rx="4"/>
-            <!-- Pig -->
-            <ellipse cx="80" cy="75" rx="25" ry="18" fill="#FFB6C1" stroke="#FF8FA3" stroke-width="2"/>
-            <circle cx="65" cy="70" r="5" fill="#2C1810"/>
-            <ellipse cx="95" cy="72" rx="3" ry="5" fill="#FF6B6B"/>
-            <!-- Data monitor -->
-            <rect x="130" y="55" width="50" height="40" fill="#FFFFFF" stroke="#1A5DAD" stroke-width="2" rx="3"/>
-            <line x1="140" y1="70" x2="170" y2="70" stroke="#1A5DAD" stroke-width="1.5"/>
-            <line x1="140" y1="80" x2="160" y2="80" stroke="#1A5DAD" stroke-width="1.5"/>
-            <circle cx="155" cy="65" r="4" fill="#56D9A6"/>
-          </svg>
+          <img src="assets/images/illustrations/farm-pig.png" alt="Peternakan Babi" class="farm-illustration-img">
         </div>
         <div class="farm-card-body">
           <h3>Peternakan Babi</h3>
@@ -4191,7 +4064,7 @@ loadMap();
         <a href="roadmap.html" class="btn btn-white btn-lg">
           🗺️ Pelajari Alurnya
         </a>
-        <a href="quiz.html" class="btn btn-white-outline btn-lg">
+        <a href="cek-kesiapan.html" class="btn btn-white-outline btn-lg">
           🎯 Cek Kesiapanku Dulu
         </a>
       </div>
@@ -4278,7 +4151,7 @@ loadMap();
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand-name">🌾 TokuNou Japan</div>
+        <img src="assets/tokunou-japan-logo.png" alt="TokuNou Japan Logo" class="footer-logo-img">
         <p>Website edukasi dan promosi mengenai program Tokutei Ginou (Specified Skilled Worker) sektor peternakan untuk tenaga kerja Indonesia yang ingin bekerja di Jepang.</p>
         <div class="footer-disclaimer">
           ⚠️ <strong>Disclaimer:</strong> Website ini dibuat untuk tujuan edukasi dan tugas akhir. Konten bersifat informatif. Untuk pendaftaran resmi, hubungi lembaga pengirim yang terdaftar di BP2MI.
