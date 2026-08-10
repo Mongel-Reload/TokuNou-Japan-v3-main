@@ -322,11 +322,10 @@
     ============================================= */
     #hero {
       position: relative;
-      min-height: 100vh;
       background: linear-gradient(160deg, #0A2550 0%, #1A5DAD 55%, #5BA8E8 100%);
       display: flex;
       align-items: center;
-      padding: 140px 0 80px;
+      padding: 64px 0 80px;
       overflow: hidden;
     }
 
@@ -354,8 +353,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
@@ -369,21 +368,21 @@
       pointer-events: none;
     }
 
-    /* Japan flag circle — ganti ke biru muda */
+    /* Japan flag circle — reduced opacity */
     .jp-flag-deco {
       position: absolute;
-      top: 140px;
-      right: 80px;
-      width: 180px; height: 180px;
+      top: 100px;
+      right: 60px;
+      width: 120px; height: 120px;
       border-radius: 50%;
-      background: rgba(219,238,255,.15);
-      border: 1px solid rgba(219,238,255,.35);
+      background: rgba(219,238,255,.08);
+      border: 1px solid rgba(219,238,255,.2);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-jp);
-      font-size: 3.5rem;
-      color: rgba(219,238,255,.7);
+      font-size: 2.2rem;
+      color: rgba(219,238,255,.4);
       pointer-events: none;
       animation: floatY 6s ease-in-out infinite;
     }
@@ -416,23 +415,26 @@
 
     @media (min-width: 1024px) {
       .hero-content-wrapper {
-        grid-template-columns: 55% 45%;
+        grid-template-columns: 52% 48%;
       }
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 640px;
       position: relative;
       z-index: 1;
     }
 
     .hero-illustration {
       display: none;
+      position: relative;
+      align-items: center;
+      justify-content: center;
     }
 
     @media (min-width: 1024px) {
       .hero-illustration {
-        display: block;
+        display: flex;
       }
     }
 
@@ -443,24 +445,37 @@
     }
     .hero-illustration-img {
       width: 100%;
+      max-width: 520px;
       height: auto;
-      max-width: 500px;
+      object-fit: contain;
+      display: block;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-image-bg {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(219,238,255,.12) 0%, transparent 70%);
+      z-index: 1;
     }
 
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(219,238,255,.18);
-      border: 1px solid rgba(219,238,255,.45);
+      background: rgba(219,238,255,.15);
+      border: 1px solid rgba(219,238,255,.35);
       color: #C8E6FF;
       padding: 6px 16px;
       border-radius: 50px;
-      font-size: .8rem;
+      font-size: .75rem;
       font-weight: 600;
-      letter-spacing: .1em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
       animation: fadeInUp .8s ease both;
     }
     .hero-eyebrow .dot {
@@ -476,7 +491,10 @@
 
     .hero-title {
       color: var(--white);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
+      font-size: clamp(3rem, 4.2vw, 4.4rem);
+      line-height: 1.08;
+      font-weight: 700;
       animation: fadeInUp .8s .1s ease both;
     }
     .hero-title .highlight {
@@ -495,14 +513,15 @@
 
     .hero-sub {
       color: rgba(255,255,255,.75);
-      font-size: 1.15rem;
-      line-height: 1.75;
-      margin-bottom: 40px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      max-width: 560px;
+      margin-bottom: 32px;
       animation: fadeInUp .8s .2s ease both;
     }
     .hero-cta-group {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
       animation: fadeInUp .8s .3s ease both;
     }
@@ -1563,6 +1582,52 @@
       .farm-tech-banner { flex-direction: column; text-align: center; }
       .jp-flag-deco { display: none; }
     }
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+      }
+      .hero-illustration-img {
+        max-width: 440px;
+      }
+    }
+    @media (max-width: 768px) {
+      #hero {
+        padding: 48px 0 64px;
+      }
+      .hero-content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-illustration {
+        display: flex;
+        order: 5;
+      }
+      .hero-title {
+        font-size: clamp(2.5rem, 9vw, 3.5rem);
+      }
+      .hero-eyebrow {
+        font-size: .7rem;
+        margin-bottom: 16px;
+      }
+      .hero-sub {
+        font-size: 1rem;
+        margin-bottom: 24px;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hero-cta-group .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .hero-illustration-img {
+        max-width: 420px;
+      }
+      .jp-flag-deco {
+        display: none;
+      }
+    }
     @media (max-width: 600px) {
       section { padding: 72px 0; }
       .farm-grid      { grid-template-columns: 1fr; }
@@ -2005,11 +2070,11 @@
       <div class="hero-content">
         <div class="hero-eyebrow">
           <span class="dot"></span>
-          Program Resmi Jepang · Tokutei Ginou Sektor Peternakan
+          PROGRAM TOKUTEI GINOU JEPANG
         </div>
 
         <h1 class="display-xl hero-title">
-          Kerja di Jepang Lewat <span class="highlight">Tokutei Ginou Peternakan</span>
+          Kerja di Jepang Lewat <span class="highlight">Tokutei Ginou</span><br>Peternakan
         </h1>
 
         <p class="hero-sub">
@@ -2023,14 +2088,17 @@
           <a href="cek-kesiapan.html" class="btn btn-outline btn-lg">
             Cek Kesiapan
           </a>
-          <a href="tanya-ai.html" class="btn btn-outline btn-lg" style="background:linear-gradient(135deg,#1A5DAD,#3B82C4);color:#fff;border:none;box-shadow:0 4px 16px rgba(26,93,173,.4);">
-            🤖 Tanya AI Nousan
+        </div>
+        <div style="margin-top: 16px;">
+          <a href="tanya-ai.html" class="btn btn-text" style="color: #C8E6FF; font-size: 0.95rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+            🤖 Tanya Nousan AI →
           </a>
         </div>
       </div>
 
       <div class="hero-illustration">
-        <img src="assets/illustrations/01-hero-tokunou.png" alt="Calon pekerja Tokutei Ginou sektor peternakan Jepang" class="hero-illustration-img" width="540" height="540">
+        <div class="hero-image-bg"></div>
+        <img src="assets/illustrations/01-hero-tokunou.png" alt="Calon pekerja Tokutei Ginou sektor peternakan Jepang" class="hero-illustration-img" fetchpriority="high" loading="eager" width="520" height="520">
       </div>
     </div>
   </div>
@@ -4325,7 +4393,7 @@ loadMap();
     }
 
     const petals = [];
-    const COUNT = 35;
+    const COUNT = 4;
 
     for (let i = 0; i < COUNT; i++) {
       petals.push({
